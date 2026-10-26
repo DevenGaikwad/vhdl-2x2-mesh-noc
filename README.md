@@ -11,7 +11,7 @@ An evidence-led HDL & PLD mini project from **DES Pune University · B.Tech ECE 
 [![Target](https://img.shields.io/badge/Target-Spartan--7-6554a4)](constraints/clock_only.xdc)
 [![Evidence](https://img.shields.io/badge/Benchmark_runs-93-31766b)](experiments/results/metrics.json)
 
-[Architecture](#architecture) · [Results](#measured-results) · [Run it](#quick-start) · [Evidence gallery](#evidence-gallery) · [Documents](#documentation-and-downloads) · [Team](#project-team)
+[Architecture](#architecture) · [Results](#measured-results) · [Evidence gallery](#evidence-gallery) · [Run it](#quick-start) · [Documents](#documentation-and-downloads) · [Team](#project-team)
 
 </div>
 
@@ -113,6 +113,103 @@ The routed wrapper uses 841 logic LUTs and 226 memory LUTs, with zero BRAM/DSP u
 
 An empty network gives Local/one-hop/two-hop acceptance-to-ejection latency of **2/4/6 cycles** under the stated test conditions. The registered arbiter has a bubble between accepts: **0.5 flits/cycle is an individual-output ceiling**, not a mesh-wide aggregate ceiling. [Definitions and interpretation →](docs/results.md)
 
+## Evidence gallery
+
+Follow the original captures from a packet handshake to FPGA-fabric implementation. Each image has a specific purpose; click it for full resolution. Expand the supporting views for FIFO, utilization and routing details. The complete [42-image register](docs/screenshot_index.md) remains available.
+
+### Packet injection, buffering and delivery
+
+![XSim accepts the first Local packet at 25 ns](docs/assets/vivado/05-first-injection-at-25-ns.png)
+
+**Injection:** `TX(0)=0x80200001` is accepted at the 25 ns rising edge when `TV(0)=TR(0)=1`. Its source and destination are both Router 0, so this first example uses the **Local** route.
+
+<details>
+<summary>Inside the input FIFO: occupancy changes after acceptance</summary>
+
+![Router 0 Local input FIFO occupancy after injection](docs/assets/vivado/07-fifo-occupancy-at-25-ns.png)
+
+**Buffering:** `count[4]` rises from 0 to 1. Debug index 4 identifies Router 0's Local input; `DEPTH=4` permits four queued 32-bit packets at that input.
+
+</details>
+
+![XSim receiver data and valid-ready handshake before the 45 ns delivery edge](docs/assets/vivado/10-receiver-handshake-before-45-ns.png)
+
+**Delivery:** the receiver holds the matching packet before 45 ns, with `RV(0)=RR(0)=1`. Acceptance at that rising edge completes this Local transfer in **20 ns / two clock cycles**. This example alone does not establish an inter-router transfer.
+
+![Self-checking mesh test completes with explicit reset accounting](docs/assets/vivado/12-self-checking-xsim-pass.png)
+
+**Self-checking result:** at 2400 ns the directed test accounts for **106 accepted = 74 delivered + 32 intentional reset discards**. The separate 93 benchmark runs have zero reset discards; their totals are not mixed with this test.
+
+### Four routers connected in actual RTL
+
+![Vivado elaborated hierarchy showing the four-router mesh and finite traffic endpoints](docs/assets/vivado/13-four-router-rtl-hierarchy.png)
+
+**Integration:** `noc_fpga_demo_top` contains the mesh and four finite traffic endpoints; the mesh expands into `routers[0]` through `routers[3]`. The schematic shows VHDL connections before technology mapping.
+
+<details>
+<summary>Synthesis evidence: core hierarchy and the three active FIFOs</summary>
+
+![Later GUI core synthesis utilization across the four routers](docs/assets/vivado/16-core-synthesis-hierarchy.png)
+
+**Mapped core:** this later GUI observation reports **1085 LUTs and 147 registers**. The archived core report is separately **1086/147**; neither result replaces the other.
+
+![Router 0 memory LUT breakdown across three active input FIFOs](docs/assets/vivado/19-three-fifo-memory-breakdown.png)
+
+**Storage accounting:** Router 0 inputs 1, 2 and 4 use **24 + 24 + 24 = 72 memory LUTs**. These are mapped resource counts, not a FIFO depth of 24.
+
+</details>
+
+![Implemented Local-output round-robin arbiter schematic](docs/assets/vivado/30-implemented-local-arbiter-schematic.png)
+
+**Implemented control:** the selected Local-output arbiter contains **32 cells and 89 nets**, including LUTs and flip-flops. The picture shows mapped circuitry; the self-checking arbiter tests establish the tested fairness and stall behavior.
+
+### Placement, completed routing and resource use
+
+![Four router groups placed in the routed demonstration checkpoint](docs/assets/architecture/18-routed-placement.png)
+
+**Placement:** the colored groups identify placed router logic in the demonstration wrapper. Physical placement need not form a square; the colors do not represent moving packets.
+
+<details>
+<summary>Route completion and final wrapper utilization</summary>
+
+![Vivado route status with all routable nets fully routed](docs/assets/vivado/26-routing-completion.png)
+
+**Route completion:** all **1468 routable nets** are fully routed, with **zero routing errors**. The remaining 377 of 1845 logical nets need no fabric routing.
+
+![Routed demonstration wrapper resource utilization](docs/assets/vivado/28-routed-demonstration-resources.png)
+
+**Wrapper resources:** **1067 LUTs = 841 logic + 226 memory**, plus **236 registers**. This top includes the four finite endpoints and differs from the exposed core-only synthesis run.
+
+</details>
+
+### Internal timing and the remaining constraint limits
+
+![Routed demo setup and hold timing summary](docs/assets/architecture/17-routed-timing.png)
+
+**Internal static timing:** at a **10 ns target**, WNS is **+4.571 ns**, TNS **0**, WHS **+0.066 ns** and THS **0**. [Full timing capture](docs/assets/vivado/27-routed-internal-static-timing.png). Static timing analysis is separate from the unresolved SDF waveform simulation.
+
+<details>
+<summary>Inspect the recorded DRC warnings and their scope</summary>
+
+![Design-rule report documenting configuration voltage and unloaded-net warnings](docs/assets/vivado/29-design-rule-warnings.png)
+
+**Constraint limits:** `CFGBVS-1` concerns missing configuration-voltage properties; `RTSTAT-10` concerns unloaded nets. The capture reports two warnings and no DRC errors. Board-specific values and physical-board operation remain unverified.
+
+</details>
+
+### Decode the recorded packet in the dashboard
+
+<details>
+<summary>Packet inspector: fields, accepted events and two-cycle Local latency</summary>
+
+![Original dashboard packet inspector decoding the recorded Local transaction](evidence/frontend/production/view-3.png)
+
+**Recorded-data inspection:** `0x80200001` decodes to source 0, destination 0, ID 1 and payload 1. Its saved injection/delivery events span cycles 3 to 5. This is CSV replay, not live FPGA communication. This historical interface capture retains its earlier pending-status badge; the evidence-status table above gives the separately recorded Vivado outcomes.
+
+</details>
+
+The walkthrough connects the HDL behavior, testbench checks and mapped implementation. The [screenshot register](docs/screenshot_index.md) provides every full capture and observation without treating project-opening views as functional proof.
+
 ## Quick start
 
 ### Dashboard on Windows
@@ -163,19 +260,6 @@ Use a separate verification checkout to preserve the saved baseline. With the ex
 ```
 
 E: is the original lab installation, not a universal prerequisite. `-ProjectDir` can override the wrapper's E-drive project location. No board pins, bitstream or board programming are implied by RouteDemo. [Full Windows instructions →](docs/implementation_guide.md)
-
-## Evidence gallery
-
-| RTL packet delivery | Routed fabric and timing |
-|---|---|
-| ![Receiver handshake](docs/assets/architecture/12-xsim-delivery.png) | ![Routed implementation](docs/assets/architecture/18-routed-placement.png) |
-| The packet word and valid/ready establish the observed transfer event. | Colored cells show placed router logic, not moving packets. |
-
-![Post-route timing](docs/assets/architecture/17-routed-timing.png)
-
-*Saved internal static timing of the routed demonstration wrapper. Static timing analysis is distinct from the deferred SDF waveform simulation.*
-
-The [screenshot index](docs/screenshot_index.md) accounts for **all 42 images**: the 31 walkthrough steps contain split 09A/09B views, followed by ten supplementary captures. Setup-only screenshots are identified as context rather than proof of packet delivery.
 
 ## Documentation and downloads
 
