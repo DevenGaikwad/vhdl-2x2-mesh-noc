@@ -1,0 +1,1352 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sun Oct  4 19:40:07 2026
+| Host         : DESKTOP-SBIR7OL running 64-bit major release  (build 9200)
+| Command      : report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -file D:/NoC_2x2_Project/evidence/vivado/synthesis_ooc/timing_summary.rpt
+| Design       : noc_2x2_core
+| Device       : 7s15-cpga196
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  No
+  Borrow Time for Max Delay Exceptions       :  Yes
+  Merge Timing Exceptions                    :  Yes
+  Inter-SLR Compensation                     :  Conservative
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+------------------------------------------------------------------------------------------------
+| Report Methodology
+| ------------------
+------------------------------------------------------------------------------------------------
+
+No report available as report_methodology has not been run prior. Run report_methodology on the current design for the summary of methodology violations.
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (0)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (0)
+5. checking no_input_delay (137)
+6. checking no_output_delay (648)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (0)
+------------------------
+ There are 0 register/latch pins with no clock.
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (0)
+------------------------------------------------
+ There are 0 pins that are not constrained for maximum delay.
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (137)
+--------------------------------
+ There are 137 input ports with no input delay specified. (HIGH)
+
+eject_ready[0]
+eject_ready[1]
+eject_ready[2]
+eject_ready[3]
+inject_data[0][0]
+inject_data[0][10]
+inject_data[0][11]
+inject_data[0][12]
+inject_data[0][13]
+inject_data[0][14]
+inject_data[0][15]
+inject_data[0][16]
+inject_data[0][17]
+inject_data[0][18]
+inject_data[0][19]
+inject_data[0][1]
+inject_data[0][20]
+inject_data[0][21]
+inject_data[0][22]
+inject_data[0][23]
+inject_data[0][24]
+inject_data[0][25]
+inject_data[0][26]
+inject_data[0][27]
+inject_data[0][28]
+inject_data[0][29]
+inject_data[0][2]
+inject_data[0][30]
+inject_data[0][31]
+inject_data[0][3]
+inject_data[0][4]
+inject_data[0][5]
+inject_data[0][6]
+inject_data[0][7]
+inject_data[0][8]
+inject_data[0][9]
+inject_data[1][0]
+inject_data[1][10]
+inject_data[1][11]
+inject_data[1][12]
+inject_data[1][13]
+inject_data[1][14]
+inject_data[1][15]
+inject_data[1][16]
+inject_data[1][17]
+inject_data[1][18]
+inject_data[1][19]
+inject_data[1][1]
+inject_data[1][20]
+inject_data[1][21]
+inject_data[1][22]
+inject_data[1][23]
+inject_data[1][24]
+inject_data[1][25]
+inject_data[1][26]
+inject_data[1][27]
+inject_data[1][28]
+inject_data[1][29]
+inject_data[1][2]
+inject_data[1][30]
+inject_data[1][31]
+inject_data[1][3]
+inject_data[1][4]
+inject_data[1][5]
+inject_data[1][6]
+inject_data[1][7]
+inject_data[1][8]
+inject_data[1][9]
+inject_data[2][0]
+inject_data[2][10]
+inject_data[2][11]
+inject_data[2][12]
+inject_data[2][13]
+inject_data[2][14]
+inject_data[2][15]
+inject_data[2][16]
+inject_data[2][17]
+inject_data[2][18]
+inject_data[2][19]
+inject_data[2][1]
+inject_data[2][20]
+inject_data[2][21]
+inject_data[2][22]
+inject_data[2][23]
+inject_data[2][24]
+inject_data[2][25]
+inject_data[2][26]
+inject_data[2][27]
+inject_data[2][28]
+inject_data[2][29]
+inject_data[2][2]
+inject_data[2][30]
+inject_data[2][31]
+inject_data[2][3]
+inject_data[2][4]
+inject_data[2][5]
+inject_data[2][6]
+inject_data[2][7]
+inject_data[2][8]
+inject_data[2][9]
+inject_data[3][0]
+inject_data[3][10]
+inject_data[3][11]
+inject_data[3][12]
+inject_data[3][13]
+inject_data[3][14]
+inject_data[3][15]
+inject_data[3][16]
+inject_data[3][17]
+inject_data[3][18]
+inject_data[3][19]
+inject_data[3][1]
+inject_data[3][20]
+inject_data[3][21]
+inject_data[3][22]
+inject_data[3][23]
+inject_data[3][24]
+inject_data[3][25]
+inject_data[3][26]
+inject_data[3][27]
+inject_data[3][28]
+inject_data[3][29]
+inject_data[3][2]
+inject_data[3][30]
+inject_data[3][31]
+inject_data[3][3]
+inject_data[3][4]
+inject_data[3][5]
+inject_data[3][6]
+inject_data[3][7]
+inject_data[3][8]
+inject_data[3][9]
+inject_valid[0]
+inject_valid[1]
+inject_valid[2]
+inject_valid[3]
+rst
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (648)
+---------------------------------
+ There are 648 ports with no output delay specified. (HIGH)
+
+dbg_count[10][0]
+dbg_count[10][1]
+dbg_count[10][2]
+dbg_count[12][0]
+dbg_count[12][1]
+dbg_count[12][2]
+dbg_count[14][0]
+dbg_count[14][1]
+dbg_count[14][2]
+dbg_count[15][0]
+dbg_count[15][1]
+dbg_count[15][2]
+dbg_count[18][0]
+dbg_count[18][1]
+dbg_count[18][2]
+dbg_count[19][0]
+dbg_count[19][1]
+dbg_count[19][2]
+dbg_count[1][0]
+dbg_count[1][1]
+dbg_count[1][2]
+dbg_count[2][0]
+dbg_count[2][1]
+dbg_count[2][2]
+dbg_count[4][0]
+dbg_count[4][1]
+dbg_count[4][2]
+dbg_count[6][0]
+dbg_count[6][1]
+dbg_count[6][2]
+dbg_count[8][0]
+dbg_count[8][1]
+dbg_count[8][2]
+dbg_count[9][0]
+dbg_count[9][1]
+dbg_count[9][2]
+dbg_grant[10][0]
+dbg_grant[10][2]
+dbg_grant[10][4]
+dbg_grant[12][0]
+dbg_grant[12][2]
+dbg_grant[12][4]
+dbg_grant[14][0]
+dbg_grant[14][2]
+dbg_grant[14][4]
+dbg_grant[15][0]
+dbg_grant[15][3]
+dbg_grant[15][4]
+dbg_grant[18][0]
+dbg_grant[18][3]
+dbg_grant[18][4]
+dbg_grant[19][0]
+dbg_grant[19][3]
+dbg_grant[19][4]
+dbg_grant[1][1]
+dbg_grant[1][2]
+dbg_grant[1][4]
+dbg_grant[2][1]
+dbg_grant[2][2]
+dbg_grant[2][4]
+dbg_grant[4][1]
+dbg_grant[4][2]
+dbg_grant[4][4]
+dbg_grant[6][1]
+dbg_grant[6][3]
+dbg_grant[6][4]
+dbg_grant[8][1]
+dbg_grant[8][3]
+dbg_grant[8][4]
+dbg_grant[9][1]
+dbg_grant[9][3]
+dbg_grant[9][4]
+dbg_out_data[10][0]
+dbg_out_data[10][10]
+dbg_out_data[10][11]
+dbg_out_data[10][12]
+dbg_out_data[10][13]
+dbg_out_data[10][14]
+dbg_out_data[10][15]
+dbg_out_data[10][16]
+dbg_out_data[10][17]
+dbg_out_data[10][18]
+dbg_out_data[10][19]
+dbg_out_data[10][1]
+dbg_out_data[10][20]
+dbg_out_data[10][21]
+dbg_out_data[10][22]
+dbg_out_data[10][23]
+dbg_out_data[10][24]
+dbg_out_data[10][25]
+dbg_out_data[10][26]
+dbg_out_data[10][27]
+dbg_out_data[10][28]
+dbg_out_data[10][29]
+dbg_out_data[10][2]
+dbg_out_data[10][30]
+dbg_out_data[10][31]
+dbg_out_data[10][3]
+dbg_out_data[10][4]
+dbg_out_data[10][5]
+dbg_out_data[10][6]
+dbg_out_data[10][7]
+dbg_out_data[10][8]
+dbg_out_data[10][9]
+dbg_out_data[12][0]
+dbg_out_data[12][10]
+dbg_out_data[12][11]
+dbg_out_data[12][12]
+dbg_out_data[12][13]
+dbg_out_data[12][14]
+dbg_out_data[12][15]
+dbg_out_data[12][16]
+dbg_out_data[12][17]
+dbg_out_data[12][18]
+dbg_out_data[12][19]
+dbg_out_data[12][1]
+dbg_out_data[12][20]
+dbg_out_data[12][21]
+dbg_out_data[12][22]
+dbg_out_data[12][23]
+dbg_out_data[12][24]
+dbg_out_data[12][25]
+dbg_out_data[12][26]
+dbg_out_data[12][27]
+dbg_out_data[12][28]
+dbg_out_data[12][29]
+dbg_out_data[12][2]
+dbg_out_data[12][30]
+dbg_out_data[12][31]
+dbg_out_data[12][3]
+dbg_out_data[12][4]
+dbg_out_data[12][5]
+dbg_out_data[12][6]
+dbg_out_data[12][7]
+dbg_out_data[12][8]
+dbg_out_data[12][9]
+dbg_out_data[14][0]
+dbg_out_data[14][10]
+dbg_out_data[14][11]
+dbg_out_data[14][12]
+dbg_out_data[14][13]
+dbg_out_data[14][14]
+dbg_out_data[14][15]
+dbg_out_data[14][16]
+dbg_out_data[14][17]
+dbg_out_data[14][18]
+dbg_out_data[14][19]
+dbg_out_data[14][1]
+dbg_out_data[14][20]
+dbg_out_data[14][21]
+dbg_out_data[14][22]
+dbg_out_data[14][23]
+dbg_out_data[14][24]
+dbg_out_data[14][25]
+dbg_out_data[14][26]
+dbg_out_data[14][27]
+dbg_out_data[14][28]
+dbg_out_data[14][29]
+dbg_out_data[14][2]
+dbg_out_data[14][30]
+dbg_out_data[14][31]
+dbg_out_data[14][3]
+dbg_out_data[14][4]
+dbg_out_data[14][5]
+dbg_out_data[14][6]
+dbg_out_data[14][7]
+dbg_out_data[14][8]
+dbg_out_data[14][9]
+dbg_out_data[15][0]
+dbg_out_data[15][10]
+dbg_out_data[15][11]
+dbg_out_data[15][12]
+dbg_out_data[15][13]
+dbg_out_data[15][14]
+dbg_out_data[15][15]
+dbg_out_data[15][16]
+dbg_out_data[15][17]
+dbg_out_data[15][18]
+dbg_out_data[15][19]
+dbg_out_data[15][1]
+dbg_out_data[15][20]
+dbg_out_data[15][21]
+dbg_out_data[15][22]
+dbg_out_data[15][23]
+dbg_out_data[15][24]
+dbg_out_data[15][25]
+dbg_out_data[15][26]
+dbg_out_data[15][27]
+dbg_out_data[15][28]
+dbg_out_data[15][29]
+dbg_out_data[15][2]
+dbg_out_data[15][30]
+dbg_out_data[15][31]
+dbg_out_data[15][3]
+dbg_out_data[15][4]
+dbg_out_data[15][5]
+dbg_out_data[15][6]
+dbg_out_data[15][7]
+dbg_out_data[15][8]
+dbg_out_data[15][9]
+dbg_out_data[18][0]
+dbg_out_data[18][10]
+dbg_out_data[18][11]
+dbg_out_data[18][12]
+dbg_out_data[18][13]
+dbg_out_data[18][14]
+dbg_out_data[18][15]
+dbg_out_data[18][16]
+dbg_out_data[18][17]
+dbg_out_data[18][18]
+dbg_out_data[18][19]
+dbg_out_data[18][1]
+dbg_out_data[18][20]
+dbg_out_data[18][21]
+dbg_out_data[18][22]
+dbg_out_data[18][23]
+dbg_out_data[18][24]
+dbg_out_data[18][25]
+dbg_out_data[18][26]
+dbg_out_data[18][27]
+dbg_out_data[18][28]
+dbg_out_data[18][29]
+dbg_out_data[18][2]
+dbg_out_data[18][30]
+dbg_out_data[18][31]
+dbg_out_data[18][3]
+dbg_out_data[18][4]
+dbg_out_data[18][5]
+dbg_out_data[18][6]
+dbg_out_data[18][7]
+dbg_out_data[18][8]
+dbg_out_data[18][9]
+dbg_out_data[19][0]
+dbg_out_data[19][10]
+dbg_out_data[19][11]
+dbg_out_data[19][12]
+dbg_out_data[19][13]
+dbg_out_data[19][14]
+dbg_out_data[19][15]
+dbg_out_data[19][16]
+dbg_out_data[19][17]
+dbg_out_data[19][18]
+dbg_out_data[19][19]
+dbg_out_data[19][1]
+dbg_out_data[19][20]
+dbg_out_data[19][21]
+dbg_out_data[19][22]
+dbg_out_data[19][23]
+dbg_out_data[19][24]
+dbg_out_data[19][25]
+dbg_out_data[19][26]
+dbg_out_data[19][27]
+dbg_out_data[19][28]
+dbg_out_data[19][29]
+dbg_out_data[19][2]
+dbg_out_data[19][30]
+dbg_out_data[19][31]
+dbg_out_data[19][3]
+dbg_out_data[19][4]
+dbg_out_data[19][5]
+dbg_out_data[19][6]
+dbg_out_data[19][7]
+dbg_out_data[19][8]
+dbg_out_data[19][9]
+dbg_out_data[1][0]
+dbg_out_data[1][10]
+dbg_out_data[1][11]
+dbg_out_data[1][12]
+dbg_out_data[1][13]
+dbg_out_data[1][14]
+dbg_out_data[1][15]
+dbg_out_data[1][16]
+dbg_out_data[1][17]
+dbg_out_data[1][18]
+dbg_out_data[1][19]
+dbg_out_data[1][1]
+dbg_out_data[1][20]
+dbg_out_data[1][21]
+dbg_out_data[1][22]
+dbg_out_data[1][23]
+dbg_out_data[1][24]
+dbg_out_data[1][25]
+dbg_out_data[1][26]
+dbg_out_data[1][27]
+dbg_out_data[1][28]
+dbg_out_data[1][29]
+dbg_out_data[1][2]
+dbg_out_data[1][30]
+dbg_out_data[1][31]
+dbg_out_data[1][3]
+dbg_out_data[1][4]
+dbg_out_data[1][5]
+dbg_out_data[1][6]
+dbg_out_data[1][7]
+dbg_out_data[1][8]
+dbg_out_data[1][9]
+dbg_out_data[2][0]
+dbg_out_data[2][10]
+dbg_out_data[2][11]
+dbg_out_data[2][12]
+dbg_out_data[2][13]
+dbg_out_data[2][14]
+dbg_out_data[2][15]
+dbg_out_data[2][16]
+dbg_out_data[2][17]
+dbg_out_data[2][18]
+dbg_out_data[2][19]
+dbg_out_data[2][1]
+dbg_out_data[2][20]
+dbg_out_data[2][21]
+dbg_out_data[2][22]
+dbg_out_data[2][23]
+dbg_out_data[2][24]
+dbg_out_data[2][25]
+dbg_out_data[2][26]
+dbg_out_data[2][27]
+dbg_out_data[2][28]
+dbg_out_data[2][29]
+dbg_out_data[2][2]
+dbg_out_data[2][30]
+dbg_out_data[2][31]
+dbg_out_data[2][3]
+dbg_out_data[2][4]
+dbg_out_data[2][5]
+dbg_out_data[2][6]
+dbg_out_data[2][7]
+dbg_out_data[2][8]
+dbg_out_data[2][9]
+dbg_out_data[4][0]
+dbg_out_data[4][10]
+dbg_out_data[4][11]
+dbg_out_data[4][12]
+dbg_out_data[4][13]
+dbg_out_data[4][14]
+dbg_out_data[4][15]
+dbg_out_data[4][16]
+dbg_out_data[4][17]
+dbg_out_data[4][18]
+dbg_out_data[4][19]
+dbg_out_data[4][1]
+dbg_out_data[4][20]
+dbg_out_data[4][21]
+dbg_out_data[4][22]
+dbg_out_data[4][23]
+dbg_out_data[4][24]
+dbg_out_data[4][25]
+dbg_out_data[4][26]
+dbg_out_data[4][27]
+dbg_out_data[4][28]
+dbg_out_data[4][29]
+dbg_out_data[4][2]
+dbg_out_data[4][30]
+dbg_out_data[4][31]
+dbg_out_data[4][3]
+dbg_out_data[4][4]
+dbg_out_data[4][5]
+dbg_out_data[4][6]
+dbg_out_data[4][7]
+dbg_out_data[4][8]
+dbg_out_data[4][9]
+dbg_out_data[6][0]
+dbg_out_data[6][10]
+dbg_out_data[6][11]
+dbg_out_data[6][12]
+dbg_out_data[6][13]
+dbg_out_data[6][14]
+dbg_out_data[6][15]
+dbg_out_data[6][16]
+dbg_out_data[6][17]
+dbg_out_data[6][18]
+dbg_out_data[6][19]
+dbg_out_data[6][1]
+dbg_out_data[6][20]
+dbg_out_data[6][21]
+dbg_out_data[6][22]
+dbg_out_data[6][23]
+dbg_out_data[6][24]
+dbg_out_data[6][25]
+dbg_out_data[6][26]
+dbg_out_data[6][27]
+dbg_out_data[6][28]
+dbg_out_data[6][29]
+dbg_out_data[6][2]
+dbg_out_data[6][30]
+dbg_out_data[6][31]
+dbg_out_data[6][3]
+dbg_out_data[6][4]
+dbg_out_data[6][5]
+dbg_out_data[6][6]
+dbg_out_data[6][7]
+dbg_out_data[6][8]
+dbg_out_data[6][9]
+dbg_out_data[8][0]
+dbg_out_data[8][10]
+dbg_out_data[8][11]
+dbg_out_data[8][12]
+dbg_out_data[8][13]
+dbg_out_data[8][14]
+dbg_out_data[8][15]
+dbg_out_data[8][16]
+dbg_out_data[8][17]
+dbg_out_data[8][18]
+dbg_out_data[8][19]
+dbg_out_data[8][1]
+dbg_out_data[8][20]
+dbg_out_data[8][21]
+dbg_out_data[8][22]
+dbg_out_data[8][23]
+dbg_out_data[8][24]
+dbg_out_data[8][25]
+dbg_out_data[8][26]
+dbg_out_data[8][27]
+dbg_out_data[8][28]
+dbg_out_data[8][29]
+dbg_out_data[8][2]
+dbg_out_data[8][30]
+dbg_out_data[8][31]
+dbg_out_data[8][3]
+dbg_out_data[8][4]
+dbg_out_data[8][5]
+dbg_out_data[8][6]
+dbg_out_data[8][7]
+dbg_out_data[8][8]
+dbg_out_data[8][9]
+dbg_out_data[9][0]
+dbg_out_data[9][10]
+dbg_out_data[9][11]
+dbg_out_data[9][12]
+dbg_out_data[9][13]
+dbg_out_data[9][14]
+dbg_out_data[9][15]
+dbg_out_data[9][16]
+dbg_out_data[9][17]
+dbg_out_data[9][18]
+dbg_out_data[9][19]
+dbg_out_data[9][1]
+dbg_out_data[9][20]
+dbg_out_data[9][21]
+dbg_out_data[9][22]
+dbg_out_data[9][23]
+dbg_out_data[9][24]
+dbg_out_data[9][25]
+dbg_out_data[9][26]
+dbg_out_data[9][27]
+dbg_out_data[9][28]
+dbg_out_data[9][29]
+dbg_out_data[9][2]
+dbg_out_data[9][30]
+dbg_out_data[9][31]
+dbg_out_data[9][3]
+dbg_out_data[9][4]
+dbg_out_data[9][5]
+dbg_out_data[9][6]
+dbg_out_data[9][7]
+dbg_out_data[9][8]
+dbg_out_data[9][9]
+dbg_out_ready[10]
+dbg_out_ready[12]
+dbg_out_ready[15]
+dbg_out_ready[18]
+dbg_out_ready[1]
+dbg_out_ready[2]
+dbg_out_ready[6]
+dbg_out_ready[8]
+dbg_out_valid[10]
+dbg_out_valid[12]
+dbg_out_valid[14]
+dbg_out_valid[15]
+dbg_out_valid[18]
+dbg_out_valid[19]
+dbg_out_valid[1]
+dbg_out_valid[2]
+dbg_out_valid[4]
+dbg_out_valid[6]
+dbg_out_valid[8]
+dbg_out_valid[9]
+dbg_req[10][0]
+dbg_req[10][2]
+dbg_req[10][4]
+dbg_req[12][0]
+dbg_req[12][2]
+dbg_req[12][4]
+dbg_req[14][0]
+dbg_req[14][2]
+dbg_req[14][4]
+dbg_req[15][0]
+dbg_req[15][3]
+dbg_req[15][4]
+dbg_req[18][0]
+dbg_req[18][3]
+dbg_req[18][4]
+dbg_req[19][0]
+dbg_req[19][3]
+dbg_req[19][4]
+dbg_req[1][1]
+dbg_req[1][2]
+dbg_req[1][4]
+dbg_req[2][1]
+dbg_req[2][2]
+dbg_req[2][4]
+dbg_req[4][1]
+dbg_req[4][2]
+dbg_req[4][4]
+dbg_req[6][1]
+dbg_req[6][3]
+dbg_req[6][4]
+dbg_req[8][1]
+dbg_req[8][3]
+dbg_req[8][4]
+dbg_req[9][1]
+dbg_req[9][3]
+dbg_req[9][4]
+eject_data[0][0]
+eject_data[0][10]
+eject_data[0][11]
+eject_data[0][12]
+eject_data[0][13]
+eject_data[0][14]
+eject_data[0][15]
+eject_data[0][16]
+eject_data[0][17]
+eject_data[0][18]
+eject_data[0][19]
+eject_data[0][1]
+eject_data[0][20]
+eject_data[0][21]
+eject_data[0][22]
+eject_data[0][23]
+eject_data[0][24]
+eject_data[0][25]
+eject_data[0][26]
+eject_data[0][27]
+eject_data[0][28]
+eject_data[0][29]
+eject_data[0][2]
+eject_data[0][30]
+eject_data[0][31]
+eject_data[0][3]
+eject_data[0][4]
+eject_data[0][5]
+eject_data[0][6]
+eject_data[0][7]
+eject_data[0][8]
+eject_data[0][9]
+eject_data[1][0]
+eject_data[1][10]
+eject_data[1][11]
+eject_data[1][12]
+eject_data[1][13]
+eject_data[1][14]
+eject_data[1][15]
+eject_data[1][16]
+eject_data[1][17]
+eject_data[1][18]
+eject_data[1][19]
+eject_data[1][1]
+eject_data[1][20]
+eject_data[1][21]
+eject_data[1][22]
+eject_data[1][23]
+eject_data[1][24]
+eject_data[1][25]
+eject_data[1][26]
+eject_data[1][27]
+eject_data[1][28]
+eject_data[1][29]
+eject_data[1][2]
+eject_data[1][30]
+eject_data[1][31]
+eject_data[1][3]
+eject_data[1][4]
+eject_data[1][5]
+eject_data[1][6]
+eject_data[1][7]
+eject_data[1][8]
+eject_data[1][9]
+eject_data[2][0]
+eject_data[2][10]
+eject_data[2][11]
+eject_data[2][12]
+eject_data[2][13]
+eject_data[2][14]
+eject_data[2][15]
+eject_data[2][16]
+eject_data[2][17]
+eject_data[2][18]
+eject_data[2][19]
+eject_data[2][1]
+eject_data[2][20]
+eject_data[2][21]
+eject_data[2][22]
+eject_data[2][23]
+eject_data[2][24]
+eject_data[2][25]
+eject_data[2][26]
+eject_data[2][27]
+eject_data[2][28]
+eject_data[2][29]
+eject_data[2][2]
+eject_data[2][30]
+eject_data[2][31]
+eject_data[2][3]
+eject_data[2][4]
+eject_data[2][5]
+eject_data[2][6]
+eject_data[2][7]
+eject_data[2][8]
+eject_data[2][9]
+eject_data[3][0]
+eject_data[3][10]
+eject_data[3][11]
+eject_data[3][12]
+eject_data[3][13]
+eject_data[3][14]
+eject_data[3][15]
+eject_data[3][16]
+eject_data[3][17]
+eject_data[3][18]
+eject_data[3][19]
+eject_data[3][1]
+eject_data[3][20]
+eject_data[3][21]
+eject_data[3][22]
+eject_data[3][23]
+eject_data[3][24]
+eject_data[3][25]
+eject_data[3][26]
+eject_data[3][27]
+eject_data[3][28]
+eject_data[3][29]
+eject_data[3][2]
+eject_data[3][30]
+eject_data[3][31]
+eject_data[3][3]
+eject_data[3][4]
+eject_data[3][5]
+eject_data[3][6]
+eject_data[3][7]
+eject_data[3][8]
+eject_data[3][9]
+eject_valid[0]
+eject_valid[1]
+eject_valid[2]
+eject_valid[3]
+inject_ready[0]
+inject_ready[1]
+inject_ready[2]
+inject_ready[3]
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+      6.233        0.000                      0                 2003        0.252        0.000                      0                 2003        3.870        0.000                       0                   675  
+
+
+All user specified timing constraints are met.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+Clock    Waveform(ns)       Period(ns)      Frequency(MHz)
+-----    ------------       ----------      --------------
+noc_clk  {0.000 5.000}      10.000          100.000         
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+noc_clk             6.233        0.000                      0                 2003        0.252        0.000                      0                 2003        3.870        0.000                       0                   675  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| User Ignored Path Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+
+
+------------------------------------------------------------------------------------------------
+| Unconstrained Path Table
+| ------------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+(none)                                    
+(none)        noc_clk                     
+(none)                      noc_clk       
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  noc_clk
+  To Clock:  noc_clk
+
+Setup :            0  Failing Endpoints,  Worst Slack        6.233ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.252ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        3.870ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             6.233ns  (required time - arrival time)
+  Source:                 routers[3].tile/inputs[3].live.fifo/rd_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            routers[3].tile/outputs[4].live.arb/held_reg[4]/D
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             noc_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (noc_clk rise@10.000ns - noc_clk rise@0.000ns)
+  Data Path Delay:        3.750ns  (logic 0.995ns (26.533%)  route 2.755ns (73.467%))
+  Logic Levels:           4  (LUT5=2 LUT6=1 RAMD32=1)
+  Clock Path Skew:        -0.039ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.748ns = ( 10.748 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.787ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock noc_clk rise edge)    0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=674, unset)          0.787     0.787    routers[3].tile/inputs[3].live.fifo/clk
+                         FDRE                                         r  routers[3].tile/inputs[3].live.fifo/rd_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+                         FDRE (Prop_fdre_C_Q)         0.415     1.202 r  routers[3].tile/inputs[3].live.fifo/rd_reg[0]/Q
+                         net (fo=34, unplaced)        0.852     2.054    routers[3].tile/inputs[3].live.fifo/mem_reg_0_3_24_29/ADDRA0
+                         RAMD32 (Prop_ramd32_RADR0_O)
+                                                      0.232     2.286 f  routers[3].tile/inputs[3].live.fifo/mem_reg_0_3_24_29/RAMA_D1/O
+                         net (fo=3, unplaced)         0.956     3.242    routers[3].tile/inputs[3].live.fifo/out_data0[25]
+                         LUT5 (Prop_lut5_I0_O)        0.118     3.360 f  routers[3].tile/inputs[3].live.fifo/dbg_req[19][3]_INST_0/O
+                         net (fo=3, unplaced)         0.600     3.960    routers[3].tile/outputs[4].live.arb/held_reg[3]_1
+                         LUT5 (Prop_lut5_I2_O)        0.125     4.085 r  routers[3].tile/outputs[4].live.arb/held[4]_i_2__10/O
+                         net (fo=1, unplaced)         0.347     4.432    routers[3].tile/outputs[4].live.arb/held[4]_i_2__10_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.105     4.537 r  routers[3].tile/outputs[4].live.arb/held[4]_i_1__10/O
+                         net (fo=1, unplaced)         0.000     4.537    routers[3].tile/outputs[4].live.arb/held[4]_i_1__10_n_0
+                         FDRE                                         r  routers[3].tile/outputs[4].live.arb/held_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock noc_clk rise edge)   10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=674, unset)          0.748    10.748    routers[3].tile/outputs[4].live.arb/clk
+                         FDRE                                         r  routers[3].tile/outputs[4].live.arb/held_reg[4]/C
+                         clock pessimism              0.000    10.748    <hidden>
+                         clock uncertainty           -0.035    10.712    <hidden>
+                         FDRE (Setup_fdre_C_D)        0.058    10.770    routers[3].tile/outputs[4].live.arb/held_reg[4]
+  -------------------------------------------------------------------
+                         required time                         10.770    <hidden>
+                         arrival time                          -4.537    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  6.233    <hidden>
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.252ns  (arrival time - required time)
+  Source:                 routers[0].tile/inputs[1].live.fifo/wr_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            routers[0].tile/inputs[1].live.fifo/mem_reg_0_3_0_5/RAMA/WADR1
+                            (rising edge-triggered cell RAMD32 clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             noc_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (noc_clk rise@0.000ns - noc_clk rise@0.000ns)
+  Data Path Delay:        0.529ns  (logic 0.158ns (29.871%)  route 0.371ns (70.129%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.021ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.411ns
+    Source Clock Delay      (SCD):    0.390ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock noc_clk rise edge)    0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=674, unset)          0.390     0.390    routers[0].tile/inputs[1].live.fifo/clk
+                         FDRE                                         r  routers[0].tile/inputs[1].live.fifo/wr_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+                         FDRE (Prop_fdre_C_Q)         0.158     0.548 r  routers[0].tile/inputs[1].live.fifo/wr_reg[1]/Q
+                         net (fo=47, unplaced)        0.371     0.919    routers[0].tile/inputs[1].live.fifo/mem_reg_0_3_0_5/ADDRD1
+                         RAMD32                                       r  routers[0].tile/inputs[1].live.fifo/mem_reg_0_3_0_5/RAMA/WADR1
+  -------------------------------------------------------------------    -------------------
+
+                         (clock noc_clk rise edge)    0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=674, unset)          0.411     0.411    routers[0].tile/inputs[1].live.fifo/mem_reg_0_3_0_5/WCLK
+                         RAMD32                                       r  routers[0].tile/inputs[1].live.fifo/mem_reg_0_3_0_5/RAMA/CLK
+                         clock pessimism              0.000     0.411    <hidden>
+                         RAMD32 (Hold_ramd32_CLK_WADR1)
+                                                      0.256     0.667    routers[0].tile/inputs[1].live.fifo/mem_reg_0_3_0_5/RAMA
+  -------------------------------------------------------------------
+                         required time                         -0.667    <hidden>
+                         arrival time                           0.919    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  0.252    <hidden>
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         noc_clk
+Waveform(ns):       { 0.000 5.000 }
+Period(ns):         10.000
+Sources:            { clk }
+
+Check Type        Corner  Lib Pin     Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location  Pin
+Min Period        n/a     FDRE/C      n/a            1.000         10.000      9.000                routers[0].tile/inputs[1].live.fifo/rd_reg[0]/C
+Low Pulse Width   Slow    RAMD32/CLK  n/a            1.130         5.000       3.870                routers[0].tile/inputs[1].live.fifo/mem_reg_0_3_0_5/RAMA/CLK
+High Pulse Width  Slow    RAMD32/CLK  n/a            1.130         5.000       3.870                routers[0].tile/inputs[1].live.fifo/mem_reg_0_3_0_5/RAMA/CLK
+
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  
+
+Max Delay             4 Endpoints
+Min Delay             4 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 eject_ready[2]
+                            (input port)
+  Destination:            dbg_out_ready[14]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        0.787ns  (logic 0.000ns (0.000%)  route 0.787ns (100.000%))
+  Logic Levels:           0  
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  eject_ready[2]
+                         net (fo=7, unset)            0.787     0.787    eject_ready[2]
+                                                                      r  dbg_out_ready[14]
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 eject_ready[2]
+                            (input port)
+  Destination:            dbg_out_ready[14]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.390ns  (logic 0.000ns (0.000%)  route 0.390ns (100.000%))
+  Logic Levels:           0  
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  eject_ready[2]
+                         net (fo=7, unset)            0.390     0.390    eject_ready[2]
+                                                                      r  dbg_out_ready[14]
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  noc_clk
+  To Clock:  
+
+Max Delay           648 Endpoints
+Min Delay           648 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 routers[2].tile/inputs[0].live.fifo/rd_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            dbg_out_data[10][26]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        3.480ns  (logic 0.870ns (25.000%)  route 2.610ns (75.000%))
+  Logic Levels:           3  (LUT4=1 LUT6=1 RAMD32=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock noc_clk rise edge)    0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=674, unset)          0.787     0.787    routers[2].tile/inputs[0].live.fifo/clk
+                         FDRE                                         r  routers[2].tile/inputs[0].live.fifo/rd_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+                         FDRE (Prop_fdre_C_Q)         0.415     1.202 r  routers[2].tile/inputs[0].live.fifo/rd_reg[0]/Q
+                         net (fo=34, unplaced)        0.852     2.054    routers[2].tile/inputs[0].live.fifo/mem_reg_0_3_24_29/ADDRB0
+                         RAMD32 (Prop_ramd32_RADR0_O)
+                                                      0.245     2.299 r  routers[2].tile/inputs[0].live.fifo/mem_reg_0_3_24_29/RAMB/O
+                         net (fo=4, unplaced)         0.371     2.670    routers[2].tile/inputs[0].live.fifo/out_data0[26]
+                         LUT4 (Prop_lut4_I3_O)        0.105     2.775 r  routers[2].tile/inputs[0].live.fifo/dbg_out_data[14][26]_INST_0_i_1/O
+                         net (fo=3, unplaced)         0.600     3.375    routers[2].tile/outputs[0].live.arb/dbg_out_data[10]_26_sn_1
+                         LUT6 (Prop_lut6_I2_O)        0.105     3.480 r  routers[2].tile/outputs[0].live.arb/dbg_out_data[10][26]_INST_0/O
+                         net (fo=1, unset)            0.787     4.267    dbg_out_data[10][26]
+                                                                      r  dbg_out_data[10][26]
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 routers[2].tile/inputs[0].live.fifo/used_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            dbg_count[10][0]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.548ns  (logic 0.158ns (28.818%)  route 0.390ns (71.183%))
+  Logic Levels:           0  
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock noc_clk rise edge)    0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=674, unset)          0.390     0.390    routers[2].tile/inputs[0].live.fifo/clk
+                         FDRE                                         r  routers[2].tile/inputs[0].live.fifo/used_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+                         FDRE (Prop_fdre_C_Q)         0.158     0.548 r  routers[2].tile/inputs[0].live.fifo/used_reg[0]/Q
+                         net (fo=39, unset)           0.390     0.939    dbg_count[10][0]
+                                                                      r  dbg_count[10][0]
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  noc_clk
+
+Max Delay           879 Endpoints
+Min Delay           879 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 eject_ready[0]
+                            (input port)
+  Destination:            routers[0].tile/inputs[1].live.fifo/rd_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             (none)
+  Path Type:              Setup (Max at Slow Process Corner)
+  Data Path Delay:        1.824ns  (logic 0.315ns (17.270%)  route 1.509ns (82.730%))
+  Logic Levels:           3  (LUT2=1 LUT4=1 LUT6=1)
+  Clock Path Skew:        0.748ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.748ns
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  eject_ready[0]
+                         net (fo=7, unset)            0.787     0.787    routers[0].tile/outputs[4].live.arb/eject_ready[0]
+                         LUT4 (Prop_lut4_I1_O)        0.105     0.892 r  routers[0].tile/outputs[4].live.arb/used[2]_i_4__0/O
+                         net (fo=1, unplaced)         0.347     1.239    routers[0].tile/inputs[1].live.fifo/rd_reg[0]_1
+                         LUT6 (Prop_lut6_I1_O)        0.105     1.344 r  routers[0].tile/inputs[1].live.fifo/used[2]_i_3/O
+                         net (fo=5, unplaced)         0.375     1.719    routers[0].tile/inputs[1].live.fifo/rd0
+                         LUT2 (Prop_lut2_I0_O)        0.105     1.824 r  routers[0].tile/inputs[1].live.fifo/rd[0]_i_1/O
+                         net (fo=1, unplaced)         0.000     1.824    routers[0].tile/inputs[1].live.fifo/rd[0]_i_1_n_0
+                         FDRE                                         r  routers[0].tile/inputs[1].live.fifo/rd_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock noc_clk rise edge)    0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=674, unset)          0.748     0.748    routers[0].tile/inputs[1].live.fifo/clk
+                         FDRE                                         r  routers[0].tile/inputs[1].live.fifo/rd_reg[0]/C
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 rst
+                            (input port)
+  Destination:            routers[0].tile/inputs[1].live.fifo/rd_reg[0]/R
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             (none)
+  Path Type:              Hold (Min at Fast Process Corner)
+  Data Path Delay:        0.390ns  (logic 0.000ns (0.000%)  route 0.390ns (100.000%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.411ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    0.411ns
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 r  rst
+                         net (fo=158, unset)          0.390     0.390    routers[0].tile/inputs[1].live.fifo/rst
+                         FDRE                                         r  routers[0].tile/inputs[1].live.fifo/rd_reg[0]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock noc_clk rise edge)    0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=674, unset)          0.411     0.411    routers[0].tile/inputs[1].live.fifo/clk
+                         FDRE                                         r  routers[0].tile/inputs[1].live.fifo/rd_reg[0]/C
+
+
+
+
+

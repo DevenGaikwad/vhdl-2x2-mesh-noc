@@ -1,0 +1,73 @@
+name: Portable frontend and RTL checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: noc-checks-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  archival-evidence:
+    name: Archived evidence and publication integrity
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24.22.1'
+      - run: node scripts/verify_publication.mjs
+      - run: node scripts/verify_evidence.mjs
+  frontend:
+    name: Frontend tests, build and dependency audit
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24.22.1'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: npm audit --audit-level=high
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: dashboard-production-build
+          path: frontend/dist
+          retention-days: 14
+  supplemental-ghdl:
+    name: New portable HDL simulations
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24.22.1'
+      - name: Install and record simulator
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ghdl
+          ghdl --version
+      - name: Run fourteen tests in isolated output tree
+        run: |
+          mkdir -p "$RUNNER_TEMP/noc-portable/scripts"
+          cp -R rtl tb "$RUNNER_TEMP/noc-portable/"
+          cp scripts/run_ghdl.mjs "$RUNNER_TEMP/noc-portable/scripts/"
+          node "$RUNNER_TEMP/noc-portable/scripts/run_ghdl.mjs"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: new-ghdl-verification-records
+          path: ${{ runner.temp }}/noc-portable/evidence/ghdl
+          if-no-files-found: warn
+          retention-days: 14
+# No hosted job runs Vivado, synthesizes/routs an FPGA, or reruns the 93 experiments.

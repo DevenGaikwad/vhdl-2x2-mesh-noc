@@ -1,0 +1,1 @@
+COMMAND: /tmp/noc-ghdl/usr/bin/ghdl-mcode -e --std=08 tb_demo

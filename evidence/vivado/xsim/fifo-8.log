@@ -1,0 +1,4 @@
+Time resolution is 1 ps
+Note: PASS tb_fifo_buffer depth=8 writes=764
+Time: 12140 ns  Iteration: 0  Process: /tb_fifo_buffer/line__13  File: D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_fifo_buffer.vhd
+$finish called at time : 12140 ns : File "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_fifo_buffer.vhd" Line 50

@@ -1,0 +1,224 @@
+PS C:\Users\User> $ErrorActionPreference = 'Stop'
+PS C:\Users\User>
+PS C:\Users\User> $work = 'D:\NoC_2x2_Project\build\post_route_sim'
+PS C:\Users\User> $probe = Join-Path $work 'functional_probe'
+PS C:\Users\User> $bin = 'E:\Vivado-ML\2026.1\Vivado\bin'
+PS C:\Users\User> $xelab = Join-Path $bin 'xelab.bat'
+PS C:\Users\User> $xsim = Join-Path $bin 'xsim.bat'
+PS C:\Users\User> $netlist = Join-Path $work 'demo_postroute_func.v'
+PS C:\Users\User> $testbench = Join-Path $work 'tb_demo_postroute.vhd'
+PS C:\Users\User>
+PS C:\Users\User> foreach ($file in @($xelab, $xsim, $netlist, $testbench)) {
+>>     if (-not (Test-Path -LiteralPath $file -PathType Leaf)) {
+>>         throw "Required file missing: $file"
+>>     }
+>> }
+PS C:\Users\User> if (Test-Path -LiteralPath $probe) {
+>>     throw "Diagnostic folder already exists; nothing was overwritten: $probe"
+>> }
+PS C:\Users\User>
+PS C:\Users\User> New-Item -ItemType Directory -Path $probe | Out-Null
+PS C:\Users\User> $projectFile = Join-Path $probe 'functional.prj'
+PS C:\Users\User> [System.IO.File]::WriteAllLines(
+>>     $projectFile,
+>>     @(
+>>         'verilog xil_defaultlib D:/NoC_2x2_Project/build/post_route_sim/demo_postroute_func.v'
+>>         'vhdl2008 xil_defaultlib D:/NoC_2x2_Project/build/post_route_sim/tb_demo_postroute.vhd'
+>>     ),
+>>     [System.Text.UTF8Encoding]::new($false)
+>> )
+PS C:\Users\User>
+PS C:\Users\User> Push-Location $probe
+PS D:\NoC_2x2_Project\build\post_route_sim\functional_probe> try {
+>>     & $xelab -prj $projectFile -L unisims_ver -L secureip `
+>>         -debug typical -relax `
+>>         xil_defaultlib.tb_demo_postroute xil_defaultlib.glbl `
+>>         -s postroute_func_diagnostic -log functional_elaborate.log
+>>
+>>     if ($LASTEXITCODE -ne 0) {
+>>         throw "Compilation failed. See $probe\functional_elaborate.log"
+>>     }
+>>
+>>     & $xsim postroute_func_diagnostic -R -log functional_run.log
+>>     Write-Host "`nXSim exit code: $LASTEXITCODE"
+>>     Write-Host "`n=== SIMULATION RESULT ==="
+>>     Get-Content -LiteralPath (Join-Path $probe 'functional_run.log') -Tail 30
+>> }
+>> finally {
+>>     Pop-Location
+>> }
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/Vivado-ML/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe -prj D:\NoC_2x2_Project\build\post_route_sim\functional_probe\functional.prj -L unisims_ver -L secureip -debug typical -relax xil_defaultlib.tb_demo_postroute xil_defaultlib.glbl -s postroute_func_diagnostic -log functional_elaborate.log
+Multi-threading is on. Using 2 slave threads.
+Determining compilation order of HDL files.
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/NoC_2x2_Project/build/post_route_sim/demo_postroute_func.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_buffer
+INFO: [VRFC 10-311] analyzing module fifo_buffer_0
+INFO: [VRFC 10-311] analyzing module fifo_buffer_1
+INFO: [VRFC 10-311] analyzing module fifo_buffer_10
+INFO: [VRFC 10-311] analyzing module fifo_buffer_11
+INFO: [VRFC 10-311] analyzing module fifo_buffer_12
+INFO: [VRFC 10-311] analyzing module fifo_buffer_16
+INFO: [VRFC 10-311] analyzing module fifo_buffer_17
+INFO: [VRFC 10-311] analyzing module fifo_buffer_18
+INFO: [VRFC 10-311] analyzing module fifo_buffer_4
+INFO: [VRFC 10-311] analyzing module fifo_buffer_5
+INFO: [VRFC 10-311] analyzing module fifo_buffer_6
+INFO: [VRFC 10-311] analyzing module noc_2x2_core
+INFO: [VRFC 10-311] analyzing module noc_fpga_demo_top
+INFO: [VRFC 10-311] analyzing module packet_generator
+INFO: [VRFC 10-311] analyzing module packet_generator__parameterized0
+INFO: [VRFC 10-311] analyzing module packet_generator__parameterized1
+INFO: [VRFC 10-311] analyzing module packet_generator__parameterized2
+INFO: [VRFC 10-311] analyzing module packet_receiver
+INFO: [VRFC 10-311] analyzing module packet_receiver__parameterized0
+INFO: [VRFC 10-311] analyzing module packet_receiver__parameterized1
+INFO: [VRFC 10-311] analyzing module packet_receiver__parameterized2
+INFO: [VRFC 10-311] analyzing module router
+INFO: [VRFC 10-311] analyzing module router__parameterized0
+INFO: [VRFC 10-311] analyzing module router__parameterized1
+INFO: [VRFC 10-311] analyzing module router__parameterized2
+INFO: [VRFC 10-311] analyzing module rr_arbiter
+INFO: [VRFC 10-311] analyzing module rr_arbiter_13
+INFO: [VRFC 10-311] analyzing module rr_arbiter_14
+INFO: [VRFC 10-311] analyzing module rr_arbiter_15
+INFO: [VRFC 10-311] analyzing module rr_arbiter_19
+INFO: [VRFC 10-311] analyzing module rr_arbiter_2
+INFO: [VRFC 10-311] analyzing module rr_arbiter_20
+INFO: [VRFC 10-311] analyzing module rr_arbiter_21
+INFO: [VRFC 10-311] analyzing module rr_arbiter_3
+INFO: [VRFC 10-311] analyzing module rr_arbiter_7
+INFO: [VRFC 10-311] analyzing module rr_arbiter_8
+INFO: [VRFC 10-311] analyzing module rr_arbiter_9
+INFO: [VRFC 10-311] analyzing module traffic_node
+INFO: [VRFC 10-311] analyzing module traffic_node__parameterized0
+INFO: [VRFC 10-311] analyzing module traffic_node__parameterized1
+INFO: [VRFC 10-311] analyzing module traffic_node__parameterized2
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/NoC_2x2_Project/build/post_route_sim/tb_demo_postroute.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_demo_postroute'
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package std.env
+Compiling package vl.vl_types
+Compiling module xil_defaultlib.glbl
+Compiling module unisims_ver.x_lut3_mux8
+Compiling module unisims_ver.LUT3
+Compiling module unisims_ver.LUT4
+Compiling module unisims_ver.LUT6
+Compiling module unisims_ver.LUT5
+Compiling module unisims_ver.RAM32M
+Compiling module unisims_ver.RAM32X1D
+Compiling module unisims_ver.FDRE_default
+Compiling module xil_defaultlib.fifo_buffer_16
+Compiling module xil_defaultlib.fifo_buffer_17
+Compiling module xil_defaultlib.fifo_buffer_18
+Compiling module unisims_ver.x_lut2_mux4
+Compiling module unisims_ver.LUT2
+Compiling module xil_defaultlib.rr_arbiter_19
+Compiling module xil_defaultlib.rr_arbiter_20
+Compiling module xil_defaultlib.rr_arbiter_21
+Compiling module xil_defaultlib.router
+Compiling module xil_defaultlib.fifo_buffer_10
+Compiling module xil_defaultlib.fifo_buffer_11
+Compiling module xil_defaultlib.fifo_buffer_12
+Compiling module xil_defaultlib.rr_arbiter_13
+Compiling module xil_defaultlib.rr_arbiter_14
+Compiling module xil_defaultlib.rr_arbiter_15
+Compiling module xil_defaultlib.router__parameterized0
+Compiling module xil_defaultlib.fifo_buffer_4
+Compiling module xil_defaultlib.fifo_buffer_5
+Compiling module xil_defaultlib.fifo_buffer_6
+Compiling module xil_defaultlib.rr_arbiter_7
+Compiling module xil_defaultlib.rr_arbiter_8
+Compiling module xil_defaultlib.rr_arbiter_9
+Compiling module xil_defaultlib.router__parameterized1
+Compiling module xil_defaultlib.fifo_buffer
+Compiling module xil_defaultlib.fifo_buffer_0
+Compiling module xil_defaultlib.fifo_buffer_1
+Compiling module xil_defaultlib.rr_arbiter
+Compiling module xil_defaultlib.rr_arbiter_2
+Compiling module xil_defaultlib.rr_arbiter_3
+Compiling module xil_defaultlib.router__parameterized2
+Compiling module xil_defaultlib.noc_2x2_core
+Compiling module unisims_ver.x_lut1_mux2
+Compiling module unisims_ver.LUT1
+Compiling module xil_defaultlib.packet_generator
+Compiling module unisims_ver.CARRY4
+Compiling module xil_defaultlib.packet_receiver
+Compiling module xil_defaultlib.traffic_node
+Compiling module xil_defaultlib.packet_generator__parameterized0
+Compiling module xil_defaultlib.packet_receiver__parameterized0
+Compiling module xil_defaultlib.traffic_node__parameterized0
+Compiling module xil_defaultlib.packet_generator__parameterized1
+Compiling module xil_defaultlib.packet_receiver__parameterized1
+Compiling module xil_defaultlib.traffic_node__parameterized1
+Compiling module xil_defaultlib.packet_generator__parameterized2
+Compiling module xil_defaultlib.packet_receiver__parameterized2
+Compiling module xil_defaultlib.traffic_node__parameterized2
+Compiling module xil_defaultlib.noc_fpga_demo_top
+Compiling architecture test of entity xil_defaultlib.tb_demo_postroute
+Built simulation snapshot postroute_func_diagnostic
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Fri Oct  9 08:40:42 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/postroute_func_diagnostic/xsim_script.tcl
+# xsim {postroute_func_diagnostic} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+Note: PASS tb_demo_postroute 64 delivered
+Time: 530 ns  Iteration: 0  Process: /tb_demo_postroute/line__17  File: D:/NoC_2x2_Project/build/post_route_sim/tb_demo_postroute.vhd
+$finish called at time : 530 ns : File "D:/NoC_2x2_Project/build/post_route_sim/tb_demo_postroute.vhd" Line 25
+exit
+INFO: [Common 17-206] Exiting xsim at Fri Oct  9 08:40:45 2026...
+
+XSim exit code: 0
+
+=== SIMULATION RESULT ===
+# SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+# IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+# SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+# Start of session at: Fri Oct  9 08:40:42 2026
+# Process ID         : 2548
+# Current directory  : D:/NoC_2x2_Project/build/post_route_sim/functional_probe
+# Command line       : xsim.exe -log functional_run.log -mode tcl -source {xsim.dir/postroute_func_diagnostic/xsim_script.tcl}
+# Log file           : D:/NoC_2x2_Project/build/post_route_sim/functional_probe/functional_run.log
+# Journal file       : D:/NoC_2x2_Project/build/post_route_sim/functional_probe\xsim.jou
+# Running On         : DESKTOP-SBIR7OL
+# Platform           : Windows 11
+# Operating System   : 26200
+# Processor Detail   : 11th Gen Intel(R) Core(TM) i3-1115G4 @ 3.00GHz
+# CPU Frequency      : 2995 MHz
+# CPU Physical cores : 2
+# CPU Logical cores  : 4
+# Host memory        : 16805 MB
+# Swap memory        : 1073 MB
+# Total Virtual      : 17878 MB
+# Available Virtual  : 5515 MB
+#-----------------------------------------------------------
+source xsim.dir/postroute_func_diagnostic/xsim_script.tcl
+# xsim {postroute_func_diagnostic} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+Note: PASS tb_demo_postroute 64 delivered
+Time: 530 ns  Iteration: 0  Process: /tb_demo_postroute/line__17  File: D:/NoC_2x2_Project/build/post_route_sim/tb_demo_postroute.vhd
+$finish called at time : 530 ns : File "D:/NoC_2x2_Project/build/post_route_sim/tb_demo_postroute.vhd" Line 25
+exit
+INFO: [Common 17-206] Exiting xsim at Fri Oct  9 08:40:45 2026...
+PS C:\Users\User>

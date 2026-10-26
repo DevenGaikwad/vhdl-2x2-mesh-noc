@@ -1,0 +1,3 @@
+/workspace/scratch/3a2e521c2479/work_noc_github_2026-10-26/tools/ghdl/usr/bin/ghdl -r --std=08 tb_rr_arbiter --assert-level=error
+/workspace/scratch/3a2e521c2479/work_noc_github_2026-10-26/validation/project/tb/tb_rr_arbiter.vhd:42:3:@910ns:(report note): PASS tb_rr_arbiter held grant, rotation, 5-successful-grant fairness
+simulation finished @910ns

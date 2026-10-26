@@ -1,0 +1,1095 @@
+INFO: [Common 17-3922] A valid Vivado Design Suite BASIC license has been detected. Your current license is active and will expire on 12-aug-2027.
+#-----------------------------------------------------------
+# Vivado v2026.1 (64-bit)
+# SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+# IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+# SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+# Start of session at: Sun Oct  4 19:47:23 2026
+# Process ID         : 1480
+# Current directory  : D:/NoC_2x2_Project
+# Command line       : vivado.exe -mode batch -notrace -source D:\NoC_2x2_Project\vivado\run_route_demo.tcl -log D:\NoC_2x2_Project\evidence\vivado\RouteDemo.log -journal D:\NoC_2x2_Project\build\vivado\RouteDemo.jou
+# Log file           : D:/NoC_2x2_Project/evidence/vivado/RouteDemo.log
+# Journal file       : D:\NoC_2x2_Project\build\vivado\RouteDemo.jou
+# Running On         : DESKTOP-SBIR7OL
+# Platform           : Windows 11
+# Operating System   : 26200
+# Processor Detail   : 11th Gen Intel(R) Core(TM) i3-1115G4 @ 3.00GHz
+# CPU Frequency      : 2995 MHz
+# CPU Physical cores : 2
+# CPU Logical cores  : 4
+# Host memory        : 16805 MB
+# Swap memory        : 1073 MB
+# Total Virtual      : 17878 MB
+# Available Virtual  : 7807 MB
+#-----------------------------------------------------------
+source {D:\NoC_2x2_Project\vivado\run_route_demo.tcl} -notrace
+TOOL: 2026.1
+EXACT PART AVAILABLE: xc7s15cpga196-2
+read_vhdl: Time (s): cpu = 00:00:11 ; elapsed = 00:00:07 . Memory (MB): peak = 597.918 ; gain = 271.246
+Command: synth_design -top noc_fpga_demo_top -part xc7s15cpga196-2 -mode out_of_context -generic DEPTH=4
+Starting synth_design
+Attempting to get a license for feature 'Vivado_Synthesis' and/or device 'xc7s15'
+INFO: [Common 17-349] Got license for feature 'Vivado_Synthesis' and/or device 'xc7s15'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 12920
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1173.766 ; gain = 569.906
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'noc_fpga_demo_top' [D:/NoC_2x2_Project/rtl/noc_fpga_demo_top.vhd:10]
+	Parameter DEPTH bound to: 4 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'noc_2x2_core' [D:/NoC_2x2_Project/rtl/noc_2x2_core.vhd:15]
+	Parameter DEPTH bound to: 4 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'router' [D:/NoC_2x2_Project/rtl/router.vhd:11]
+	Parameter CURRENT bound to: 0 - type: integer 
+	Parameter DEPTH bound to: 4 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'fifo_buffer' [D:/NoC_2x2_Project/rtl/fifo_buffer.vhd:11]
+	Parameter DEPTH bound to: 4 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'fifo_buffer' (0#1) [D:/NoC_2x2_Project/rtl/fifo_buffer.vhd:11]
+INFO: [Synth 8-638] synthesizing module 'xy_route_unit' [D:/NoC_2x2_Project/rtl/xy_route_unit.vhd:8]
+	Parameter CURRENT bound to: 0 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'xy_route_unit' (0#1) [D:/NoC_2x2_Project/rtl/xy_route_unit.vhd:8]
+INFO: [Synth 8-638] synthesizing module 'rr_arbiter' [D:/NoC_2x2_Project/rtl/rr_arbiter.vhd:8]
+INFO: [Synth 8-256] done synthesizing module 'rr_arbiter' (0#1) [D:/NoC_2x2_Project/rtl/rr_arbiter.vhd:8]
+INFO: [Synth 8-638] synthesizing module 'crossbar_5x5' [D:/NoC_2x2_Project/rtl/crossbar_5x5.vhd:8]
+INFO: [Synth 8-256] done synthesizing module 'crossbar_5x5' (0#1) [D:/NoC_2x2_Project/rtl/crossbar_5x5.vhd:8]
+INFO: [Synth 8-256] done synthesizing module 'router' (0#1) [D:/NoC_2x2_Project/rtl/router.vhd:11]
+INFO: [Synth 8-638] synthesizing module 'router__parameterized0' [D:/NoC_2x2_Project/rtl/router.vhd:11]
+	Parameter CURRENT bound to: 1 - type: integer 
+	Parameter DEPTH bound to: 4 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'xy_route_unit__parameterized0' [D:/NoC_2x2_Project/rtl/xy_route_unit.vhd:8]
+	Parameter CURRENT bound to: 1 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'xy_route_unit__parameterized0' (0#1) [D:/NoC_2x2_Project/rtl/xy_route_unit.vhd:8]
+INFO: [Synth 8-256] done synthesizing module 'router__parameterized0' (0#1) [D:/NoC_2x2_Project/rtl/router.vhd:11]
+INFO: [Synth 8-638] synthesizing module 'router__parameterized1' [D:/NoC_2x2_Project/rtl/router.vhd:11]
+	Parameter CURRENT bound to: 2 - type: integer 
+	Parameter DEPTH bound to: 4 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'xy_route_unit__parameterized1' [D:/NoC_2x2_Project/rtl/xy_route_unit.vhd:8]
+	Parameter CURRENT bound to: 2 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'xy_route_unit__parameterized1' (0#1) [D:/NoC_2x2_Project/rtl/xy_route_unit.vhd:8]
+INFO: [Synth 8-256] done synthesizing module 'router__parameterized1' (0#1) [D:/NoC_2x2_Project/rtl/router.vhd:11]
+INFO: [Synth 8-638] synthesizing module 'router__parameterized2' [D:/NoC_2x2_Project/rtl/router.vhd:11]
+	Parameter CURRENT bound to: 3 - type: integer 
+	Parameter DEPTH bound to: 4 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'xy_route_unit__parameterized2' [D:/NoC_2x2_Project/rtl/xy_route_unit.vhd:8]
+	Parameter CURRENT bound to: 3 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'xy_route_unit__parameterized2' (0#1) [D:/NoC_2x2_Project/rtl/xy_route_unit.vhd:8]
+INFO: [Synth 8-256] done synthesizing module 'router__parameterized2' (0#1) [D:/NoC_2x2_Project/rtl/router.vhd:11]
+INFO: [Synth 8-256] done synthesizing module 'noc_2x2_core' (0#1) [D:/NoC_2x2_Project/rtl/noc_2x2_core.vhd:15]
+INFO: [Synth 8-638] synthesizing module 'traffic_node' [D:/NoC_2x2_Project/rtl/traffic_node.vhd:10]
+	Parameter NODE bound to: 0 - type: integer 
+	Parameter PACKETS bound to: 16 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'packet_generator' [D:/NoC_2x2_Project/rtl/packet_generator.vhd:9]
+	Parameter NODE bound to: 0 - type: integer 
+	Parameter PACKETS bound to: 16 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'packet_generator' (0#1) [D:/NoC_2x2_Project/rtl/packet_generator.vhd:9]
+INFO: [Synth 8-638] synthesizing module 'packet_receiver' [D:/NoC_2x2_Project/rtl/packet_receiver.vhd:10]
+	Parameter NODE bound to: 0 - type: integer 
+	Parameter PACKETS bound to: 16 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'packet_receiver' (0#1) [D:/NoC_2x2_Project/rtl/packet_receiver.vhd:10]
+INFO: [Synth 8-256] done synthesizing module 'traffic_node' (0#1) [D:/NoC_2x2_Project/rtl/traffic_node.vhd:10]
+INFO: [Synth 8-638] synthesizing module 'traffic_node__parameterized0' [D:/NoC_2x2_Project/rtl/traffic_node.vhd:10]
+	Parameter NODE bound to: 1 - type: integer 
+	Parameter PACKETS bound to: 16 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'packet_generator__parameterized0' [D:/NoC_2x2_Project/rtl/packet_generator.vhd:9]
+	Parameter NODE bound to: 1 - type: integer 
+	Parameter PACKETS bound to: 16 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'packet_generator__parameterized0' (0#1) [D:/NoC_2x2_Project/rtl/packet_generator.vhd:9]
+INFO: [Synth 8-638] synthesizing module 'packet_receiver__parameterized0' [D:/NoC_2x2_Project/rtl/packet_receiver.vhd:10]
+	Parameter NODE bound to: 1 - type: integer 
+	Parameter PACKETS bound to: 16 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'packet_receiver__parameterized0' (0#1) [D:/NoC_2x2_Project/rtl/packet_receiver.vhd:10]
+INFO: [Synth 8-256] done synthesizing module 'traffic_node__parameterized0' (0#1) [D:/NoC_2x2_Project/rtl/traffic_node.vhd:10]
+INFO: [Synth 8-638] synthesizing module 'traffic_node__parameterized1' [D:/NoC_2x2_Project/rtl/traffic_node.vhd:10]
+	Parameter NODE bound to: 2 - type: integer 
+	Parameter PACKETS bound to: 16 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'packet_generator__parameterized1' [D:/NoC_2x2_Project/rtl/packet_generator.vhd:9]
+	Parameter NODE bound to: 2 - type: integer 
+	Parameter PACKETS bound to: 16 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'packet_generator__parameterized1' (0#1) [D:/NoC_2x2_Project/rtl/packet_generator.vhd:9]
+INFO: [Synth 8-638] synthesizing module 'packet_receiver__parameterized1' [D:/NoC_2x2_Project/rtl/packet_receiver.vhd:10]
+	Parameter NODE bound to: 2 - type: integer 
+	Parameter PACKETS bound to: 16 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'packet_receiver__parameterized1' (0#1) [D:/NoC_2x2_Project/rtl/packet_receiver.vhd:10]
+INFO: [Synth 8-256] done synthesizing module 'traffic_node__parameterized1' (0#1) [D:/NoC_2x2_Project/rtl/traffic_node.vhd:10]
+INFO: [Synth 8-638] synthesizing module 'traffic_node__parameterized2' [D:/NoC_2x2_Project/rtl/traffic_node.vhd:10]
+	Parameter NODE bound to: 3 - type: integer 
+	Parameter PACKETS bound to: 16 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'packet_generator__parameterized2' [D:/NoC_2x2_Project/rtl/packet_generator.vhd:9]
+	Parameter NODE bound to: 3 - type: integer 
+	Parameter PACKETS bound to: 16 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'packet_generator__parameterized2' (0#1) [D:/NoC_2x2_Project/rtl/packet_generator.vhd:9]
+INFO: [Synth 8-638] synthesizing module 'packet_receiver__parameterized2' [D:/NoC_2x2_Project/rtl/packet_receiver.vhd:10]
+	Parameter NODE bound to: 3 - type: integer 
+	Parameter PACKETS bound to: 16 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'packet_receiver__parameterized2' (0#1) [D:/NoC_2x2_Project/rtl/packet_receiver.vhd:10]
+INFO: [Synth 8-256] done synthesizing module 'traffic_node__parameterized2' (0#1) [D:/NoC_2x2_Project/rtl/traffic_node.vhd:10]
+INFO: [Synth 8-256] done synthesizing module 'noc_fpga_demo_top' (0#1) [D:/NoC_2x2_Project/rtl/noc_fpga_demo_top.vhd:10]
+WARNING: [Synth 8-7129] Port data[20] in module packet_receiver__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data[19] in module packet_receiver__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data[20] in module packet_receiver__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data[19] in module packet_receiver__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data[20] in module packet_receiver__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data[19] in module packet_receiver__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data[20] in module packet_receiver is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data[19] in module packet_receiver is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[31] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[30] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[29] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[28] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[27] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[24] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[23] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[22] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[21] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[20] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[19] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[18] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[17] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[16] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[15] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[14] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[13] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[12] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[11] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[10] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[9] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[8] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[7] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[6] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[5] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[4] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[3] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[2] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[1] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port packet[0] in module xy_route_unit__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][31] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][30] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][29] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][28] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][27] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][26] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][25] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][24] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][23] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][22] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][21] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][20] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][19] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][18] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][17] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][16] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][15] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][14] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][13] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][12] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][11] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][10] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][9] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][8] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][7] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][6] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][5] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][4] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][3] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][2] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][1] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[1][0] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][31] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][30] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][29] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][28] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][27] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][26] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][25] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][24] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][23] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][22] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][21] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][20] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][19] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][18] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][17] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][16] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][15] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][14] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][13] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][12] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][11] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][10] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][9] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][8] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][7] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][6] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][5] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][4] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][3] in module router__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_data[2][2] in module router__parameterized2 is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1306.891 ; gain = 703.031
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1306.891 ; gain = 703.031
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7s15cpga196-2
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7s15cpga196-2
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1306.891 ; gain = 703.031
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1306.891 ; gain = 703.031
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   4 Input   31 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 4     
+	   2 Input    4 Bit       Adders := 48    
+	   2 Input    3 Bit       Adders := 24    
+	   2 Input    2 Bit       Adders := 24    
++---Registers : 
+	                5 Bit    Registers := 16    
+	                3 Bit    Registers := 24    
+	                1 Bit    Registers := 9     
++---RAMs : 
+	              128 Bit	(4 X 32 bit)          RAMs := 12    
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 12    
+	   2 Input    5 Bit        Muxes := 68    
+	   2 Input    3 Bit        Muxes := 96    
+	   3 Input    3 Bit        Muxes := 6     
+	   4 Input    3 Bit        Muxes := 18    
+	   2 Input    2 Bit        Muxes := 36    
+	   3 Input    2 Bit        Muxes := 12    
+	   2 Input    1 Bit        Muxes := 120   
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 20 (col length:20)
+BRAMs: 20 (col length: RAMB18 20 RAMB36 10)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:47 ; elapsed = 00:00:50 . Memory (MB): peak = 1563.867 ; gain = 960.008
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++-------------+------------+-----------+----------------------+-------------+
+|Module Name  | RTL Object | Inference | Size (Depth x Width) | Primitives  | 
++-------------+------------+-----------+----------------------+-------------+
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
++-------------+------------+-----------+----------------------+-------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:50 . Memory (MB): peak = 1565.102 ; gain = 961.242
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Final Mapping Report
++-------------+------------+-----------+----------------------+-------------+
+|Module Name  | RTL Object | Inference | Size (Depth x Width) | Primitives  | 
++-------------+------------+-----------+----------------------+-------------+
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
+|fifo_buffer: | mem_reg    | Implied   | 4 x 32               | RAM32M x 6  | 
++-------------+------------+-----------+----------------------+-------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:48 ; elapsed = 00:00:51 . Memory (MB): peak = 1565.277 ; gain = 961.418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:55 ; elapsed = 00:00:57 . Memory (MB): peak = 1759.609 ; gain = 1155.750
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:55 ; elapsed = 00:00:57 . Memory (MB): peak = 1759.609 ; gain = 1155.750
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:55 ; elapsed = 00:00:58 . Memory (MB): peak = 1759.609 ; gain = 1155.750
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:55 ; elapsed = 00:00:58 . Memory (MB): peak = 1759.609 ; gain = 1155.750
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:55 ; elapsed = 00:00:58 . Memory (MB): peak = 1759.609 ; gain = 1155.750
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:55 ; elapsed = 00:00:58 . Memory (MB): peak = 1759.609 ; gain = 1155.750
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |CARRY4   |    21|
+|2     |LUT1     |     8|
+|3     |LUT2     |    29|
+|4     |LUT3     |    63|
+|5     |LUT4     |   295|
+|6     |LUT5     |   133|
+|7     |LUT6     |   526|
+|8     |RAM32M   |    52|
+|9     |RAM32X1D |    18|
+|10    |FDRE     |   236|
++------+---------+------+
+
+Report Instance Areas: 
++------+----------------------------+---------------------------------+------+
+|      |Instance                    |Module                           |Cells |
++------+----------------------------+---------------------------------+------+
+|1     |top                         |                                 |  1381|
+|2     |  mesh                      |noc_2x2_core                     |  1184|
+|3     |    \routers[0].tile        |router                           |   286|
+|4     |      \inputs[1].live.fifo  |fifo_buffer_16                   |    47|
+|5     |      \inputs[2].live.fifo  |fifo_buffer_17                   |   102|
+|6     |      \inputs[4].live.fifo  |fifo_buffer_18                   |    44|
+|7     |      \outputs[1].live.arb  |rr_arbiter_19                    |    32|
+|8     |      \outputs[2].live.arb  |rr_arbiter_20                    |    32|
+|9     |      \outputs[4].live.arb  |rr_arbiter_21                    |    29|
+|10    |    \routers[1].tile        |router__parameterized0           |   306|
+|11    |      \inputs[1].live.fifo  |fifo_buffer_10                   |    48|
+|12    |      \inputs[3].live.fifo  |fifo_buffer_11                   |    99|
+|13    |      \inputs[4].live.fifo  |fifo_buffer_12                   |    53|
+|14    |      \outputs[1].live.arb  |rr_arbiter_13                    |    39|
+|15    |      \outputs[3].live.arb  |rr_arbiter_14                    |    39|
+|16    |      \outputs[4].live.arb  |rr_arbiter_15                    |    28|
+|17    |    \routers[2].tile        |router__parameterized1           |   292|
+|18    |      \inputs[0].live.fifo  |fifo_buffer_4                    |    46|
+|19    |      \inputs[2].live.fifo  |fifo_buffer_5                    |   105|
+|20    |      \inputs[4].live.fifo  |fifo_buffer_6                    |    45|
+|21    |      \outputs[0].live.arb  |rr_arbiter_7                     |    35|
+|22    |      \outputs[2].live.arb  |rr_arbiter_8                     |    35|
+|23    |      \outputs[4].live.arb  |rr_arbiter_9                     |    26|
+|24    |    \routers[3].tile        |router__parameterized2           |   296|
+|25    |      \inputs[0].live.fifo  |fifo_buffer                      |    48|
+|26    |      \inputs[3].live.fifo  |fifo_buffer_0                    |    99|
+|27    |      \inputs[4].live.fifo  |fifo_buffer_1                    |    49|
+|28    |      \outputs[0].live.arb  |rr_arbiter                       |    37|
+|29    |      \outputs[3].live.arb  |rr_arbiter_2                     |    37|
+|30    |      \outputs[4].live.arb  |rr_arbiter_3                     |    26|
+|31    |  \nodes[0].endpoint        |traffic_node                     |    38|
+|32    |    generator               |packet_generator                 |    16|
+|33    |    receiver                |packet_receiver                  |    22|
+|34    |  \nodes[1].endpoint        |traffic_node__parameterized0     |    34|
+|35    |    generator               |packet_generator__parameterized0 |    11|
+|36    |    receiver                |packet_receiver__parameterized0  |    23|
+|37    |  \nodes[2].endpoint        |traffic_node__parameterized1     |    36|
+|38    |    generator               |packet_generator__parameterized1 |    11|
+|39    |    receiver                |packet_receiver__parameterized1  |    25|
+|40    |  \nodes[3].endpoint        |traffic_node__parameterized2     |    89|
+|41    |    generator               |packet_generator__parameterized2 |    11|
+|42    |    receiver                |packet_receiver__parameterized2  |    78|
++------+----------------------------+---------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:55 ; elapsed = 00:00:58 . Memory (MB): peak = 1759.609 ; gain = 1155.750
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 672 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:55 ; elapsed = 00:00:58 . Memory (MB): peak = 1759.609 ; gain = 1155.750
+Synthesis Optimization Complete : Time (s): cpu = 00:00:55 ; elapsed = 00:00:58 . Memory (MB): peak = 1760.621 ; gain = 1155.750
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1773.660 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 91 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1875.527 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 70 instances were transformed.
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 52 instances
+  RAM32X1D => RAM32X1D (RAMD32(x2)): 18 instances
+
+Synth Design complete | Checksum: 19e4979f
+INFO: [Common 17-83] Releasing license: Vivado_Synthesis
+63 Infos, 100 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:00 ; elapsed = 00:01:03 . Memory (MB): peak = 1876.480 ; gain = 1278.562
+Parsing XDC File [D:/NoC_2x2_Project/constraints/clock_only.xdc]
+Finished Parsing XDC File [D:/NoC_2x2_Project/constraints/clock_only.xdc]
+Command: opt_design
+Attempting to get a license for feature 'Vivado_Implementation' and/or device 'xc7s15'
+INFO: [Common 17-349] Got license for feature 'Vivado_Implementation' and/or device 'xc7s15'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 2 threads
+WARNING: [DRC 23-814] Not all possible (connectivity based) DRCs may have been run because this design is seen as Out of Context.
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.677 . Memory (MB): peak = 1876.480 ; gain = 0.000
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Cache Timing Information Task | Checksum: 142da57c4
+
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1876.480 ; gain = 0.000
+
+Starting Logic Optimization Task
+
+Phase 1 Initialization
+
+Phase 1.1 Core Generation And Design Setup
+Phase 1.1 Core Generation And Design Setup | Checksum: 142da57c4
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 1.2 Setup Constraints And Sort Netlist
+Phase 1.2 Setup Constraints And Sort Netlist | Checksum: 142da57c4
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.029 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Phase 1 Initialization | Checksum: 142da57c4
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.032 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 2 Timer Update And Timing Data Collection
+
+Phase 2.1 Detect if minReqCache needed
+Phase 2.1 Detect if minReqCache needed | Checksum: 142da57c4
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.090 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 2.2 Timer Update
+Phase 2.2 Timer Update | Checksum: 142da57c4
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.100 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Phase 2 Timer Update And Timing Data Collection | Checksum: 142da57c4
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.102 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 3 Retarget
+INFO: [Opt 31-1851] Number of loadless carry chains removed were: 0
+INFO: [Opt 31-1834] Total Chains To Be Transformed Were: 0 AND Number of Transformed insts Created are: 0
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 3 Retarget | Checksum: 142da57c4
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.215 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Retarget | Checksum: 142da57c4
+INFO: [Opt 31-389] Phase Retarget created 0 cells and removed 0 cells
+
+Phase 4 Constant propagation
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Phase 4 Constant propagation | Checksum: 142da57c4
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.267 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Constant propagation | Checksum: 142da57c4
+INFO: [Opt 31-389] Phase Constant propagation created 0 cells and removed 0 cells
+
+Phase 5 Sweep
+INFO: [Constraints 18-11670] Building netlist checker database with flags, 0x8
+Done building netlist checker database: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Phase 5 Sweep | Checksum: 182b1c748
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.334 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Sweep | Checksum: 182b1c748
+INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 0 cells
+
+Phase 6 BUFG optimization
+Phase 6 BUFG optimization | Checksum: 182b1c748
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.395 . Memory (MB): peak = 1940.613 ; gain = 0.000
+BUFG optimization | Checksum: 182b1c748
+INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
+
+Phase 7 Shift Register Optimization
+INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
+Phase 7 Shift Register Optimization | Checksum: 182b1c748
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.419 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Shift Register Optimization | Checksum: 182b1c748
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 8 Post Processing Netlist
+Phase 8 Post Processing Netlist | Checksum: 182b1c748
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.438 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Post Processing Netlist | Checksum: 182b1c748
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
+
+Phase 9 Finalization
+
+Phase 9.1 Finalizing Design Cores and Updating Shapes
+Phase 9.1 Finalizing Design Cores and Updating Shapes | Checksum: 11572753b
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.485 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 9.2 Verifying Netlist Connectivity
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.035 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Phase 9.2 Verifying Netlist Connectivity | Checksum: 11572753b
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.524 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Phase 9 Finalization | Checksum: 11572753b
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.525 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |               0  |               0  |                                              0  |
+|  Constant propagation         |               0  |               0  |                                              0  |
+|  Sweep                        |               0  |               0  |                                              0  |
+|  BUFG optimization            |               0  |               0  |                                              0  |
+|  Shift Register Optimization  |               0  |               0  |                                              0  |
+|  Post Processing Netlist      |               0  |               0  |                                              0  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+Ending Logic Optimization Task | Checksum: 11572753b
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.536 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+Ending Power Optimization Task | Checksum: 11572753b
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.140 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Starting Final Cleanup Task
+Ending Final Cleanup Task | Checksum: 11572753b
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1940.613 ; gain = 0.000
+INFO: [Common 17-83] Releasing license: Vivado_Implementation
+83 Infos, 101 Warnings, 0 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1940.613 ; gain = 64.133
+Command: place_design
+Attempting to get a license for feature 'Vivado_Implementation' and/or device 'xc7s15'
+INFO: [Common 17-349] Got license for feature 'Vivado_Implementation' and/or device 'xc7s15'
+INFO: [Common 17-83] Releasing license: Vivado_Implementation
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 2 threads
+WARNING: [DRC 23-814] Not all possible (connectivity based) DRCs may have been run because this design is seen as Out of Context.
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 2 CPUs
+
+Starting Placer Task
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 112bd622e
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.030 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 1cb368417
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.509 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: 26a22c05c
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: 26a22c05c
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Phase 1 Placer Initialization | Checksum: 26a22c05c
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 2 Global Placement
+
+Phase 2.1 Floorplanning
+Phase 2.1 Floorplanning | Checksum: 1dd2b703b
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 2.2 Update Timing before SLR Path Opt
+Phase 2.2 Update Timing before SLR Path Opt | Checksum: 28d38f5c4
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 2.3 Post-Processing in Floorplanning
+Phase 2.3 Post-Processing in Floorplanning | Checksum: 28d38f5c4
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 2.4 Global Place Phase1
+Phase 2.4 Global Place Phase1 | Checksum: 2892c18f9
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 2.5 Global Place Phase2
+
+Phase 2.5.1 UpdateTiming Before Physical Synthesis
+Phase 2.5.1 UpdateTiming Before Physical Synthesis | Checksum: 2187994af
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 2.5.2 Physical Synthesis In Placer
+INFO: [Physopt 32-1035] Found 0 LUTNM shape to break, 30 LUT instances to create LUTNM shape
+INFO: [Physopt 32-1044] Break lutnm for timing: one critical 0, two critical 0, total 0, new lutff created 0
+INFO: [Physopt 32-1138] End 1 Pass. Optimized 15 nets or LUTs. Breaked 0 LUT, combined 15 existing LUTs and moved 0 existing LUT
+INFO: [Physopt 32-65] No nets found for high-fanout optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-670] No setup violation found.  DSP Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  Shift Register to Pipeline Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  Shift Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  BRAM Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  URAM Register Optimization was not performed.
+INFO: [Physopt 32-949] No candidate nets found for dynamic/static region interface net replication
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization                                     |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  LUT Combining                                    |            0  |             15  |                    15  |           0  |           1  |  00:00:00  |
+|  Retime                                           |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Very High Fanout                                 |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  DSP Register                                     |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Shift Register to Pipeline                       |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Shift Register                                   |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  BRAM Register                                    |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  URAM Register                                    |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Dynamic/Static Region Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Total                                            |            0  |             15  |                    15  |           0  |           4  |  00:00:00  |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Phase 2.5.2 Physical Synthesis In Placer | Checksum: 1a00c1093
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Phase 2.5 Global Place Phase2 | Checksum: 1af46510a
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Phase 2 Global Placement | Checksum: 1af46510a
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: 23160937c
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 22546555b
+
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 3.3 Area Swap Optimization
+Phase 3.3 Area Swap Optimization | Checksum: 2611fcc6a
+
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 3.4 Pipeline Register Optimization
+Phase 3.4 Pipeline Register Optimization | Checksum: 2611fcc6a
+
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 3.5 Small Shape Detail Placement
+Phase 3.5 Small Shape Detail Placement | Checksum: 255cac6f1
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 3.6 Re-assign LUT pins
+Phase 3.6 Re-assign LUT pins | Checksum: 2b4fe6a93
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 3.7 Pipeline Register Optimization
+Phase 3.7 Pipeline Register Optimization | Checksum: 2b4fe6a93
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Phase 3 Detail Placement | Checksum: 2b4fe6a93
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 4 Post Placement Optimization and Clean-Up
+
+Phase 4.1 Post Commit Optimization
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Phase 4.1.1 Post Placement Optimization
+Post Placement Optimization Initialization | Checksum: 2b49d5979
+
+Phase 4.1.1.1 BUFG Insertion
+
+Starting Physical Synthesis Task
+
+Phase 1 Physical Synthesis Initialization
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 2 CPUs
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=4.934 | TNS=0.000 |
+Phase 1 Physical Synthesis Initialization | Checksum: 11e9269d6
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.075 . Memory (MB): peak = 1940.613 ; gain = 0.000
+INFO: [Place 46-56] BUFG insertion identified 0 candidate nets. Inserted BUFG: 0, Replicated BUFG Driver: 0, Skipped due to Placement/Routing Conflicts: 0, Skipped due to Timing Degradation: 0, Skipped due to netlist editing failed: 0.
+Ending Physical Synthesis Task | Checksum: 22a0c4096
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.089 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Phase 4.1.1.1 BUFG Insertion | Checksum: 2b49d5979
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 4.1.1.2 Post Placement Timing Optimization
+INFO: [Place 30-746] Post Placement Timing Summary WNS=4.934. For the most accurate timing information please run report_timing.
+Phase 4.1.1.2 Post Placement Timing Optimization | Checksum: 3174fb1f8
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Phase 4.1 Post Commit Optimization | Checksum: 3174fb1f8
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 4.2 Post Placement Cleanup
+Phase 4.2 Post Placement Cleanup | Checksum: 3174fb1f8
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 4.3 Placer Reporting
+
+Phase 4.3.1 Print Estimated Congestion
+INFO: [Place 30-612] Post-Placement Estimated Congestion 
+ ____________________________________________________
+|           | Global Congestion | Short Congestion  |
+| Direction | Region Size       | Region Size       |
+|___________|___________________|___________________|
+|      North|                1x1|                2x2|
+|___________|___________________|___________________|
+|      South|                1x1|                1x1|
+|___________|___________________|___________________|
+|       East|                1x1|                1x1|
+|___________|___________________|___________________|
+|       West|                1x1|                1x1|
+|___________|___________________|___________________|
+
+Phase 4.3.1 Print Estimated Congestion | Checksum: 3174fb1f8
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Phase 4.3 Placer Reporting | Checksum: 3174fb1f8
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 4.4 Final Placement Cleanup
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 2e6e7f30a
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Ending Placer Task | Checksum: 1f6ef6e9b
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1940.613 ; gain = 0.000
+109 Infos, 102 Warnings, 0 Critical Warnings and 0 Errors encountered.
+place_design completed successfully
+place_design: Time (s): cpu = 00:00:10 ; elapsed = 00:00:09 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Command: route_design
+Attempting to get a license for feature 'Vivado_Implementation' and/or device 'xc7s15'
+INFO: [Common 17-349] Got license for feature 'Vivado_Implementation' and/or device 'xc7s15'
+
+
+Starting Routing Task
+INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 2 CPUs
+
+Phase 1 Build RT Design
+Checksum: PlaceDB: eaadf372 ConstDB: 0 ShapeSum: 5e2f6beb RouteDB: ae120f3e
+WARNING: [Route 35-197] Clock port "clk" does not have an associated HD.CLK_SRC. Without this constraint, timing analysis may not be accurate and upstream checks cannot be done to ensure correct clock placement.
+WARNING: [Route 35-198] Port "rst" does not have an associated HD.PARTPIN_LOCS, which will prevent the partial routing of the signal "rst". Without this partial route, timing analysis to/from this port will not be accurate, and no routing information for this port can be exported.
+WARNING: [Route 35-198] Port "start" does not have an associated HD.PARTPIN_LOCS, which will prevent the partial routing of the signal "start". Without this partial route, timing analysis to/from this port will not be accurate, and no routing information for this port can be exported.
+WARNING: [Constraints 18-8777] Unable to split tiles. All required files are not available.
+Post Restoration Checksum: NetGraph: 4f2bf5b2 | NumContArr: bc4a1fb1 | Constraints: c2a8fa9d | Timing: c2a8fa9d
+Phase 1 Build RT Design | Checksum: 290c80a9d
+
+Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 2 Router Initialization
+
+Phase 2.1 Fix Topology Constraints
+Phase 2.1 Fix Topology Constraints | Checksum: 290c80a9d
+
+Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 2.2 Pre Route Cleanup
+Phase 2.2 Pre Route Cleanup | Checksum: 290c80a9d
+
+Time (s): cpu = 00:00:11 ; elapsed = 00:00:10 . Memory (MB): peak = 1940.613 ; gain = 0.000
+ Number of Nodes with overlaps = 0
+
+Phase 2.3 Update Timing
+Phase 2.3 Update Timing | Checksum: 182d2ed0d
+
+Time (s): cpu = 00:00:11 ; elapsed = 00:00:10 . Memory (MB): peak = 1940.613 ; gain = 0.000
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=5.024  | TNS=0.000  | WHS=0.058  | THS=0.000  |
+
+
+Phase 2.4 Soft Constraint Pins - Fast Budgeting
+Phase 2.4 Soft Constraint Pins - Fast Budgeting | Checksum: 208fd79a7
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0 %
+  Global Horizontal Routing Utilization  = 0 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 1466
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 1466
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Phase 2 Router Initialization | Checksum: 208fd79a7
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 3 Global Routing
+Phase 3 Global Routing | Checksum: 208fd79a7
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 4 Initial Routing
+
+Phase 4.1 Initial Net Routing Pass
+Phase 4.1 Initial Net Routing Pass | Checksum: 1fe36cb51
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Phase 4 Initial Routing | Checksum: 1fe36cb51
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 5 Rip-up And Reroute
+
+Phase 5.1 Global Iteration 0
+ Number of Nodes with overlaps = 180
+ Number of Nodes with overlaps = 7
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=4.566  | TNS=0.000  | WHS=N/A    | THS=N/A    |
+
+Phase 5.1 Global Iteration 0 | Checksum: 25c7bc02a
+
+Time (s): cpu = 00:00:13 ; elapsed = 00:00:12 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Phase 5 Rip-up And Reroute | Checksum: 25c7bc02a
+
+Time (s): cpu = 00:00:13 ; elapsed = 00:00:12 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 6 Delay and Skew Optimization
+
+Phase 6.1 Delay CleanUp
+Phase 6.1 Delay CleanUp | Checksum: 25c7bc02a
+
+Time (s): cpu = 00:00:13 ; elapsed = 00:00:12 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 6.2 Clock Skew Optimization
+Phase 6.2 Clock Skew Optimization | Checksum: 25c7bc02a
+
+Time (s): cpu = 00:00:13 ; elapsed = 00:00:12 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Phase 6 Delay and Skew Optimization | Checksum: 25c7bc02a
+
+Time (s): cpu = 00:00:13 ; elapsed = 00:00:12 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 7 Post Hold Fix
+
+Phase 7.1 Hold Fix Iter
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=4.566  | TNS=0.000  | WHS=0.065  | THS=0.000  |
+
+Phase 7.1 Hold Fix Iter | Checksum: 20fb1bf37
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:12 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Phase 7 Post Hold Fix | Checksum: 20fb1bf37
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:12 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 8 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 1.39479 %
+  Global Horizontal Routing Utilization  = 1.92332 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Phase 8 Route finalize | Checksum: 20fb1bf37
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:12 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 9 Verifying routed nets
+
+ Verification completed successfully
+Phase 9 Verifying routed nets | Checksum: 20fb1bf37
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:12 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 10 Depositing Routes
+Phase 10 Depositing Routes | Checksum: 1f362ec8d
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:13 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 11 Post Process Routing
+Phase 11 Post Process Routing | Checksum: 1f362ec8d
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:13 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Phase 12 Post Router Timing
+INFO: [Route 35-57] Estimated Timing Summary | WNS=4.566  | TNS=0.000  | WHS=0.065  | THS=0.000  |
+
+INFO: [Route 35-327] The final timing numbers are based on the router estimated timing analysis. For a complete and accurate timing signoff, please run report_timing_summary.
+Phase 12 Post Router Timing | Checksum: 1f362ec8d
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:13 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Total Elapsed time in route_design: 12.588 secs
+
+Phase 13 Post-Route Event Processing
+Phase 13 Post-Route Event Processing | Checksum: 2147fb957
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:13 . Memory (MB): peak = 1940.613 ; gain = 0.000
+INFO: [Route 35-16] Router Completed Successfully
+Ending Routing Task | Checksum: 2147fb957
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:13 . Memory (MB): peak = 1940.613 ; gain = 0.000
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Vivado_Implementation
+118 Infos, 106 Warnings, 0 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:00:14 ; elapsed = 00:00:13 . Memory (MB): peak = 1940.613 ; gain = 0.000
+WARNING: [Timing 38-242] The property HD.CLK_SRC of clock port "clk" is not set. In out-of-context mode, this prevents timing estimation for clock delay/skew
+Resolution: Set the HD.CLK_SRC property of the out-of-context port to the location of the clock buffer instance in the top-level design
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -2, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -2, Delay Type: max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+INFO: [Timing 38-78] ReportTimingParams: -max_paths 10 -nworst 1 -delay_type max -sort_by group.
+Command: report_drc -file D:/NoC_2x2_Project/evidence/vivado/route_demo_ooc/drc.rpt
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Vivado-ML/2026.1/Vivado/data/ip'.
+INFO: [DRC 23-27] Running DRC with 2 threads
+WARNING: [DRC 23-814] Not all possible (connectivity based) DRCs may have been run because this design is seen as Out of Context.
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file D:/NoC_2x2_Project/evidence/vivado/route_demo_ooc/drc.rpt.
+report_drc completed successfully
+REPORTS SAVED: D:/NoC_2x2_Project/evidence/vivado/route_demo_ooc
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Wrote PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.049 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Wrote PlaceStorage: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.091 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1940.613 ; gain = 0.000
+Write Physdb Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.175 . Memory (MB): peak = 1940.613 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'D:/NoC_2x2_Project/build/checkpoints/demo_ooc_routed.dcp' has been generated.
+OOC DEMO ROUTE RETURNED. No pins, external delays, bitstream or hardware claim.
+INFO: [Common 17-206] Exiting Vivado at Sun Oct  4 19:49:18 2026...

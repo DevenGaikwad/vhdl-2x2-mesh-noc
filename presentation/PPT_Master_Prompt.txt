@@ -1,0 +1,202 @@
+> Historical source-snapshot note: retained for provenance. Current execution status, corrected diagrams and release downloads are in the root README and docs/verification.md. Older pending-status statements below describe that earlier stage.
+
+You are an expert digital-design engineer, research communicator and presentation designer. Create a polished, technically rigorous university project presentation that a faculty panel can use to assess the architecture, RTL contracts, verification and measured results. Deliver an editable PowerPoint, a PDF preview, complete speaker notes and a short demonstration script. If your tool cannot create files, provide the complete slide-by-slide content, layout, native diagram instructions, chart datasets and notes.
+
+Create exactly 20 slides: 16 main slides for a 12–15 minute presentation, followed by 4 clearly marked technical appendix slides. Use 16:9 widescreen. The presentation should be visually modern and easy to read from a classroom projector. Explain actual mechanisms and measurements. Avoid generic marketing language, unsupported novelty claims and decorative stock chip illustrations.
+
+## Project identity
+
+- Project title: Design and Implementation of a 2 × 2 Mesh Network-on-Chip Router Using VHDL on FPGA.
+- Anjor Giri, PRN 1022411048.
+- Nidhi Kanoujia, PRN 1022411051.
+- Deven Gaikwad, PRN 1022411052.
+- Faculty and mentor: Dr. Madan Mali.
+- Department of Electronics and Communication Engineering.
+- School of Engineering and Technology, DES Pune University, Pune.
+- B. Tech Electronics and Communication Engineering (AI & ML), Third Year ECE, Division A, Semester I, academic year 2026–2027.
+- Course: HDL AND PLD.
+- Use the original DES Pune University logo provided in docs/assets/DES_Pune_University_Logo.jpg. Preserve its proportions and colors. If the file is unavailable, reserve a labelled logo slot. Do not draw or invent a substitute logo.
+- Keep all three students on the cover. Include the mentor below them. Use the full title on the cover and a concise title in recurring footers.
+
+## Visual direction
+
+Use a dark mission-control aesthetic inspired by a spacecraft operations dashboard, adapted to an engineering presentation. Suggested palette:
+
+| Role | Color |
+| --- | --- |
+| Canvas | #07090F |
+| Secondary surface | #10141E |
+| Text | #E8EDF5 |
+| Secondary text | #A4AFC1 |
+| Accepted or verified | Green #42E5A4 |
+| Stall, full queue or unresolved issue | Red #FF7184 |
+| Configuration limits and pending laboratory gates | Yellow #F3CD65 |
+| Selected path and packet analysis | Purple #B89AFF |
+| Divider | #293142 |
+
+Use restrained thin rules and technical grid details. Give each slide a coherent composition with generous space. Keep dense dashboard styling mainly on the dashboard slide. Use flat, readable diagrams and plots elsewhere. Use color consistently with labels, line styles or symbols so meaning remains clear without color. Use a readable sans-serif such as Aptos, Calibri or Inter and a monospace face for bit positions, masks and hexadecimal packets. Titles approximately 30–36 pt, body 20–24 pt, table/plot labels at least 16–18 pt. Cut text before shrinking fonts.
+
+Keep required architecture diagrams editable as native shapes and connectors. Draw each directional link with its arrow at the receiving end. Keep required tables native and charts editable with embedded data. Screenshots can be raster images. Never flatten an entire slide into a picture. Use one main technical message per slide, concise text and detailed explanation in speaker notes.
+
+## Authoritative technical facts
+
+The baseline is a VHDL-2008 four-router, 32-bit, single-flit mesh. FPGA implementation is a target flow; physical FPGA operation has not been demonstrated.
+
+| Router index | Name | Coordinates | Endpoint label |
+| --- | --- | --- | --- |
+| 0 | R00 | X=0, Y=0 | CPU 1 traffic model |
+| 1 | R01 | X=1, Y=0 | Memory traffic model |
+| 2 | R10 | X=0, Y=1 | CPU 2 traffic model |
+| 3 | R11 | X=1, Y=1 | AI traffic model |
+
+Index = X + 2Y. X increases east and Y south. Neighbor pairs are 0–1, 0–2, 1–3 and 2–3, forming eight separate directed channels. Each channel has 32-bit data, forward valid and reverse ready. Four Local interfaces support injection and ejection.
+
+There are five logical ports: N=0, S=1, E=2, W=3, L=4. Each corner has only three active input/output ports. There are twelve active input FIFOs and twelve independent active output arbiters in the mesh. Mask bit order L W E S N:
+
+| Router | Mask |
+| --- | --- |
+| R00 | 10110 |
+| R01 | 11010 |
+| R10 | 10101 |
+| R11 | 11001 |
+
+The reference FIFO depth is 4. Depths 2 and 8 are controlled comparisons. Logical packet storage is 12 × depth × 32 bits: 768, 1536 and 3072 bits. These are logical capacities, not synthesized LUT/FF/BRAM measurements.
+
+| Packet bits | Field | Meaning |
+| --- | --- | --- |
+| 31 | Marker | 1 for a legal packet; independent of external valid |
+| 30:29 | Type | DATA = 00 |
+| 28:27 | Source | X at 28, Y at 27 |
+| 26:25 | Destination | X at 26, Y at 25 |
+| 24:21 | ID | Four bits, wrapping at 16 |
+| 20:19 | Priority | Reserved and ignored by round robin |
+| 18:0 | Payload | 19 bits |
+
+Normal acceptance is a rising edge with rst=0, valid=1 and ready=1. A producer holds valid and the complete word through a stall and does not wait for ready before asserting valid. Reset is synchronous active-high, overrides normal transfers, clears queue pointers/counts and grants, and explicitly flushes previously accepted pending traffic.
+
+FIFO input ready derives from registered occupancy. An empty FIFO has no bypass. At intermediate occupancy simultaneous push and pop can both succeed. A full FIFO accepts a pop but refuses a simultaneous push; the producer retries next cycle. Pointer wrap supports non-power-of-two depths. Unsupported packet encodings trigger simulation assertions; the synthesized baseline does not implement a packet-type rejection engine.
+
+Routing compares X first, then Y, then selects Local. R00 to R11 follows 0 → 1 → 3. R10 to R01 follows 2 → 3 → 1. Legal dimension-order paths have an acyclic channel-dependency argument, but this does not guarantee finite progress when sinks refuse forever.
+
+Each occupied head requests one output. Each active output has a FREE/HELD controller and registered one-hot round-robin grant. HELD retains selection/data until acceptance. Acceptance pops the selected input once, clears the grant and advances rotating priority to one past the winner. The crossbar muxes retained FIFO heads; no extra output packet register is required. Independent inputs can transfer concurrently to different outputs.
+
+After an acceptance, one arbitration bubble precedes the next possible transfer. The individual output service ceiling is 0.5 flits/cycle. Empty-network exclusive latencies are Local=2, one hop=4 and two hops=6 cycles. Aggregate throughput can exceed 0.5 because separate outputs operate in parallel.
+
+The project contains 11 RTL files and 6 testbenches. Four FIFO tests (depths 1, 3, 4, 8), one route test, one arbiter test, four corner-router tests, one finite-demo test and three directed mesh-depth tests give 14 completed supplemental GHDL 4.1.0 configurations. All passed. All 16 source/destination pairs and all 8 directed channels were exercised. Tests cover all active outputs under three-input contention, nonconflicting concurrency, FIFO limits, stalls, full-word integrity, reset and stream order. A persistent arbiter requester is bounded by five successful grants in the five-input test; stalled wall-clock cycles are excluded from this bound.
+
+Directed reset accounting:
+
+| Depth | Accepted | Delivered | Explicit reset discards | Outstanding |
+| --- | --- | --- | --- | --- |
+| 2 | 78 | 60 | 18 | 0 |
+| 4 | 106 | 74 | 32 | 0 |
+| 8 | 158 | 102 | 56 | 0 |
+
+The directed reset suite intentionally flushes traffic. Keep it separate from the loss-free controlled benchmark.
+
+The accepted-event scoreboard stores the full word, injection edge, current location, shortest-hop count and source/destination stream sequence. Link accepts must follow XY and location; deliveries must match the full word, destination, pending identity, hop count and stream order. The bounded tests use unique payload identities because a four-bit packet ID wraps. Independent sources have no global ordering contract. Whole-run conservation is accepted = delivered + reset discards + outstanding.
+
+## Controlled experiment evidence
+
+There are 93 actual RTL runs: three depths × 31 configurations. Each depth contains four deterministic cases; all-to-all and hotspot at four gates × three seeds each; three sink-stall seed cases. Depth 4 was verified first. Gates are 0.10, 0.25, 0.50, 0.90. Seeds are 101, 202, 303 using xorshift32. Each run has 100 warm-up cycles, 1000 measurement cycles, a drain bound of 5000 cycles and a 30,000-edge watchdog.
+
+Workloads:
+
+- No load: source 0 to 3 once every 40 cycles.
+- Disjoint: sources 0 and 1 to 2 and 3 every four cycles.
+- All-to-all: free-source gated generation, PRNG destination including Local.
+- Hotspot: free-source gated generation, all destinations node 1.
+- Burst: first 20 of every 100 cycles, destination=(source+3) mod 4.
+- Sustained: every source re-offers to 1 after prior acceptance.
+- Sink stall: gate 0.50 to (source+3) mod 4, sinks refuse for the first 60 of every 160 cycles.
+
+Sources hold one pending request, so generation gate is conditional on an available slot. PRNG advances every cycle even for blocked sources. Matched seeds and schedules across depths do not guarantee the same accepted transaction population. Do not plot gate as if it were a guaranteed open-loop injection rate.
+
+Latency = delivery acceptance edge − injection acceptance edge. The latency cohort consists of measurement-window injections followed through drain. P95 uses nearest rank. Throughput = accepted deliveries during the measurement window / 1000. Accepted and delivered window rates can differ at warm-up/drain boundaries. FIFO occupancy uses pre-edge samples of twelve active inputs. Stalls are output port-cycles. Source Jain index uses four source delivery counts and is descriptive; it is not an arbiter fairness proof.
+
+All 93 runs drained: 82,523 accepted = 82,523 delivered, zero reset discards and zero outstanding. No unexplained loss, duplicate, misroute or source/destination stream reorder was observed under the supplied finite assertions.
+
+Selected depth-four results, seed 101:
+
+| Workload | Gate | Latency cohort n | Mean cycles | Median | P95 | Accepted/cycle | Delivered/cycle |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| No load | 1.00 | 25 | 6.000 | 6 | 6 | 0.025 | 0.025 |
+| Disjoint | 1.00 | 500 | 4.000 | 4 | 4 | 0.500 | 0.500 |
+| Burst | 1.00 | 520 | 8.846 | 9 | 11 | 0.520 | 0.520 |
+| Sustained | 1.00 | 499 | 53.749 | 46 | 117 | 0.499 | 0.500 |
+| All-to-all | 0.50 | 1619 | 12.035 | 11 | 24 | 1.619 | 1.624 |
+| Hotspot | 0.50 | 500 | 53.692 | 46 | 117 | 0.500 | 0.500 |
+| Sink stall | 0.50 | 1249 | 24.601 | 14 | 77 | 1.249 | 1.255 |
+
+At depth 4, seed 101, all-to-all gate 0.90, the selected run delivers 1.656 aggregate flits/cycle. Distinguish this selected run from any three-seed mean.
+
+Deterministic sustained-hotspot depth comparison:
+
+| Depth | Latency cohort n | Mean cycles | P95 cycles | Delivered/cycle | Mean FIFO flits |
+| --- | --- | --- | --- | --- | --- |
+| 2 | 499 | 26.090 | 57 | 0.500 | 1.090 |
+| 4 | 499 | 53.749 | 117 | 0.500 | 2.257 |
+| 8 | 499 | 108.251 | 237 | 0.500 | 4.590 |
+
+Use separate native charts for throughput and mean latency; different units need separate axes/panels. The interpretation is that more storage admits more backlog while the output service remains 0.5. Avoid claiming that deeper buffering is universally worse.
+
+The sustained-hotspot source delivery counts in the measurement window are [167,166,83,84]; Jain service index ≈0.900706. Sources 2 and 3 share the R11-to-R01 merge. Local fairness among input streams does not imply equal service among original sources.
+
+## Target flow and dashboard
+
+- Exact target: Spartan-7 xc7s15cpga196-2.
+- Intended lab tool: AMD Vivado 2026.1 / XSim.
+- A clock-only 10 ns constraint is a design target, not a measured board clock or achieved fMAX.
+- Separate flows: core OOC synthesis and finite-demo OOC routing. Demo includes endpoint models and defaults to 64 deliveries.
+- Local Vivado/XSim, LUT/FF/BRAM, DRC, routed WNS/TNS, hold, power and board operation are not measured here.
+- No verified board oscillator, pin/voltage map, board wrapper or usable bitstream is supplied.
+- VHDL timing simulation is unsupported in Vivado 2026.1; functional simulation and post-route STA are separate.
+- Do not invent pin assignments, I/O delays, blanket false paths, resource utilization or screenshots.
+- Dashboard: Node 24.19.0, TypeScript 7.0.2, Vite 8.3.2; no Python backend or physical feed.
+- Nine views: architecture, replay, router inspector, packet inspector, verification, performance, resource/timing, research, help.
+- Four-color mission-control view draws eight directions separately, pre-edge input occupancy, held grants and event timeline.
+- Actual screenshot docs/diagrams/15_dashboard_capture.png uses directed-d4 edge 231: six accepted link transfers, four stall events, full R01 Local input. Whole-trace counters are 106/74/32/0 and are distinct from this edge.
+- The app passes 22 parser tests, strict compilation/build and all nine desktop/mobile views. Root and nested /noc-lab/ serving were checked.
+- Unknown imported FIFO depth has no invented full percentage. Incomplete measurement state coverage gives unavailable rates.
+- Imports stay on the device; user-supplied simulator provenance is unverified.
+
+## Required slide order
+
+1. Cover: exact project title, three students, course/institution, Dr. Madan Mali and supplied DES logo.
+2. Problem and scope: communication, contention and accepted-event correctness. One clear research question.
+3. Architecture: editable 2 × 2 mesh with correct coordinates, Local endpoints and eight directions.
+4. Packet format: native editable bitfield with exact boundaries; marker versus external valid.
+5. Router datapath: input FIFOs, XY request generation, per-output arbiters, crossbar and retained heads.
+6. Handshake and FIFO boundaries: concise accepted-edge example and full-plus-pop policy.
+7. FREE/HELD arbitration: editable state/sequence diagram, stability during stall, advance on acceptance and bubble.
+8. Actual XY paths: transaction 4, word 86800004, injection c16, East c18, South c20, delivery c22; transaction 10, word 8D40000A, injection c48, East c50, North c52, delivery c54. Both have six-cycle latency.
+9. Verification: 14 configurations, all 16 coordinate pairs, eight links, assertions and accepted scoreboard.
+10. Experimental method: 93-run matrix, workloads, gates/seeds, warm-up/measurement/drain and metric populations.
+11. Depth-four results: native compact results table. Keep units, cohort n and selected seed visible.
+12. Saturated depth study: two native charts using the deterministic table. Explain storage/backlog versus output service.
+13. Dashboard demonstration: actual refined screenshot with labels pointing to six accepts, four stalls and full queue. Reserve a screenshot placeholder if the file is absent.
+14. FPGA target workflow: completed supplemental evidence and pending exact-tool/board gates. Reserve clearly labelled slots for later real XSim, utilization and STA evidence.
+15. Limitations and future work: finite synthetic study, head-of-line blocking, only three seeds/1000-cycle window, closed-loop population differences and no reference-interconnect improvement measurement. Future bubble-free arbitration, separated queues, longer trials and matched baseline are not implemented.
+16. Conclusion: exact observed results and practical next gates. Include three short technical findings and space for questions.
+17. Appendix A: module hierarchy, compile order, twelve active FIFOs/arbiters, logical capacities and masks.
+18. Appendix B: directed reset accounting and the accepted scoreboard, separating attempt from acceptance.
+19. Appendix C: source service/fairness explanation and the successful-grant versus wall-clock bound.
+20. Appendix D: references and reproducibility paths. Include IEEE manuscript status and author review; no acceptance or DOI claim.
+
+Every slide needs 60–120 words of useful speaker notes, except the cover and reference slide which may be shorter. Notes should explain the mechanism, point to the exact evidence path, and give one likely faculty question with a precise answer. Include a three-minute live demo script: load bundled GHDL trace, go to edge 231, inspect R01 Local count and held grants, inspect transaction 4, then load the 93-run performance summary. If the dashboard is unavailable, use the actual screenshots and describe them as replay.
+
+## References and evidence
+
+Use only the supplied bibliography and primary sources for factual claims. Put compact citations on technical slides and full details in notes/appendix. Do not copy published performance numbers into this project.
+
+1. L. Benini and G. De Micheli, “Networks on Chips: A New SoC Paradigm,” Computer 35(1), 70–78, 2002. DOI 10.1109/2.976921.
+2. W. J. Dally and B. Towles, “Route Packets, Not Wires: On-Chip Interconnection Networks,” DAC 2001, 684–689. DOI 10.1145/378239.379048.
+3. P. P. Pande et al., “Performance Evaluation and Design Trade-Offs for Network-on-Chip Interconnect Architectures,” IEEE Trans. Comput. 54(8), 1025–1040, 2005. DOI 10.1109/TC.2005.134.
+4. W. J. Dally and C. L. Seitz, “Deadlock-Free Message Routing in Multiprocessor Interconnection Networks,” IEEE Trans. Comput. C-36(5), 547–553, 1987. DOI 10.1109/TC.1987.1676939.
+5. AMD UG900/UG901/UG903/UG906, Vivado 2026.1, and UG475/DS189 device/package documentation.
+
+Project paths: rtl/compile_order.txt; docs/protocol.md; docs/module_contracts.md; docs/test_matrix.md; docs/reproducibility.md; evidence/ghdl/verification.json; evidence/ghdl/directed-d4.csv; experiments/results/metrics.json and metrics.csv; experiments/results/traces and logs; docs/diagrams; evidence/frontend/production and subpath; paper/noc_paper.tex and references.bib.
+
+## Final quality gate
+
+Inspect every exported slide for clipping, text wrapping, contrast, chart labels, arrow direction and consistency. Preserve all exact measurements and required rows. Verify native editability of diagrams, tables and charts. Keep missing hardware captures as labelled placeholders. State that the manuscript is an IEEE conference-style research draft requiring human author/mentor and venue review. Do not invent conference acceptance, novelty, physical results, a plagiarism percentage, author emails or signatures.

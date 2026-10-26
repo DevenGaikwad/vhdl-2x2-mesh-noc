@@ -1,0 +1,560 @@
+[
+  {
+    "depth": 4,
+    "scenario": 1,
+    "rate": 1000,
+    "seed": 101
+  },
+  {
+    "depth": 4,
+    "scenario": 2,
+    "rate": 1000,
+    "seed": 101
+  },
+  {
+    "depth": 4,
+    "scenario": 5,
+    "rate": 1000,
+    "seed": 101
+  },
+  {
+    "depth": 4,
+    "scenario": 6,
+    "rate": 1000,
+    "seed": 101
+  },
+  {
+    "depth": 4,
+    "scenario": 3,
+    "rate": 100,
+    "seed": 101
+  },
+  {
+    "depth": 4,
+    "scenario": 3,
+    "rate": 100,
+    "seed": 202
+  },
+  {
+    "depth": 4,
+    "scenario": 3,
+    "rate": 100,
+    "seed": 303
+  },
+  {
+    "depth": 4,
+    "scenario": 3,
+    "rate": 250,
+    "seed": 101
+  },
+  {
+    "depth": 4,
+    "scenario": 3,
+    "rate": 250,
+    "seed": 202
+  },
+  {
+    "depth": 4,
+    "scenario": 3,
+    "rate": 250,
+    "seed": 303
+  },
+  {
+    "depth": 4,
+    "scenario": 3,
+    "rate": 500,
+    "seed": 101
+  },
+  {
+    "depth": 4,
+    "scenario": 3,
+    "rate": 500,
+    "seed": 202
+  },
+  {
+    "depth": 4,
+    "scenario": 3,
+    "rate": 500,
+    "seed": 303
+  },
+  {
+    "depth": 4,
+    "scenario": 3,
+    "rate": 900,
+    "seed": 101
+  },
+  {
+    "depth": 4,
+    "scenario": 3,
+    "rate": 900,
+    "seed": 202
+  },
+  {
+    "depth": 4,
+    "scenario": 3,
+    "rate": 900,
+    "seed": 303
+  },
+  {
+    "depth": 4,
+    "scenario": 4,
+    "rate": 100,
+    "seed": 101
+  },
+  {
+    "depth": 4,
+    "scenario": 4,
+    "rate": 100,
+    "seed": 202
+  },
+  {
+    "depth": 4,
+    "scenario": 4,
+    "rate": 100,
+    "seed": 303
+  },
+  {
+    "depth": 4,
+    "scenario": 4,
+    "rate": 250,
+    "seed": 101
+  },
+  {
+    "depth": 4,
+    "scenario": 4,
+    "rate": 250,
+    "seed": 202
+  },
+  {
+    "depth": 4,
+    "scenario": 4,
+    "rate": 250,
+    "seed": 303
+  },
+  {
+    "depth": 4,
+    "scenario": 4,
+    "rate": 500,
+    "seed": 101
+  },
+  {
+    "depth": 4,
+    "scenario": 4,
+    "rate": 500,
+    "seed": 202
+  },
+  {
+    "depth": 4,
+    "scenario": 4,
+    "rate": 500,
+    "seed": 303
+  },
+  {
+    "depth": 4,
+    "scenario": 4,
+    "rate": 900,
+    "seed": 101
+  },
+  {
+    "depth": 4,
+    "scenario": 4,
+    "rate": 900,
+    "seed": 202
+  },
+  {
+    "depth": 4,
+    "scenario": 4,
+    "rate": 900,
+    "seed": 303
+  },
+  {
+    "depth": 4,
+    "scenario": 7,
+    "rate": 500,
+    "seed": 101
+  },
+  {
+    "depth": 4,
+    "scenario": 7,
+    "rate": 500,
+    "seed": 202
+  },
+  {
+    "depth": 4,
+    "scenario": 7,
+    "rate": 500,
+    "seed": 303
+  },
+  {
+    "depth": 2,
+    "scenario": 1,
+    "rate": 1000,
+    "seed": 101
+  },
+  {
+    "depth": 2,
+    "scenario": 2,
+    "rate": 1000,
+    "seed": 101
+  },
+  {
+    "depth": 2,
+    "scenario": 5,
+    "rate": 1000,
+    "seed": 101
+  },
+  {
+    "depth": 2,
+    "scenario": 6,
+    "rate": 1000,
+    "seed": 101
+  },
+  {
+    "depth": 2,
+    "scenario": 3,
+    "rate": 100,
+    "seed": 101
+  },
+  {
+    "depth": 2,
+    "scenario": 3,
+    "rate": 100,
+    "seed": 202
+  },
+  {
+    "depth": 2,
+    "scenario": 3,
+    "rate": 100,
+    "seed": 303
+  },
+  {
+    "depth": 2,
+    "scenario": 3,
+    "rate": 250,
+    "seed": 101
+  },
+  {
+    "depth": 2,
+    "scenario": 3,
+    "rate": 250,
+    "seed": 202
+  },
+  {
+    "depth": 2,
+    "scenario": 3,
+    "rate": 250,
+    "seed": 303
+  },
+  {
+    "depth": 2,
+    "scenario": 3,
+    "rate": 500,
+    "seed": 101
+  },
+  {
+    "depth": 2,
+    "scenario": 3,
+    "rate": 500,
+    "seed": 202
+  },
+  {
+    "depth": 2,
+    "scenario": 3,
+    "rate": 500,
+    "seed": 303
+  },
+  {
+    "depth": 2,
+    "scenario": 3,
+    "rate": 900,
+    "seed": 101
+  },
+  {
+    "depth": 2,
+    "scenario": 3,
+    "rate": 900,
+    "seed": 202
+  },
+  {
+    "depth": 2,
+    "scenario": 3,
+    "rate": 900,
+    "seed": 303
+  },
+  {
+    "depth": 2,
+    "scenario": 4,
+    "rate": 100,
+    "seed": 101
+  },
+  {
+    "depth": 2,
+    "scenario": 4,
+    "rate": 100,
+    "seed": 202
+  },
+  {
+    "depth": 2,
+    "scenario": 4,
+    "rate": 100,
+    "seed": 303
+  },
+  {
+    "depth": 2,
+    "scenario": 4,
+    "rate": 250,
+    "seed": 101
+  },
+  {
+    "depth": 2,
+    "scenario": 4,
+    "rate": 250,
+    "seed": 202
+  },
+  {
+    "depth": 2,
+    "scenario": 4,
+    "rate": 250,
+    "seed": 303
+  },
+  {
+    "depth": 2,
+    "scenario": 4,
+    "rate": 500,
+    "seed": 101
+  },
+  {
+    "depth": 2,
+    "scenario": 4,
+    "rate": 500,
+    "seed": 202
+  },
+  {
+    "depth": 2,
+    "scenario": 4,
+    "rate": 500,
+    "seed": 303
+  },
+  {
+    "depth": 2,
+    "scenario": 4,
+    "rate": 900,
+    "seed": 101
+  },
+  {
+    "depth": 2,
+    "scenario": 4,
+    "rate": 900,
+    "seed": 202
+  },
+  {
+    "depth": 2,
+    "scenario": 4,
+    "rate": 900,
+    "seed": 303
+  },
+  {
+    "depth": 2,
+    "scenario": 7,
+    "rate": 500,
+    "seed": 101
+  },
+  {
+    "depth": 2,
+    "scenario": 7,
+    "rate": 500,
+    "seed": 202
+  },
+  {
+    "depth": 2,
+    "scenario": 7,
+    "rate": 500,
+    "seed": 303
+  },
+  {
+    "depth": 8,
+    "scenario": 1,
+    "rate": 1000,
+    "seed": 101
+  },
+  {
+    "depth": 8,
+    "scenario": 2,
+    "rate": 1000,
+    "seed": 101
+  },
+  {
+    "depth": 8,
+    "scenario": 5,
+    "rate": 1000,
+    "seed": 101
+  },
+  {
+    "depth": 8,
+    "scenario": 6,
+    "rate": 1000,
+    "seed": 101
+  },
+  {
+    "depth": 8,
+    "scenario": 3,
+    "rate": 100,
+    "seed": 101
+  },
+  {
+    "depth": 8,
+    "scenario": 3,
+    "rate": 100,
+    "seed": 202
+  },
+  {
+    "depth": 8,
+    "scenario": 3,
+    "rate": 100,
+    "seed": 303
+  },
+  {
+    "depth": 8,
+    "scenario": 3,
+    "rate": 250,
+    "seed": 101
+  },
+  {
+    "depth": 8,
+    "scenario": 3,
+    "rate": 250,
+    "seed": 202
+  },
+  {
+    "depth": 8,
+    "scenario": 3,
+    "rate": 250,
+    "seed": 303
+  },
+  {
+    "depth": 8,
+    "scenario": 3,
+    "rate": 500,
+    "seed": 101
+  },
+  {
+    "depth": 8,
+    "scenario": 3,
+    "rate": 500,
+    "seed": 202
+  },
+  {
+    "depth": 8,
+    "scenario": 3,
+    "rate": 500,
+    "seed": 303
+  },
+  {
+    "depth": 8,
+    "scenario": 3,
+    "rate": 900,
+    "seed": 101
+  },
+  {
+    "depth": 8,
+    "scenario": 3,
+    "rate": 900,
+    "seed": 202
+  },
+  {
+    "depth": 8,
+    "scenario": 3,
+    "rate": 900,
+    "seed": 303
+  },
+  {
+    "depth": 8,
+    "scenario": 4,
+    "rate": 100,
+    "seed": 101
+  },
+  {
+    "depth": 8,
+    "scenario": 4,
+    "rate": 100,
+    "seed": 202
+  },
+  {
+    "depth": 8,
+    "scenario": 4,
+    "rate": 100,
+    "seed": 303
+  },
+  {
+    "depth": 8,
+    "scenario": 4,
+    "rate": 250,
+    "seed": 101
+  },
+  {
+    "depth": 8,
+    "scenario": 4,
+    "rate": 250,
+    "seed": 202
+  },
+  {
+    "depth": 8,
+    "scenario": 4,
+    "rate": 250,
+    "seed": 303
+  },
+  {
+    "depth": 8,
+    "scenario": 4,
+    "rate": 500,
+    "seed": 101
+  },
+  {
+    "depth": 8,
+    "scenario": 4,
+    "rate": 500,
+    "seed": 202
+  },
+  {
+    "depth": 8,
+    "scenario": 4,
+    "rate": 500,
+    "seed": 303
+  },
+  {
+    "depth": 8,
+    "scenario": 4,
+    "rate": 900,
+    "seed": 101
+  },
+  {
+    "depth": 8,
+    "scenario": 4,
+    "rate": 900,
+    "seed": 202
+  },
+  {
+    "depth": 8,
+    "scenario": 4,
+    "rate": 900,
+    "seed": 303
+  },
+  {
+    "depth": 8,
+    "scenario": 7,
+    "rate": 500,
+    "seed": 101
+  },
+  {
+    "depth": 8,
+    "scenario": 7,
+    "rate": 500,
+    "seed": 202
+  },
+  {
+    "depth": 8,
+    "scenario": 7,
+    "rate": 500,
+    "seed": 303
+  }
+]

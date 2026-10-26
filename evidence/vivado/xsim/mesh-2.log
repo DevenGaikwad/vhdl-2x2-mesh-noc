@@ -1,0 +1,4 @@
+Time resolution is 1 ps
+Note: PASS tb_noc_2x2 accepted=78 delivered=60 reset_discarded=18 attempted_cycles=396 concurrent_edges=13 max_outstanding=18
+Time: 2100 ns  Iteration: 0  Process: /tb_noc_2x2/line__22  File: D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_noc_2x2.vhd
+$finish called at time : 2100 ns : File "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_noc_2x2.vhd" Line 180

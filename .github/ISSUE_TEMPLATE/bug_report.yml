@@ -1,0 +1,20 @@
+name: Reproduction or behavior issue
+description: Report an observed HDL, dashboard or documentation problem.
+body:
+  - type: textarea
+    id: observed
+    attributes:
+      label: Expected and observed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps, tool versions and relevant configuration
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Relevant log or screenshot
+      description: Remove credentials and license details before attaching.

@@ -1,0 +1,872 @@
+INFO: [Common 17-3922] A valid Vivado Design Suite BASIC license has been detected. Your current license is active and will expire on 12-aug-2027.
+#-----------------------------------------------------------
+# Vivado v2026.1 (64-bit)
+# SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+# IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+# SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+# Start of session at: Sun Oct  4 19:34:12 2026
+# Process ID         : 13172
+# Current directory  : D:/NoC_2x2_Project
+# Command line       : vivado.exe -mode batch -notrace -source D:\NoC_2x2_Project\vivado\run_verification.tcl -log D:\NoC_2x2_Project\evidence\vivado\Verify.log -journal D:\NoC_2x2_Project\build\vivado\Verify.jou
+# Log file           : D:/NoC_2x2_Project/evidence/vivado/Verify.log
+# Journal file       : D:\NoC_2x2_Project\build\vivado\Verify.jou
+# Running On         : DESKTOP-SBIR7OL
+# Platform           : Windows 11
+# Operating System   : 26200
+# Processor Detail   : 11th Gen Intel(R) Core(TM) i3-1115G4 @ 3.00GHz
+# CPU Frequency      : 2995 MHz
+# CPU Physical cores : 2
+# CPU Logical cores  : 4
+# Host memory        : 16805 MB
+# Swap memory        : 1073 MB
+# Total Virtual      : 17878 MB
+# Available Virtual  : 7853 MB
+#-----------------------------------------------------------
+source {D:\NoC_2x2_Project\vivado\run_verification.tcl} -notrace
+TOOL: 2026.1
+EXACT PART AVAILABLE: xc7s15cpga196-2
+INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+WARNING: [Project 1-5713] Board part '' set for the project  is not found. BoardPart property will be unset. Please select board from latest repo build 
+open_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:07 . Memory (MB): peak = 594.121 ; gain = 269.734
+PROJECT: E:/Vivado_Projects/NoC_2x2/NoC_2x2.xpr PART: xc7s15cpga196-2
+BEGIN VERIFICATION: fifo-1 TOP: tb_fifo_buffer
+Command: launch_simulation  -simset sim_1 -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Sun Oct  4 19:34:27 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_fifo_buffer'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'E:/Vivado-ML/2026.1/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_fifo_buffer' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj tb_fifo_buffer_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -generic_top "DEPTH=1" -L xil_defaultlib -L secureip --snapshot tb_fifo_buffer_behav xil_defaultlib.tb_fifo_buffer -log elaborate.log"
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/Vivado-ML/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -generic_top DEPTH=1 -L xil_defaultlib -L secureip --snapshot tb_fifo_buffer_behav xil_defaultlib.tb_fifo_buffer -log elaborate.log 
+INFO: [XSIM 43-3493] Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_fifo_buffer_behav -key {Behavioral:sim_1:Functional:tb_fifo_buffer} -tclbatch {tb_fifo_buffer.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_fifo_buffer.tcl
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_fifo_buffer_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 0ns
+Note: PASS tb_fifo_buffer depth=1 writes=390
+Time: 12070 ns  Iteration: 0  Process: /tb_fifo_buffer/line__13  File: D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_fifo_buffer.vhd
+$finish called at time : 12070 ns : File "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_fifo_buffer.vhd" Line 50
+INFO: [Simtcl 6-16] Simulation closed
+LOG CHECK PASSED: fifo-1
+BEGIN VERIFICATION: fifo-3 TOP: tb_fifo_buffer
+Command: launch_simulation  -simset sim_1 -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Sun Oct  4 19:34:34 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_fifo_buffer'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'E:/Vivado-ML/2026.1/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_fifo_buffer' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj tb_fifo_buffer_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -generic_top "DEPTH=3" -L xil_defaultlib -L secureip --snapshot tb_fifo_buffer_behav xil_defaultlib.tb_fifo_buffer -log elaborate.log"
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/Vivado-ML/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -generic_top DEPTH=3 -L xil_defaultlib -L secureip --snapshot tb_fifo_buffer_behav xil_defaultlib.tb_fifo_buffer -log elaborate.log 
+INFO: [XSIM 43-3493] Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package xil_defaultlib.noc_pkg
+Compiling package std.env
+Compiling architecture rtl of entity xil_defaultlib.fifo_buffer [\fifo_buffer(depth=3)\]
+Compiling architecture test of entity xil_defaultlib.tb_fifo_buffer
+Built simulation snapshot tb_fifo_buffer_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_fifo_buffer_behav -key {Behavioral:sim_1:Functional:tb_fifo_buffer} -tclbatch {tb_fifo_buffer.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_fifo_buffer.tcl
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_fifo_buffer_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 0ns
+Note: PASS tb_fifo_buffer depth=3 writes=762
+Time: 12090 ns  Iteration: 0  Process: /tb_fifo_buffer/line__13  File: D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_fifo_buffer.vhd
+$finish called at time : 12090 ns : File "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_fifo_buffer.vhd" Line 50
+INFO: [Simtcl 6-16] Simulation closed
+LOG CHECK PASSED: fifo-3
+BEGIN VERIFICATION: fifo-4 TOP: tb_fifo_buffer
+Command: launch_simulation  -simset sim_1 -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Sun Oct  4 19:34:40 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_fifo_buffer'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'E:/Vivado-ML/2026.1/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_fifo_buffer' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj tb_fifo_buffer_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -generic_top "DEPTH=4" -L xil_defaultlib -L secureip --snapshot tb_fifo_buffer_behav xil_defaultlib.tb_fifo_buffer -log elaborate.log"
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/Vivado-ML/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -generic_top DEPTH=4 -L xil_defaultlib -L secureip --snapshot tb_fifo_buffer_behav xil_defaultlib.tb_fifo_buffer -log elaborate.log 
+INFO: [XSIM 43-3493] Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package xil_defaultlib.noc_pkg
+Compiling package std.env
+Compiling architecture rtl of entity xil_defaultlib.fifo_buffer [\fifo_buffer(depth=4)\]
+Compiling architecture test of entity xil_defaultlib.tb_fifo_buffer
+Built simulation snapshot tb_fifo_buffer_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_fifo_buffer_behav -key {Behavioral:sim_1:Functional:tb_fifo_buffer} -tclbatch {tb_fifo_buffer.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_fifo_buffer.tcl
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_fifo_buffer_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 0ns
+Note: PASS tb_fifo_buffer depth=4 writes=762
+Time: 12100 ns  Iteration: 0  Process: /tb_fifo_buffer/line__13  File: D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_fifo_buffer.vhd
+$finish called at time : 12100 ns : File "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_fifo_buffer.vhd" Line 50
+INFO: [Simtcl 6-16] Simulation closed
+LOG CHECK PASSED: fifo-4
+BEGIN VERIFICATION: fifo-8 TOP: tb_fifo_buffer
+Command: launch_simulation  -simset sim_1 -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Sun Oct  4 19:34:46 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_fifo_buffer'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'E:/Vivado-ML/2026.1/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_fifo_buffer' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj tb_fifo_buffer_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -generic_top "DEPTH=8" -L xil_defaultlib -L secureip --snapshot tb_fifo_buffer_behav xil_defaultlib.tb_fifo_buffer -log elaborate.log"
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/Vivado-ML/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -generic_top DEPTH=8 -L xil_defaultlib -L secureip --snapshot tb_fifo_buffer_behav xil_defaultlib.tb_fifo_buffer -log elaborate.log 
+INFO: [XSIM 43-3493] Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package xil_defaultlib.noc_pkg
+Compiling package std.env
+Compiling architecture rtl of entity xil_defaultlib.fifo_buffer [\fifo_buffer(depth=8)\]
+Compiling architecture test of entity xil_defaultlib.tb_fifo_buffer
+Built simulation snapshot tb_fifo_buffer_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_fifo_buffer_behav -key {Behavioral:sim_1:Functional:tb_fifo_buffer} -tclbatch {tb_fifo_buffer.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_fifo_buffer.tcl
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_fifo_buffer_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 0ns
+Note: PASS tb_fifo_buffer depth=8 writes=764
+Time: 12140 ns  Iteration: 0  Process: /tb_fifo_buffer/line__13  File: D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_fifo_buffer.vhd
+$finish called at time : 12140 ns : File "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_fifo_buffer.vhd" Line 50
+INFO: [Simtcl 6-16] Simulation closed
+LOG CHECK PASSED: fifo-8
+BEGIN VERIFICATION: routing TOP: tb_xy_route_unit
+Command: launch_simulation  -simset sim_1 -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Sun Oct  4 19:34:52 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_xy_route_unit'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'E:/Vivado-ML/2026.1/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_xy_route_unit' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj tb_xy_route_unit_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/rtl/xy_route_unit.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'xy_route_unit'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_xy_route_unit.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_xy_route_unit'
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot tb_xy_route_unit_behav xil_defaultlib.tb_xy_route_unit -log elaborate.log"
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/Vivado-ML/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot tb_xy_route_unit_behav xil_defaultlib.tb_xy_route_unit -log elaborate.log 
+INFO: [XSIM 43-3493] Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package xil_defaultlib.noc_pkg
+Compiling package std.env
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [xy_route_unit_default]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [\xy_route_unit(current=1)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [\xy_route_unit(current=2)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [\xy_route_unit(current=3)\]
+Compiling architecture test of entity xil_defaultlib.tb_xy_route_unit
+Built simulation snapshot tb_xy_route_unit_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_xy_route_unit_behav -key {Behavioral:sim_1:Functional:tb_xy_route_unit} -tclbatch {tb_xy_route_unit.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_xy_route_unit.tcl
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_xy_route_unit_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 0ns
+Note: PASS tb_xy_route_unit all 16 routes and packet roundtrip
+Time: 4 ns  Iteration: 0  Process: /tb_xy_route_unit/line__12  File: D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_xy_route_unit.vhd
+$finish called at time : 4 ns : File "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_xy_route_unit.vhd" Line 28
+INFO: [Simtcl 6-16] Simulation closed
+LOG CHECK PASSED: routing
+BEGIN VERIFICATION: arbitration TOP: tb_rr_arbiter
+Command: launch_simulation  -simset sim_1 -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Sun Oct  4 19:34:58 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_rr_arbiter'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'E:/Vivado-ML/2026.1/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_rr_arbiter' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj tb_rr_arbiter_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/rtl/rr_arbiter.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'rr_arbiter'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_rr_arbiter.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_rr_arbiter'
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot tb_rr_arbiter_behav xil_defaultlib.tb_rr_arbiter -log elaborate.log"
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/Vivado-ML/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot tb_rr_arbiter_behav xil_defaultlib.tb_rr_arbiter -log elaborate.log 
+INFO: [XSIM 43-3493] Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package xil_defaultlib.noc_pkg
+Compiling package std.env
+Compiling architecture rtl of entity xil_defaultlib.rr_arbiter [rr_arbiter_default]
+Compiling architecture test of entity xil_defaultlib.tb_rr_arbiter
+Built simulation snapshot tb_rr_arbiter_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_rr_arbiter_behav -key {Behavioral:sim_1:Functional:tb_rr_arbiter} -tclbatch {tb_rr_arbiter.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_rr_arbiter.tcl
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_rr_arbiter_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 0ns
+Note: PASS tb_rr_arbiter held grant, rotation, 5-successful-grant fairness
+Time: 910 ns  Iteration: 0  Process: /tb_rr_arbiter/line__12  File: D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_rr_arbiter.vhd
+$finish called at time : 910 ns : File "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_rr_arbiter.vhd" Line 42
+INFO: [Simtcl 6-16] Simulation closed
+LOG CHECK PASSED: arbitration
+BEGIN VERIFICATION: router-0 TOP: tb_router
+Command: launch_simulation  -simset sim_1 -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Sun Oct  4 19:35:05 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_router'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'E:/Vivado-ML/2026.1/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_router' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj tb_router_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/rtl/crossbar_5x5.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'crossbar_5x5'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/rtl/router.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'router'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_router.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_router'
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -generic_top "CURRENT=0" -L xil_defaultlib -L secureip --snapshot tb_router_behav xil_defaultlib.tb_router -log elaborate.log"
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/Vivado-ML/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -generic_top CURRENT=0 -L xil_defaultlib -L secureip --snapshot tb_router_behav xil_defaultlib.tb_router -log elaborate.log 
+INFO: [XSIM 43-3493] Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package xil_defaultlib.noc_pkg
+Compiling package std.env
+Compiling architecture rtl of entity xil_defaultlib.fifo_buffer [\fifo_buffer(depth=4)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [xy_route_unit_default]
+Compiling architecture rtl of entity xil_defaultlib.rr_arbiter [rr_arbiter_default]
+Compiling architecture rtl of entity xil_defaultlib.crossbar_5x5 [crossbar_5x5_default]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(depth=4)\]
+Compiling architecture test of entity xil_defaultlib.tb_router
+Built simulation snapshot tb_router_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_router_behav -key {Behavioral:sim_1:Functional:tb_router} -tclbatch {tb_router.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_router.tcl
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_router_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 0ns
+Note: PASS tb_router coordinate=0 accepted=12 delivered=12 concurrent=1
+Time: 490 ns  Iteration: 0  Process: /tb_router/line__14  File: D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_router.vhd
+$finish called at time : 490 ns : File "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_router.vhd" Line 71
+INFO: [Simtcl 6-16] Simulation closed
+LOG CHECK PASSED: router-0
+BEGIN VERIFICATION: router-1 TOP: tb_router
+Command: launch_simulation  -simset sim_1 -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Sun Oct  4 19:35:12 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_router'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'E:/Vivado-ML/2026.1/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_router' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj tb_router_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -generic_top "CURRENT=1" -L xil_defaultlib -L secureip --snapshot tb_router_behav xil_defaultlib.tb_router -log elaborate.log"
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/Vivado-ML/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -generic_top CURRENT=1 -L xil_defaultlib -L secureip --snapshot tb_router_behav xil_defaultlib.tb_router -log elaborate.log 
+INFO: [XSIM 43-3493] Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package xil_defaultlib.noc_pkg
+Compiling package std.env
+Compiling architecture rtl of entity xil_defaultlib.fifo_buffer [\fifo_buffer(depth=4)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [\xy_route_unit(current=1)\]
+Compiling architecture rtl of entity xil_defaultlib.rr_arbiter [rr_arbiter_default]
+Compiling architecture rtl of entity xil_defaultlib.crossbar_5x5 [crossbar_5x5_default]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(current=1,depth=4)\]
+Compiling architecture test of entity xil_defaultlib.tb_router
+Built simulation snapshot tb_router_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_router_behav -key {Behavioral:sim_1:Functional:tb_router} -tclbatch {tb_router.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_router.tcl
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_router_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 0ns
+Note: PASS tb_router coordinate=1 accepted=12 delivered=12 concurrent=1
+Time: 490 ns  Iteration: 0  Process: /tb_router/line__14  File: D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_router.vhd
+$finish called at time : 490 ns : File "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_router.vhd" Line 71
+INFO: [Simtcl 6-16] Simulation closed
+LOG CHECK PASSED: router-1
+BEGIN VERIFICATION: router-2 TOP: tb_router
+Command: launch_simulation  -simset sim_1 -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Sun Oct  4 19:35:18 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_router'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'E:/Vivado-ML/2026.1/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_router' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj tb_router_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -generic_top "CURRENT=2" -L xil_defaultlib -L secureip --snapshot tb_router_behav xil_defaultlib.tb_router -log elaborate.log"
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/Vivado-ML/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -generic_top CURRENT=2 -L xil_defaultlib -L secureip --snapshot tb_router_behav xil_defaultlib.tb_router -log elaborate.log 
+INFO: [XSIM 43-3493] Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package xil_defaultlib.noc_pkg
+Compiling package std.env
+Compiling architecture rtl of entity xil_defaultlib.fifo_buffer [\fifo_buffer(depth=4)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [\xy_route_unit(current=2)\]
+Compiling architecture rtl of entity xil_defaultlib.rr_arbiter [rr_arbiter_default]
+Compiling architecture rtl of entity xil_defaultlib.crossbar_5x5 [crossbar_5x5_default]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(current=2,depth=4)\]
+Compiling architecture test of entity xil_defaultlib.tb_router
+Built simulation snapshot tb_router_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_router_behav -key {Behavioral:sim_1:Functional:tb_router} -tclbatch {tb_router.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_router.tcl
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_router_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 0ns
+Note: PASS tb_router coordinate=2 accepted=12 delivered=12 concurrent=1
+Time: 490 ns  Iteration: 0  Process: /tb_router/line__14  File: D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_router.vhd
+$finish called at time : 490 ns : File "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_router.vhd" Line 71
+INFO: [Simtcl 6-16] Simulation closed
+LOG CHECK PASSED: router-2
+BEGIN VERIFICATION: router-3 TOP: tb_router
+Command: launch_simulation  -simset sim_1 -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Sun Oct  4 19:35:25 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_router'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'E:/Vivado-ML/2026.1/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_router' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj tb_router_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -generic_top "CURRENT=3" -L xil_defaultlib -L secureip --snapshot tb_router_behav xil_defaultlib.tb_router -log elaborate.log"
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/Vivado-ML/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -generic_top CURRENT=3 -L xil_defaultlib -L secureip --snapshot tb_router_behav xil_defaultlib.tb_router -log elaborate.log 
+INFO: [XSIM 43-3493] Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package xil_defaultlib.noc_pkg
+Compiling package std.env
+Compiling architecture rtl of entity xil_defaultlib.fifo_buffer [\fifo_buffer(depth=4)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [\xy_route_unit(current=3)\]
+Compiling architecture rtl of entity xil_defaultlib.rr_arbiter [rr_arbiter_default]
+Compiling architecture rtl of entity xil_defaultlib.crossbar_5x5 [crossbar_5x5_default]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(current=3,depth=4)\]
+Compiling architecture test of entity xil_defaultlib.tb_router
+Built simulation snapshot tb_router_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_router_behav -key {Behavioral:sim_1:Functional:tb_router} -tclbatch {tb_router.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_router.tcl
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_router_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 0ns
+Note: PASS tb_router coordinate=3 accepted=12 delivered=12 concurrent=1
+Time: 490 ns  Iteration: 0  Process: /tb_router/line__14  File: D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_router.vhd
+$finish called at time : 490 ns : File "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_router.vhd" Line 71
+INFO: [Simtcl 6-16] Simulation closed
+LOG CHECK PASSED: router-3
+BEGIN VERIFICATION: demo TOP: tb_demo
+Command: launch_simulation  -simset sim_1 -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Sun Oct  4 19:35:31 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_demo'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'E:/Vivado-ML/2026.1/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_demo' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj tb_demo_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/rtl/noc_2x2_core.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'noc_2x2_core'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/rtl/packet_generator.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'packet_generator'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/rtl/packet_receiver.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'packet_receiver'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/rtl/traffic_node.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'traffic_node'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/rtl/noc_fpga_demo_top.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'noc_fpga_demo_top'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_demo.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_demo'
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot tb_demo_behav xil_defaultlib.tb_demo -log elaborate.log"
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/Vivado-ML/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot tb_demo_behav xil_defaultlib.tb_demo -log elaborate.log 
+INFO: [XSIM 43-3493] Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package std.env
+Compiling package xil_defaultlib.noc_pkg
+Compiling architecture rtl of entity xil_defaultlib.packet_generator [packet_generator_default]
+Compiling architecture rtl of entity xil_defaultlib.packet_receiver [packet_receiver_default]
+Compiling architecture structural of entity xil_defaultlib.traffic_node [traffic_node_default]
+Compiling architecture rtl of entity xil_defaultlib.packet_generator [\packet_generator(node=1)\]
+Compiling architecture rtl of entity xil_defaultlib.packet_receiver [\packet_receiver(node=1)\]
+Compiling architecture structural of entity xil_defaultlib.traffic_node [\traffic_node(node=1)\]
+Compiling architecture rtl of entity xil_defaultlib.packet_generator [\packet_generator(node=2)\]
+Compiling architecture rtl of entity xil_defaultlib.packet_receiver [\packet_receiver(node=2)\]
+Compiling architecture structural of entity xil_defaultlib.traffic_node [\traffic_node(node=2)\]
+Compiling architecture rtl of entity xil_defaultlib.packet_generator [\packet_generator(node=3)\]
+Compiling architecture rtl of entity xil_defaultlib.packet_receiver [\packet_receiver(node=3)\]
+Compiling architecture structural of entity xil_defaultlib.traffic_node [\traffic_node(node=3)\]
+Compiling architecture rtl of entity xil_defaultlib.fifo_buffer [\fifo_buffer(depth=4)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [xy_route_unit_default]
+Compiling architecture rtl of entity xil_defaultlib.rr_arbiter [rr_arbiter_default]
+Compiling architecture rtl of entity xil_defaultlib.crossbar_5x5 [crossbar_5x5_default]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(depth=4)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [\xy_route_unit(current=1)\]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(current=1,depth=4)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [\xy_route_unit(current=2)\]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(current=2,depth=4)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [\xy_route_unit(current=3)\]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(current=3,depth=4)\]
+Compiling architecture structural of entity xil_defaultlib.noc_2x2_core [\noc_2x2_core(depth=4)\]
+Compiling architecture structural of entity xil_defaultlib.noc_fpga_demo_top [noc_fpga_demo_top_default]
+Compiling architecture test of entity xil_defaultlib.tb_demo
+Built simulation snapshot tb_demo_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_demo_behav -key {Behavioral:sim_1:Functional:tb_demo} -tclbatch {tb_demo.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_demo.tcl
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_demo_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 0ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:05 . Memory (MB): peak = 608.867 ; gain = 0.000
+Note: PASS tb_demo 64 delivered
+Time: 410 ns  Iteration: 0  Process: /tb_demo/line__12  File: D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_demo.vhd
+$finish called at time : 410 ns : File "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_demo.vhd" Line 19
+INFO: [Simtcl 6-16] Simulation closed
+LOG CHECK PASSED: demo
+BEGIN VERIFICATION: mesh-4 TOP: tb_noc_2x2
+Command: launch_simulation  -simset sim_1 -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Sun Oct  4 19:35:39 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_noc_2x2'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'E:/Vivado-ML/2026.1/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_noc_2x2' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj tb_noc_2x2_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_noc_2x2.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_noc_2x2'
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -generic_top "DEPTH=4" -generic_top "SCENARIO=0" -generic_top "RUN_ID="xsim-directed-d4"" -generic_top "TRACE_FILE="D:/NoC_2x2_Project/evidence/vivado/xsim/directed-d4/trace.csv"" -generic_top "TRACE_LEVEL=2" -L xil_defaultlib -L secureip --snapshot tb_noc_2x2_behav xil_defaultlib.tb_noc_2x2 -log elaborate.log"
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/Vivado-ML/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -generic_top DEPTH=4 -generic_top SCENARIO=0 -generic_top RUN_ID=xsim-directed-d4 -generic_top TRACE_FILE=D:/NoC_2x2_Project/evidence/vivado/xsim/directed-d4/trace.csv -generic_top TRACE_LEVEL=2 -L xil_defaultlib -L secureip --snapshot tb_noc_2x2_behav xil_defaultlib.tb_noc_2x2 -log elaborate.log 
+INFO: [XSIM 43-3493] Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package std.env
+Compiling package xil_defaultlib.noc_pkg
+Compiling architecture rtl of entity xil_defaultlib.fifo_buffer [\fifo_buffer(depth=4)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [xy_route_unit_default]
+Compiling architecture rtl of entity xil_defaultlib.rr_arbiter [rr_arbiter_default]
+Compiling architecture rtl of entity xil_defaultlib.crossbar_5x5 [crossbar_5x5_default]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(depth=4)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [\xy_route_unit(current=1)\]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(current=1,depth=4)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [\xy_route_unit(current=2)\]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(current=2,depth=4)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [\xy_route_unit(current=3)\]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(current=3,depth=4)\]
+Compiling architecture structural of entity xil_defaultlib.noc_2x2_core [\noc_2x2_core(depth=4)\]
+Compiling architecture test of entity xil_defaultlib.tb_noc_2x2
+Built simulation snapshot tb_noc_2x2_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_noc_2x2_behav -key {Behavioral:sim_1:Functional:tb_noc_2x2} -tclbatch {tb_noc_2x2.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_noc_2x2.tcl
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_noc_2x2_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 0ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:05 . Memory (MB): peak = 608.867 ; gain = 0.000
+Note: PASS tb_noc_2x2 accepted=106 delivered=74 reset_discarded=32 attempted_cycles=404 concurrent_edges=18 max_outstanding=32
+Time: 2400 ns  Iteration: 0  Process: /tb_noc_2x2/line__22  File: D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_noc_2x2.vhd
+$finish called at time : 2400 ns : File "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_noc_2x2.vhd" Line 180
+INFO: [Simtcl 6-16] Simulation closed
+LOG CHECK PASSED: mesh-4
+BEGIN VERIFICATION: mesh-2 TOP: tb_noc_2x2
+Command: launch_simulation  -simset sim_1 -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Sun Oct  4 19:35:47 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_noc_2x2'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'E:/Vivado-ML/2026.1/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_noc_2x2' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj tb_noc_2x2_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -generic_top "DEPTH=2" -generic_top "SCENARIO=0" -generic_top "RUN_ID="xsim-directed-d2"" -generic_top "TRACE_FILE="D:/NoC_2x2_Project/evidence/vivado/xsim/directed-d2/trace.csv"" -generic_top "TRACE_LEVEL=2" -L xil_defaultlib -L secureip --snapshot tb_noc_2x2_behav xil_defaultlib.tb_noc_2x2 -log elaborate.log"
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/Vivado-ML/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -generic_top DEPTH=2 -generic_top SCENARIO=0 -generic_top RUN_ID=xsim-directed-d2 -generic_top TRACE_FILE=D:/NoC_2x2_Project/evidence/vivado/xsim/directed-d2/trace.csv -generic_top TRACE_LEVEL=2 -L xil_defaultlib -L secureip --snapshot tb_noc_2x2_behav xil_defaultlib.tb_noc_2x2 -log elaborate.log 
+INFO: [XSIM 43-3493] Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package std.env
+Compiling package xil_defaultlib.noc_pkg
+Compiling architecture rtl of entity xil_defaultlib.fifo_buffer [\fifo_buffer(depth=2)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [xy_route_unit_default]
+Compiling architecture rtl of entity xil_defaultlib.rr_arbiter [rr_arbiter_default]
+Compiling architecture rtl of entity xil_defaultlib.crossbar_5x5 [crossbar_5x5_default]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(depth=2)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [\xy_route_unit(current=1)\]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(current=1,depth=2)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [\xy_route_unit(current=2)\]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(current=2,depth=2)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [\xy_route_unit(current=3)\]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(current=3,depth=2)\]
+Compiling architecture structural of entity xil_defaultlib.noc_2x2_core [\noc_2x2_core(depth=2)\]
+Compiling architecture test of entity xil_defaultlib.tb_noc_2x2
+Built simulation snapshot tb_noc_2x2_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_noc_2x2_behav -key {Behavioral:sim_1:Functional:tb_noc_2x2} -tclbatch {tb_noc_2x2.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_noc_2x2.tcl
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_noc_2x2_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 0ns
+Note: PASS tb_noc_2x2 accepted=78 delivered=60 reset_discarded=18 attempted_cycles=396 concurrent_edges=13 max_outstanding=18
+Time: 2100 ns  Iteration: 0  Process: /tb_noc_2x2/line__22  File: D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_noc_2x2.vhd
+$finish called at time : 2100 ns : File "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_noc_2x2.vhd" Line 180
+INFO: [Simtcl 6-16] Simulation closed
+LOG CHECK PASSED: mesh-2
+BEGIN VERIFICATION: mesh-8 TOP: tb_noc_2x2
+Command: launch_simulation  -simset sim_1 -mode behavioral
+INFO: [Vivado 12-25911] Executing simulation for 'XSim' simulator
+INFO: [Vivado 12-28535] Process started - Sun Oct  4 19:35:54 2026
+
+INFO: [Vivado 12-12493] Simulation top is 'tb_noc_2x2'
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'E:/Vivado-ML/2026.1/Vivado/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_noc_2x2' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xvhdl --incr --relax -prj tb_noc_2x2_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -generic_top "DEPTH=8" -generic_top "SCENARIO=0" -generic_top "RUN_ID="xsim-directed-d8"" -generic_top "TRACE_FILE="D:/NoC_2x2_Project/evidence/vivado/xsim/directed-d8/trace.csv"" -generic_top "TRACE_LEVEL=2" -L xil_defaultlib -L secureip --snapshot tb_noc_2x2_behav xil_defaultlib.tb_noc_2x2 -log elaborate.log"
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/Vivado-ML/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -generic_top DEPTH=8 -generic_top SCENARIO=0 -generic_top RUN_ID=xsim-directed-d8 -generic_top TRACE_FILE=D:/NoC_2x2_Project/evidence/vivado/xsim/directed-d8/trace.csv -generic_top TRACE_LEVEL=2 -L xil_defaultlib -L secureip --snapshot tb_noc_2x2_behav xil_defaultlib.tb_noc_2x2 -log elaborate.log 
+INFO: [XSIM 43-3493] Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package std.env
+Compiling package xil_defaultlib.noc_pkg
+Compiling architecture rtl of entity xil_defaultlib.fifo_buffer [\fifo_buffer(depth=8)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [xy_route_unit_default]
+Compiling architecture rtl of entity xil_defaultlib.rr_arbiter [rr_arbiter_default]
+Compiling architecture rtl of entity xil_defaultlib.crossbar_5x5 [crossbar_5x5_default]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(depth=8)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [\xy_route_unit(current=1)\]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(current=1,depth=8)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [\xy_route_unit(current=2)\]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(current=2,depth=8)\]
+Compiling architecture rtl of entity xil_defaultlib.xy_route_unit [\xy_route_unit(current=3)\]
+Compiling architecture rtl of entity xil_defaultlib.router [\router(current=3,depth=8)\]
+Compiling architecture structural of entity xil_defaultlib.noc_2x2_core [\noc_2x2_core(depth=8)\]
+Compiling architecture test of entity xil_defaultlib.tb_noc_2x2
+Built simulation snapshot tb_noc_2x2_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/Vivado_Projects/NoC_2x2/NoC_2x2.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_noc_2x2_behav -key {Behavioral:sim_1:Functional:tb_noc_2x2} -tclbatch {tb_noc_2x2.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_noc_2x2.tcl
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_noc_2x2_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 0ns
+Note: PASS tb_noc_2x2 accepted=158 delivered=102 reset_discarded=56 attempted_cycles=420 concurrent_edges=28 max_outstanding=56
+Time: 3 us  Iteration: 0  Process: /tb_noc_2x2/line__22  File: D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_noc_2x2.vhd
+$finish called at time : 3 us : File "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_noc_2x2.vhd" Line 180
+INFO: [Simtcl 6-16] Simulation closed
+LOG CHECK PASSED: mesh-8
+All 14 actual XSim logs contained PASS. Preserve these logs before any claim.
+INFO: [Common 17-206] Exiting Vivado at Sun Oct  4 19:35:59 2026...

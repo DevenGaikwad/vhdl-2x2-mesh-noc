@@ -1,0 +1,11 @@
+rtl/noc_pkg.vhd
+rtl/fifo_buffer.vhd
+rtl/xy_route_unit.vhd
+rtl/rr_arbiter.vhd
+rtl/crossbar_5x5.vhd
+rtl/router.vhd
+rtl/noc_2x2_core.vhd
+rtl/packet_generator.vhd
+rtl/packet_receiver.vhd
+rtl/traffic_node.vhd
+rtl/noc_fpga_demo_top.vhd

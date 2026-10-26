@@ -1,0 +1,3 @@
+/workspace/scratch/3a2e521c2479/work_noc_github_2026-10-26/tools/ghdl/usr/bin/ghdl -r --std=08 tb_noc_2x2 -gDEPTH=4 -gRUN_ID=directed-d4 -gTRACE_FILE=/workspace/scratch/3a2e521c2479/work_noc_github_2026-10-26/validation/project/evidence/ghdl/directed-d4.csv -gTRACE_LEVEL=2 --assert-level=error
+/workspace/scratch/3a2e521c2479/work_noc_github_2026-10-26/validation/project/tb/tb_noc_2x2.vhd:177:3:@2400ns:(report note): PASS tb_noc_2x2 accepted=106 delivered=74 reset_discarded=32 attempted_cycles=404 concurrent_edges=18 max_outstanding=32
+simulation finished @2400ns

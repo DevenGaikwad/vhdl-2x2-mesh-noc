@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "checked_at_utc": "2026-10-02T06:55:37.664027+00:00",
+  "prepared_git_commit": "bf94666cc36cc2ce97012345fecbbe985b1a25bc",
+  "preserved_software_baseline": "74f37b048852065e89638048dee0f39943e1c5cc",
+  "scope": "Final bundle clone, Git history, tracked-source and reviewed-artifact consistency. Existing simulation and experiment results were not rerun.",
+  "bundle_restored_branch": "main",
+  "full_commit_history_count": 9,
+  "tracked_files_checked": 235,
+  "tracked_git_blobs_and_modes": "identical",
+  "working_trees": "clean",
+  "raw_bytes_equal_files": 233,
+  "expected_attribute_normalization": [
+    {
+      "file": "scripts/check_frontend.ps1",
+      "attribute": "text eol=crlf",
+      "working_sha256": "4560ba2e0758db12d2829a6f85568e94031be3856f530815031246370fc044a0",
+      "bundle_checkout_sha256": "8f92ec133d40ccd6c41e1763b8355a545a40fdfc856177373bd8059afde93ebf"
+    },
+    {
+      "file": "scripts/run_vivado.ps1",
+      "attribute": "text eol=crlf",
+      "working_sha256": "37ccbf8af42d221a3523edc4125f0def01da49bb12112cb404d8d8f9f6867fa4",
+      "bundle_checkout_sha256": "2731e6231f87a8be0456dd649c57633b0a567306f7e296a91a21317c5f0f3a15"
+    }
+  ],
+  "rtl_testbench_constraints_since_baseline": "unchanged",
+  "reviewed_document_and_presentation_hashes": "PASS",
+  "retained_evidence": {
+    "frozen_sources": 17,
+    "portable_test_configurations": 14,
+    "experiments": 93,
+    "accepted": 82523,
+    "delivered": 82523
+  },
+  "refinement_validation": {
+    "strict_production_build": "PASS",
+    "root_browser": "PASS",
+    "nested_path_browser": "PASS",
+    "desktop_views_per_path": 9,
+    "mobile_views_per_path": 9
+  },
+  "target_execution": "Vivado/XSim, device STA and physical FPGA remain pending"
+}

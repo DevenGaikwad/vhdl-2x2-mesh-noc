@@ -1,0 +1,10 @@
+# Controlled RTL experiments
+Run `node scripts/run_ghdl.mjs` first, then `node experiments/run_experiments.mjs` from the repository root with GHDL on PATH. Node 24.19+ executes the erasable TypeScript data module used for independent trace parsing. All packet movement comes from GHDL RTL, never a JavaScript network model.
+
+93 runs: three depths × 31 configurations. At each depth: one no-load, one concurrent disjoint, one burst and one sustained-contention trial; 12 all-to-all and 12 hotspot trials (four Bernoulli generation gates 0.10/0.25/0.50/0.90 × seeds 101/202/303); three controlled-sink-stall trials. The reference depth four passes before depth two/eight exploration. Xorshift32 stimulus is deterministic. A blocked producer retains its packet and does not generate another, so the configured rate is a generation gate when free, not an independent open-loop offered rate.
+
+100 warm-up cycles, 1000 measurement cycles, then stop new generation and drain all already generated attempts. Throughput counts deliveries inside measurement regardless of injection phase. Latency follows the accepted-injection phase-one cohort, including drain completions. Offer demand counts valid presentation cycles, including retries. Export accepted and delivered rates separately. All trials use the same sink schedule for their scenario. Sink-stall scenario blocks every sink for the first 60 cycles of each 160-cycle period. Values use cycles and flits/cycle, with no bit/s estimate from an unverified clock.
+
+`results/metrics.json`, `metrics.csv`, `configuration.json`, raw CSV traces and actual per-run logs are generated. Summary includes SHA-256 source and trace lineage. Jain fairness here describes four-source delivered service, not a proof of local arbiter fairness under unequal eligibility. The five-grant bound is separately checked by the persistent-request arbiter test. No fixed-priority/shared-bus ablation was conducted. No FPGA cost/power result is inferred from RTL simulations.
+
+The VHDL testbench clock toggles every 5ns (10ns simulation period). This is event scheduling for simulation, not a verified board clock or physical rate.

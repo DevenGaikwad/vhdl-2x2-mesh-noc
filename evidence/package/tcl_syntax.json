@@ -1,0 +1,46 @@
+{
+  "scope": "Tcl script completeness; does not execute Vivado commands",
+  "tcl_version": "9.0.4",
+  "files": [
+    {
+      "file": "constraints/board_pins_TEMPLATE.xdc",
+      "complete": true
+    },
+    {
+      "file": "constraints/clock_only.xdc",
+      "complete": true
+    },
+    {
+      "file": "vivado/common.tcl",
+      "complete": true
+    },
+    {
+      "file": "vivado/create_project.tcl",
+      "complete": true
+    },
+    {
+      "file": "vivado/reports.tcl",
+      "complete": true
+    },
+    {
+      "file": "vivado/run_route_demo.tcl",
+      "complete": true
+    },
+    {
+      "file": "vivado/run_sim.tcl",
+      "complete": true
+    },
+    {
+      "file": "vivado/run_synth.tcl",
+      "complete": true
+    },
+    {
+      "file": "vivado/run_verification.tcl",
+      "complete": true
+    },
+    {
+      "file": "vivado/waves.tcl",
+      "complete": true
+    }
+  ]
+}

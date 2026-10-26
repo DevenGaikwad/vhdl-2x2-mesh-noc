@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-26",
+  "node": "24.22.1",
+  "npm": "11.9.0",
+  "frontend": {
+    "tests_passed": 22,
+    "tests_failed": 0,
+    "typecheck": "PASS",
+    "production_build": "PASS",
+    "vite": "8.3.5",
+    "audit": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    }
+  },
+  "new_isolated_ghdl": {
+    "version": "4.1.0",
+    "configurations_passed": 14,
+    "source_unchanged": true
+  },
+  "archived_evidence": "PASS: 17 source hashes,14 GHDL logs,14 XSim logs,12 Vivado reports,93 trace/log pairs;82523 accepted=delivered",
+  "canonical_screenshots": 42,
+  "protected_document_changes": false,
+  "maintained_markdown_link_issues": []
+}

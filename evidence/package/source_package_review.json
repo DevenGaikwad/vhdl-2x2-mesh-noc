@@ -1,0 +1,10 @@
+{
+  "schema_version": 2,
+  "status": "PASS",
+  "markdown_files_checked": 25,
+  "relative_targets_checked": 26,
+  "missing_targets": [],
+  "text_files_scanned_for_common_credential_patterns": 89,
+  "credential_like_findings": [],
+  "claim_boundary": "Existing relative Markdown targets and common credential/private-key patterns; not an exhaustive security audit."
+}

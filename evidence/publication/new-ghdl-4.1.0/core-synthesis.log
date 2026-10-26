@@ -1,0 +1,3 @@
+/workspace/scratch/3a2e521c2479/vhdl-2x2-mesh-noc/rtl/fifo_buffer.vhd:13:10:note: found RAM "mem", width: 32 bits, depth: 4
+  signal mem : memory_t;
+         ^

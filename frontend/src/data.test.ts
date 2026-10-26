@@ -1,0 +1,28 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {decode,route,parseCSV,parseTrace,inspectTrace,fields,safeCSVCell,parseMetrics,parseResourceReport} from './data.ts';
+const head=fields.join(',')+'\n';
+const inject='unit,0,1,1,inject,0,L,0,3,1,1,86200001,-1,,,';
+const done='unit,0,7,1,deliver,3,L,0,3,1,1,86200001,-1,,,';
+test('all 16 shortest XY paths',()=>{for(let s=0;s<4;s++)for(let d=0;d<4;d++){const p=route(s,d);assert.equal(p[0],s);assert.equal(p.at(-1),d);assert.equal(p.length-1,Number(s%2!==d%2)+Number((s>>1)!==(d>>1)));}assert.deepEqual(route(2,1),[2,3,1])});
+test('32-bit decoding',()=>{const p=decode('Ffffffff');assert.equal(p.payload,524287);assert.equal(p.id,15);assert.equal(p.src,3);assert.equal(p.dst,3);assert.equal(p.bits.length,32)});
+test('quoted CSV and CRLF',()=>assert.deepEqual(parseCSV('a,b\r\n"x,y","a""b"\r\n'),[['a','b'],['x,y','a"b']]));
+test('unclosed quotes rejected',()=>assert.throws(()=>parseCSV('"abc')));
+test('latency and accepted accounting',()=>{const m=inspectTrace(parseTrace(head+inject+'\n'+done));assert.equal(m.latency_mean,6);assert.equal(m.accepted,1);assert.equal(m.delivered,1)});
+test('mixed run rejected',()=>assert.throws(()=>parseTrace(head+inject+'\n'+done.replace('unit','other'))));
+test('invalid header rejected',()=>assert.throws(()=>parseTrace('a,b\n1,2')));
+test('bad field width rejected',()=>assert.throws(()=>parseTrace(head+inject.replace('86200001','8601'))));
+test('hex mismatch rejected',()=>assert.throws(()=>parseTrace(head+inject.replace(',0,3,1,1,',',0,2,1,1,'))));
+test('wrong destination rejected',()=>assert.throws(()=>parseTrace(head+done.replace('deliver,3','deliver,2'))));
+test('out-of-order cycles rejected',()=>assert.throws(()=>parseTrace(head+done+'\n'+inject)));
+test('duplicate delivery rejected',()=>assert.throws(()=>inspectTrace(parseTrace(head+inject+'\n'+done+'\n'+done))));
+test('partial trace preserved',()=>assert.equal(inspectTrace(parseTrace(head+inject)).verification,'PARTIAL TRACE'));
+test('reset discards accounted',()=>{const m=inspectTrace(parseTrace(head+inject+'\n'+done.replace('deliver','reset_discard')));assert.equal(m.reset_discarded,1);assert.equal(m.delivered,0)});
+test('invalid state range rejected',()=>assert.throws(()=>parseTrace(head+'unit,0,1,1,state,0,L,-1,-1,-1,-1,,4,32,0,1')));
+test('safe CSV formula export',()=>assert.equal(safeCSVCell('=1+1'),'"\'=1+1"'));
+test('metrics provenance required',()=>assert.throws(()=>parseMetrics('{"schema_version":1,"runs":[]}')));
+
+test('event-only rate denominator is unavailable',()=>{const m=inspectTrace(parseTrace(head+inject+'\n'+done));assert.equal(m.throughput,null);assert.equal(m.measured_cycles,0)});
+test('complete contiguous state coverage defines rate denominator',()=>{let rows='';for(let cycle=1;cycle<=3;cycle++)for(let router=0;router<4;router++)for(const port of ['N','S','E','W','L'])rows+=`unit,0,${cycle},1,state,${router},${port},-1,-1,-1,-1,,0,0,0,1\n`;const m=inspectTrace(parseTrace(head+rows));assert.equal(m.measured_cycles,3);assert.equal(m.throughput,0)});
+test('missing state edge cannot inflate rate',()=>{const rows='unit,0,1,1,state,0,L,-1,-1,-1,-1,,0,0,0,1';assert.equal(inspectTrace(parseTrace(head+rows)).throughput,null)});
+test('invalid resource part rejected',()=>assert.throws(()=>parseResourceReport(JSON.stringify({schema_version:1,kind:'vivado_report_export',part:'xc7z010',tool:'Vivado',stage:'synthesis_ooc',reports:[]}))));
+test('linked packet follows XY only',()=>{const link='unit,0,3,1,link,0,S,0,3,1,1,86200001,-1,,,';assert.throws(()=>inspectTrace(parseTrace(head+inject+'\n'+link)))});

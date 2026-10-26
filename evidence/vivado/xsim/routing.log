@@ -1,0 +1,4 @@
+Time resolution is 1 ps
+Note: PASS tb_xy_route_unit all 16 routes and packet roundtrip
+Time: 4 ns  Iteration: 0  Process: /tb_xy_route_unit/line__12  File: D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_xy_route_unit.vhd
+$finish called at time : 4 ns : File "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_xy_route_unit.vhd" Line 28

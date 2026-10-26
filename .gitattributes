@@ -1,0 +1,9 @@
+# Exact archived source, CSV and log bytes must survive cross-platform checkouts.
+* -text
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
+*.docx binary
+*.pptx binary
+*.zip binary

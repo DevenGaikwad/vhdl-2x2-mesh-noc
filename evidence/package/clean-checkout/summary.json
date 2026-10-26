@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "checked_commit": "6f089ed040de15cd3e2a2fce63b8bea8d05015e1",
+  "tested_bundle_sha256": "59db4e60a709390bfdcd63cf7e2a08b9cdf99baabf8340169c6ccbcf506e624f",
+  "node": "v24.19.0",
+  "ghdl": "GHDL 4.1.0 (Ubuntu 4.1.0+dfsg-0ubuntu2.1) [Dunoon edition]",
+  "source_hashes_checked": 17,
+  "frontend_parser_tests": 22,
+  "demo_delivered": 64,
+  "checks": [
+    {
+      "check": "bundle-verify",
+      "status": "PASS",
+      "log": "evidence/package/clean-checkout/bundle-verify.log"
+    },
+    {
+      "check": "clone",
+      "status": "PASS",
+      "log": "evidence/package/clean-checkout/clone.log"
+    },
+    {
+      "check": "node-version",
+      "status": "PASS",
+      "log": "evidence/package/clean-checkout/node-version.log"
+    },
+    {
+      "check": "frontend-install",
+      "status": "PASS",
+      "log": "evidence/package/clean-checkout/frontend-install.log"
+    },
+    {
+      "check": "frontend-tests",
+      "status": "PASS",
+      "log": "evidence/package/clean-checkout/frontend-tests.log"
+    },
+    {
+      "check": "frontend-build",
+      "status": "PASS",
+      "elapsed_seconds": 0.63,
+      "log": "evidence/package/clean-checkout/frontend-build.log"
+    },
+    {
+      "check": "ghdl-version",
+      "status": "PASS",
+      "elapsed_seconds": 0.004,
+      "log": "evidence/package/clean-checkout/ghdl-version.log"
+    },
+    {
+      "check": "vhdl-analysis",
+      "status": "PASS",
+      "elapsed_seconds": 0.014,
+      "log": "evidence/package/clean-checkout/vhdl-analysis.log"
+    },
+    {
+      "check": "demo-elaboration",
+      "status": "PASS",
+      "elapsed_seconds": 0.023,
+      "log": "evidence/package/clean-checkout/demo-elaboration.log"
+    },
+    {
+      "check": "demo-simulation",
+      "status": "PASS",
+      "elapsed_seconds": 0.043,
+      "log": "evidence/package/clean-checkout/demo-simulation.log"
+    }
+  ],
+  "scope": "Actual fresh local-bundle clone, install/tests/build, all VHDL analysis and one 64-packet demo; original 14-test and 93-run suites were preserved.",
+  "github_remote": "not created or pushed",
+  "hosted_actions": "not observed",
+  "vivado_xsim": "not executed",
+  "board": "not validated",
+  "release_follow_up": "Later changes only add release status and validation records; executable sources and academic artifacts stay identical to the checked commit. Final bundle HEAD is recorded in PACKAGE_MANIFEST.json."
+}

@@ -1,0 +1,38 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sun Oct  4 19:49:13 2026
+| Host         : DESKTOP-SBIR7OL running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file D:/NoC_2x2_Project/evidence/vivado/route_demo_ooc/utilization_hierarchical.rpt
+| Design       : noc_fpga_demo_top
+| Device       : xc7s15cpga196-2
+| Speed File   : -2
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++---------------------------+------------------------+------------+------------+---------+------+-----+--------+--------+------------+
+|          Instance         |         Module         | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | DSP Blocks |
++---------------------------+------------------------+------------+------------+---------+------+-----+--------+--------+------------+
+| noc_fpga_demo_top         |                  (top) |       1067 |        841 |     226 |    0 | 236 |      0 |      0 |          0 |
+|   mesh                    |           noc_2x2_core |       1005 |        779 |     226 |    0 | 147 |      0 |      0 |          0 |
+|     routers[3].tile       | router__parameterized2 |        250 |        194 |      56 |    0 |  36 |      0 |      0 |          0 |
+|       inputs[3].live.fifo |          fifo_buffer_0 |         93 |         71 |      22 |    0 |   7 |      0 |      0 |          0 |
+|     routers[0].tile       |                 router |        244 |        188 |      56 |    0 |  36 |      0 |      0 |          0 |
+|       inputs[2].live.fifo |         fifo_buffer_17 |         96 |         74 |      22 |    0 |   7 |      0 |      0 |          0 |
+|     routers[1].tile       | router__parameterized0 |        259 |        201 |      58 |    0 |  39 |      0 |      0 |          0 |
+|       inputs[3].live.fifo |         fifo_buffer_11 |         93 |         71 |      22 |    0 |   7 |      0 |      0 |          0 |
+|     routers[2].tile       | router__parameterized1 |        248 |        192 |      56 |    0 |  36 |      0 |      0 |          0 |
+|       inputs[2].live.fifo |          fifo_buffer_5 |        100 |         78 |      22 |    0 |   7 |      0 |      0 |          0 |
++---------------------------+------------------------+------------+------------+---------+------+-----+--------+--------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+

@@ -1,0 +1,19 @@
+# Generated working outputs; saved evidence and benchmark records stay tracked.
+/build/
+**/node_modules/
+/frontend/dist/
+*.cf
+*.wdb
+*.jou
+*.pb
+.Xil/
+*.backup.*
+*.tmp
+*.bak
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
+.env
+.env.*
+!.env.example

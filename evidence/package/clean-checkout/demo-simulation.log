@@ -1,0 +1,3 @@
+COMMAND: /tmp/noc-ghdl/usr/bin/ghdl-mcode -r --std=08 tb_demo --assert-level=error
+/workspace/scratch/3a2e521c2479/build/noc-clean-n4zi1m_9/project/tb/tb_demo.vhd:19:3:@410ns:(report note): PASS tb_demo 64 delivered
+simulation finished @410ns

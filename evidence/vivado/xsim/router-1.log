@@ -1,0 +1,4 @@
+Time resolution is 1 ps
+Note: PASS tb_router coordinate=1 accepted=12 delivered=12 concurrent=1
+Time: 490 ns  Iteration: 0  Process: /tb_router/line__14  File: D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_router.vhd
+$finish called at time : 490 ns : File "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_router.vhd" Line 71

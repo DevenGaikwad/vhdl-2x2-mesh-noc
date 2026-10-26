@@ -1,0 +1,110 @@
+[
+  {
+    "figure": 1,
+    "path": "docs/assets/architecture/01-main-block-diagram.png",
+    "caption": "Fig. 1: Main block diagram of the 2 \u00d7 2 mesh NoC. CPU, memory and AI names identify traffic-model endpoints; they are not implemented processors.",
+    "sha256": "eee29adfe865ee16c78ba3199228cbfc2238706c125be0638e8156eefd3f7829"
+  },
+  {
+    "figure": 2,
+    "path": "docs/assets/architecture/02-router-datapath.png",
+    "caption": "Fig. 2: Input FIFO heads, routing requests, per-output retained grants and crossbar selection.",
+    "sha256": "0a62ee3008ec988ed33b7ee859d08a0420f16c29b40862ae03f9e36dcc8f2b00"
+  },
+  {
+    "figure": 3,
+    "path": "docs/assets/architecture/03-boundary-port-masks.png",
+    "caption": "Fig. 3: Active corner ports and boundary masks; logical port indices remain uniform.",
+    "sha256": "8035a8738e89244a2697c4d769666d3d8ee045f6c8b7efc10cebf418f6599859"
+  },
+  {
+    "figure": 4,
+    "path": "docs/assets/architecture/04-packet-fields.png",
+    "caption": "Fig. 4: Bit allocation used by the shared VHDL packet package and dashboard decoder.",
+    "sha256": "0a6a65a65d09464ae29bb08156994ca02602d8f64f73b8bc72fddb8f1f912f98"
+  },
+  {
+    "figure": 5,
+    "path": "docs/assets/architecture/05-xy-flowchart.png",
+    "caption": "Fig. 5: XY routing for a valid FIFO head. Matching A circles join the five route branches to the output-request stage. X is resolved before Y.",
+    "sha256": "44cc6ed205600fabf1999b9cd384fdb7d71985fe23107c87ce4bdd4126c0abd2"
+  },
+  {
+    "figure": 6,
+    "path": "docs/assets/architecture/06-retained-grants.png",
+    "caption": "Fig. 6: Retained grant through a stall and rotation after successful acceptance.",
+    "sha256": "70c0873a458ee24b8f091a43f4ac43bcfb981199c7365c7ad367738477280dc2"
+  },
+  {
+    "figure": 7,
+    "path": "docs/assets/architecture/07-recorded-stall-trace.png",
+    "caption": "Fig. 7: Actual CSV-derived pre-edge state for a held grant; omitted stalled cycles are labelled.",
+    "sha256": "afe1ca0abc02a6eed93aaa40032ec658f5518aa6459c6752f238affbdb18e1c6"
+  },
+  {
+    "figure": 8,
+    "path": "docs/assets/architecture/08-synthesizable-hierarchy.png",
+    "caption": "Fig. 8: Synthesizable hierarchy and separation of core, finite demo endpoints and testbench.",
+    "sha256": "b22c6a987c43fe1f91a5f7434a71157eb851bd8b042ffdb4dbbcc7bf9e568d39"
+  },
+  {
+    "figure": 9,
+    "path": "docs/assets/architecture/09-rtl-schematic.png",
+    "caption": "Fig. 9: Vivado elaborated RTL schematic of the four-router core. The green wires show logical signal connections before technology mapping.",
+    "sha256": "d3797b047e89be523588394a987f68a405a0389b87702bbcb7e92b7416f5dbe4"
+  },
+  {
+    "figure": 10,
+    "path": "docs/assets/architecture/10-implemented-arbiter.png",
+    "caption": "Fig. 10: Routed Local-output arbiter schematic, Screenshot 30. The selected view contains 32 cells and 89 nets, including LUTs and flip-flops.",
+    "sha256": "c0302d1d23803bff4990ac49d05f2ee1f1d27c63701a58dbce6b1ae7b4ed01d6"
+  },
+  {
+    "figure": 11,
+    "path": "docs/assets/architecture/11-packet-scoreboard.png",
+    "caption": "Fig. 11: Accepted-event scoreboard: offer is not acceptance, and reset discards are explicit.",
+    "sha256": "a6dd52d55538874589fb94fdb2894a1bcf802395c3328b7cb3c55364571b0e1e"
+  },
+  {
+    "figure": 12,
+    "path": "docs/assets/architecture/12-xsim-delivery.png",
+    "caption": "Fig. 12: Cropped original Screenshot 10: XSim tb_noc_2x2 receiver word and valid/ready before the 45 ns delivery edge. The yellow value cursor is 40 ns; the blue marker is 44.999 ns. Complete image: screenshot record, Step 10.",
+    "sha256": "7f3db7792b5d531fbe7eac8c1be8d3eb1cd897f4bebbb524b7d09476999bd162"
+  },
+  {
+    "figure": 13,
+    "path": "docs/assets/architecture/13-all-to-all-results.png",
+    "caption": "Fig. 13: All-to-all arithmetic means across three seeds; whiskers show observed minimum/maximum, not confidence intervals.",
+    "sha256": "8097e2787f011e6c34dc23f4c98ea9ea9914d32d887e60ae38ec1603b2a45079"
+  },
+  {
+    "figure": 14,
+    "path": "docs/assets/architecture/14-hotspot-depth-results.png",
+    "caption": "Fig. 14: Deterministic sustained-hotspot depth comparison with the same registered output controller.",
+    "sha256": "2b22803217e622d9655f9c646831a6ddefded6c328b7d54f175f1a8a10c2c2e1"
+  },
+  {
+    "figure": 15,
+    "path": "docs/assets/architecture/15-dashboard.png",
+    "caption": "Fig. 15: Refined dashboard using the actual directed-d4 trace at edge 231. Six link accepts and four stall events are recorded; R01 Local input is full.",
+    "sha256": "b7d68cc0a36a5bb5a60bd88da21c84e67aab36251ce114e0263e3cb38082ba07"
+  },
+  {
+    "figure": 16,
+    "path": "docs/assets/architecture/16-gui-core-utilization.png",
+    "caption": "Fig. 16: Cropped original Screenshot 16: later GUI noc_2x2_core synthesis hierarchy, xc7s15cpga196-2, DEPTH=4. The core and router totals are visible. Complete image: screenshot record, Step 16.",
+    "sha256": "6d15f638fed70199d0d0a99f83b5fd447c54eb32112fe1b969ffe6b689d96a8d"
+  },
+  {
+    "figure": 17,
+    "path": "docs/assets/architecture/17-routed-timing.png",
+    "caption": "Fig. 17: Cropped original Screenshot 27: routed demo timing summary in Vivado 2026.1. Setup/hold margins are positive and TNS/THS are zero. External board timing remains unverified. Complete image: screenshot record, Step 27.",
+    "sha256": "8c9ec31a8fa085379ebe2cffd9dcc9e47016914c32b481cf5e1e8dfc2fe5adcc"
+  },
+  {
+    "figure": 18,
+    "path": "docs/assets/architecture/18-routed-placement.png",
+    "caption": "Fig. 18: Original Screenshot 25: four-router placement in the routed demonstration checkpoint. Colors identify selected router logic and show where the synthesized cells were placed in the FPGA fabric.",
+    "sha256": "a627f29cd608e4700c948a328b58e6daf45143904283163ef4237c0e7fd65511"
+  }
+]

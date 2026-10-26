@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "kind": "vivado_report_export",
+  "part": "xc7s15cpga196-2",
+  "tool": "Vivado 2026.1",
+  "stage": "route_demo_ooc",
+  "target_period_ns": 10,
+  "board_verified": false,
+  "provenance": "User-supplied saved Vivado reports; verify raw reports",
+  "lut": 1067,
+  "ff": 236,
+  "bram": 0,
+  "io": 0,
+  "wns_ns": 4.571,
+  "tns_ns": 0,
+  "reports": [
+    {
+      "name": "metadata.json",
+      "sha256": "cf04c35f9e370016f0cf8313f34efc2186fa50c128be1fc75478a406ce03fb5e"
+    },
+    {
+      "name": "utilization.rpt",
+      "sha256": "f9149b29f644b6c4d988c6c4517ab12942ef15fa6b416c95e7075d83de2bc007"
+    },
+    {
+      "name": "timing_summary.rpt",
+      "sha256": "e459638e41e354b029493da9d020c9bd9dffedf2643e653d581bf97c502e8c6c"
+    },
+    {
+      "name": "check_timing.rpt",
+      "sha256": "5e1c4facaa5ad12ce9a60ec0114a30e1b7b6b228db1664fa41f912e7d7b2ddaa"
+    },
+    {
+      "name": "critical_paths.rpt",
+      "sha256": "535453eee5d16c59533a32f795f6b0fec3ebca36411ff0ae1e9fc5e7ea9d177a"
+    },
+    {
+      "name": "drc.rpt",
+      "sha256": "614449a0df18f72eb83d3ca0ceb9ef45f475628b84e5f5ef1ae1f3971ef3147e"
+    }
+  ]
+}

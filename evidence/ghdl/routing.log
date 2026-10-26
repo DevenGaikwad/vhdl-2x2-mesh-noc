@@ -1,0 +1,3 @@
+ghdl -r --std=08 tb_xy_route_unit --assert-level=error
+D:\HDL & PLD\HDL & PLD Mini Project\Final Project Version\vhdl-2x2-mesh-noc\tb\tb_xy_route_unit.vhd:28:3:@4ns:(report note): PASS tb_xy_route_unit all 16 routes and packet roundtrip
+simulation finished @4ns

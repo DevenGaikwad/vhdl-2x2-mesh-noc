@@ -1,0 +1,3 @@
+-r --std=08 tb_noc_2x2 -gDEPTH=8 -gSCENARIO=7 -gRATE=500 -gSEED=202 -gWARMUP=100 -gMEASURE=1000 -gTRACE_LEVEL=2 -gRUN_ID=d8-sink_stall-r500-s202 -gTRACE_FILE=/workspace/scratch/3a2e521c2479/vhdl-2x2-mesh-noc/experiments/results/traces/d8-sink_stall-r500-s202.csv --assert-level=error
+/workspace/scratch/3a2e521c2479/vhdl-2x2-mesh-noc/tb/tb_noc_2x2.vhd:177:3:@11390ns:(report note): PASS tb_noc_2x2 accepted=1421 delivered=1421 reset_discarded=0 attempted_cycles=2955 concurrent_edges=726 max_outstanding=80
+simulation finished @11390ns

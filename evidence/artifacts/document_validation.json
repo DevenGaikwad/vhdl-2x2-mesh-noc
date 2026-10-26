@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "status": "PASS",
+  "artifacts": [
+    {
+      "file": "report/NoC_Project_Proposal.pdf",
+      "sha256": "27bd36100583ffcb618c37d80b6c8823a4faa21b2e21a327868dd66a8baf527a",
+      "pages": 6,
+      "page_bounds": "PASS",
+      "embedded_fonts": "PASS",
+      "rendered_visual_review": "PASS",
+      "editable_file": "report/NoC_Project_Proposal.docx",
+      "editable_sha256": "620bae71e57ee22a59965f9e423c8e2aea4509ca8721dd595f48b0a6c45eccb6"
+    },
+    {
+      "file": "report/NoC_Project_Report.pdf",
+      "sha256": "851ef5f24c4e1a944e3d1759c452883526e253267d327e5835a9e982ab321949",
+      "pages": 27,
+      "page_bounds": "PASS",
+      "embedded_fonts": "PASS",
+      "rendered_visual_review": "PASS",
+      "editable_file": "report/NoC_Project_Report.docx",
+      "editable_sha256": "2a5cc49b9a22f9bdd9428e9ffcb3a1e050af5f2003edea383bf67643b9186bc5"
+    },
+    {
+      "file": "docs/NoC_Windows_Execution_Guide.pdf",
+      "sha256": "83166c5f043fbc1692974469b08369079199d2a35ee37c08023af9a98a4a9f4f",
+      "pages": 7,
+      "page_bounds": "PASS",
+      "embedded_fonts": "PASS",
+      "rendered_visual_review": "PASS",
+      "editable_file": "docs/NoC_Windows_Execution_Guide.docx",
+      "editable_sha256": "f52d8b24714b2aba20b4985fcd5f60a784238f15e7e1c3f0b2f87a96627c06b8"
+    },
+    {
+      "file": "docs/NoC_Viva_Quick_Reference.pdf",
+      "sha256": "f343db2dd07215b0f1428fc56bbf4adec40abb9149d3b263da7e4b1d4e8c4782",
+      "pages": 1,
+      "page_bounds": "PASS",
+      "embedded_fonts": "PASS",
+      "rendered_visual_review": "PASS",
+      "editable_file": "docs/NoC_Viva_Quick_Reference.docx",
+      "editable_sha256": "50ceb2b916d3195cd5c062c72915420af0ad70d35c65032607fa6b457a086071"
+    },
+    {
+      "file": "paper/noc_paper.pdf",
+      "sha256": "c60fb842d1f0bf3e3e41a623130648fcfe9b4822a70f3b602458bf6ea81718c0",
+      "pages": 6,
+      "page_bounds": "PASS",
+      "embedded_fonts": "PASS",
+      "rendered_visual_review": "PASS"
+    }
+  ],
+  "verified_index_entries": 29,
+  "des_reference_geometry_border_logo_and_team": "PASS",
+  "document_rendering": "LibreOffice; Calibri mapped to embedded Carlito, code to DejaVu Sans Mono. All pages reviewed, with corrected pagination/index and guide command separation.",
+  "paper_rendering": "IEEEtran conference; six A4 pages, resolved bibliography, embedded fonts, no overfull boxes or unresolved references.",
+  "native_word_execution_observed": false,
+  "scope": "Document content/layout and formatting review; not Vivado or physical-board acceptance."
+}

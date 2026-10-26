@@ -1,0 +1,3 @@
+/workspace/scratch/3a2e521c2479/work_noc_github_2026-10-26/tools/ghdl/usr/bin/ghdl -r --std=08 tb_router -gCURRENT=1 --assert-level=error
+/workspace/scratch/3a2e521c2479/work_noc_github_2026-10-26/validation/project/tb/tb_router.vhd:70:3:@490ns:(report note): PASS tb_router coordinate=1 accepted=12 delivered=12 concurrent=1
+simulation finished @490ns

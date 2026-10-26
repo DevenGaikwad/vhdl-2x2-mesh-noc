@@ -1,0 +1,566 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sun Oct  4 19:49:14 2026
+| Host         : DESKTOP-SBIR7OL running 64-bit major release  (build 9200)
+| Command      : report_timing -max_paths 10 -sort_by group -file D:/NoC_2x2_Project/evidence/vivado/route_demo_ooc/critical_paths.rpt
+| Design       : noc_fpga_demo_top
+| Device       : 7s15-cpga196
+| Speed File   : -2  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             4.571ns  (required time - arrival time)
+  Source:                 mesh/routers[1].tile/inputs[3].live.fifo/rd_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            nodes[1].endpoint/receiver/failed_reg/D
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             noc_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (noc_clk rise@10.000ns - noc_clk rise@0.000ns)
+  Data Path Delay:        5.385ns  (logic 1.185ns (22.007%)  route 4.200ns (77.993%))
+  Logic Levels:           6  (LUT4=1 LUT6=4 RAMD32=1)
+  Clock Path Skew:        -0.039ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.748ns = ( 10.748 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.787ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock noc_clk rise edge)    0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=687, unset)          0.787     0.787    mesh/routers[1].tile/inputs[3].live.fifo/clk
+    SLICE_X8Y25          FDRE                                         r  mesh/routers[1].tile/inputs[3].live.fifo/rd_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X8Y25          FDRE (Prop_fdre_C_Q)         0.379     1.166 r  mesh/routers[1].tile/inputs[3].live.fifo/rd_reg[0]/Q
+                         net (fo=34, routed)          1.542     2.708    mesh/routers[1].tile/inputs[3].live.fifo/mem_reg_0_3_6_11/ADDRB0
+    SLICE_X10Y32         RAMD32 (Prop_ramd32_RADR0_O)
+                                                      0.105     2.813 r  mesh/routers[1].tile/inputs[3].live.fifo/mem_reg_0_3_6_11/RAMB_D1/O
+                         net (fo=3, routed)           0.926     3.740    mesh/routers[1].tile/inputs[3].live.fifo/out_data0_0[9]
+    SLICE_X12Y30         LUT4 (Prop_lut4_I3_O)        0.119     3.859 r  mesh/routers[1].tile/inputs[3].live.fifo/failed_i_50__0/O
+                         net (fo=1, routed)           0.697     4.556    mesh/routers[1].tile/inputs[1].live.fifo/failed_i_14__0
+    SLICE_X12Y30         LUT6 (Prop_lut6_I1_O)        0.267     4.823 r  mesh/routers[1].tile/inputs[1].live.fifo/failed_i_40__0/O
+                         net (fo=1, routed)           0.231     5.054    mesh/routers[1].tile/inputs[3].live.fifo/failed_i_4__0_1
+    SLICE_X12Y31         LUT6 (Prop_lut6_I5_O)        0.105     5.159 r  mesh/routers[1].tile/inputs[3].live.fifo/failed_i_14__0/O
+                         net (fo=1, routed)           0.434     5.593    mesh/routers[1].tile/inputs[3].live.fifo/failed_i_14__0_n_0
+    SLICE_X15Y28         LUT6 (Prop_lut6_I0_O)        0.105     5.698 r  mesh/routers[1].tile/inputs[3].live.fifo/failed_i_4__0/O
+                         net (fo=1, routed)           0.368     6.067    mesh/routers[1].tile/inputs[4].live.fifo/failed_reg_4
+    SLICE_X15Y28         LUT6 (Prop_lut6_I2_O)        0.105     6.172 r  mesh/routers[1].tile/inputs[4].live.fifo/failed_i_1__0/O
+                         net (fo=1, routed)           0.000     6.172    nodes[1].endpoint/receiver/failed_reg_0
+    SLICE_X15Y28         FDRE                                         r  nodes[1].endpoint/receiver/failed_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock noc_clk rise edge)   10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=687, unset)          0.748    10.748    nodes[1].endpoint/receiver/clk
+    SLICE_X15Y28         FDRE                                         r  nodes[1].endpoint/receiver/failed_reg/C
+                         clock pessimism              0.000    10.748    <hidden>
+                         clock uncertainty           -0.035    10.712    <hidden>
+    SLICE_X15Y28         FDRE (Setup_fdre_C_D)        0.030    10.742    nodes[1].endpoint/receiver/failed_reg
+  -------------------------------------------------------------------
+                         required time                         10.742    <hidden>
+                         arrival time                          -6.172    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  4.571    <hidden>
+
+Slack (MET) :             4.691ns  (required time - arrival time)
+  Source:                 mesh/routers[2].tile/inputs[0].live.fifo/rd_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            nodes[2].endpoint/receiver/failed_reg/D
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             noc_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (noc_clk rise@10.000ns - noc_clk rise@0.000ns)
+  Data Path Delay:        5.264ns  (logic 1.181ns (22.436%)  route 4.083ns (77.564%))
+  Logic Levels:           6  (LUT4=1 LUT6=4 RAMD32=1)
+  Clock Path Skew:        -0.039ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.748ns = ( 10.748 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.787ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock noc_clk rise edge)    0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=687, unset)          0.787     0.787    mesh/routers[2].tile/inputs[0].live.fifo/clk
+    SLICE_X5Y35          FDRE                                         r  mesh/routers[2].tile/inputs[0].live.fifo/rd_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X5Y35          FDRE (Prop_fdre_C_Q)         0.379     1.166 r  mesh/routers[2].tile/inputs[0].live.fifo/rd_reg[0]/Q
+                         net (fo=34, routed)          1.249     2.415    mesh/routers[2].tile/inputs[0].live.fifo/mem_reg_0_3_0_5/ADDRA0
+    SLICE_X2Y37          RAMD32 (Prop_ramd32_RADR0_O)
+                                                      0.105     2.520 f  mesh/routers[2].tile/inputs[0].live.fifo/mem_reg_0_3_0_5/RAMA_D1/O
+                         net (fo=1, routed)           1.067     3.587    mesh/routers[2].tile/inputs[0].live.fifo/out_data0[1]
+    SLICE_X5Y40          LUT4 (Prop_lut4_I3_O)        0.115     3.702 f  mesh/routers[2].tile/inputs[0].live.fifo/mem_reg_0_3_0_5_i_8__1/O
+                         net (fo=3, routed)           0.484     4.186    mesh/routers[2].tile/outputs[4].live.arb/failed_i_5__1_1
+    SLICE_X8Y40          LUT6 (Prop_lut6_I2_O)        0.267     4.453 f  mesh/routers[2].tile/outputs[4].live.arb/failed_i_19__1/O
+                         net (fo=2, routed)           0.467     4.920    mesh/routers[2].tile/outputs[4].live.arb/rx[2][1]
+    SLICE_X5Y39          LUT6 (Prop_lut6_I4_O)        0.105     5.025 r  mesh/routers[2].tile/outputs[4].live.arb/failed_i_17__1/O
+                         net (fo=1, routed)           0.335     5.360    mesh/routers[2].tile/inputs[2].live.fifo/failed_reg_5
+    SLICE_X7Y40          LUT6 (Prop_lut6_I5_O)        0.105     5.465 r  mesh/routers[2].tile/inputs[2].live.fifo/failed_i_4__1/O
+                         net (fo=1, routed)           0.481     5.946    mesh/routers[2].tile/inputs[2].live.fifo/failed_i_4__1_n_0
+    SLICE_X8Y40          LUT6 (Prop_lut6_I2_O)        0.105     6.051 r  mesh/routers[2].tile/inputs[2].live.fifo/failed_i_1__1/O
+                         net (fo=1, routed)           0.000     6.051    nodes[2].endpoint/receiver/failed_reg_1
+    SLICE_X8Y40          FDRE                                         r  nodes[2].endpoint/receiver/failed_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock noc_clk rise edge)   10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=687, unset)          0.748    10.748    nodes[2].endpoint/receiver/clk
+    SLICE_X8Y40          FDRE                                         r  nodes[2].endpoint/receiver/failed_reg/C
+                         clock pessimism              0.000    10.748    <hidden>
+                         clock uncertainty           -0.035    10.712    <hidden>
+    SLICE_X8Y40          FDRE (Setup_fdre_C_D)        0.030    10.742    nodes[2].endpoint/receiver/failed_reg
+  -------------------------------------------------------------------
+                         required time                         10.742    <hidden>
+                         arrival time                          -6.051    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  4.691    <hidden>
+
+Slack (MET) :             4.775ns  (required time - arrival time)
+  Source:                 mesh/routers[2].tile/inputs[0].live.fifo/rd_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            mesh/routers[2].tile/outputs[4].live.arb/held_reg[0]/D
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             noc_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (noc_clk rise@10.000ns - noc_clk rise@0.000ns)
+  Data Path Delay:        4.934ns  (logic 1.004ns (20.350%)  route 3.930ns (79.650%))
+  Logic Levels:           4  (LUT5=3 RAMD32=1)
+  Clock Path Skew:        -0.039ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.748ns = ( 10.748 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.787ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock noc_clk rise edge)    0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=687, unset)          0.787     0.787    mesh/routers[2].tile/inputs[0].live.fifo/clk
+    SLICE_X5Y35          FDRE                                         r  mesh/routers[2].tile/inputs[0].live.fifo/rd_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X5Y35          FDRE (Prop_fdre_C_Q)         0.379     1.166 r  mesh/routers[2].tile/inputs[0].live.fifo/rd_reg[0]/Q
+                         net (fo=34, routed)          1.430     2.596    mesh/routers[2].tile/inputs[0].live.fifo/mem_reg_0_3_24_29/ADDRB0
+    SLICE_X2Y36          RAMD32 (Prop_ramd32_RADR0_O)
+                                                      0.118     2.714 f  mesh/routers[2].tile/inputs[0].live.fifo/mem_reg_0_3_24_29/RAMB/O
+                         net (fo=5, routed)           0.807     3.521    mesh/routers[2].tile/inputs[0].live.fifo/clk_0[24]
+    SLICE_X2Y39          LUT5 (Prop_lut5_I3_O)        0.283     3.804 r  mesh/routers[2].tile/inputs[0].live.fifo/held[4]_i_4__5/O
+                         net (fo=3, routed)           0.480     4.285    mesh/routers[2].tile/outputs[4].live.arb/held_reg[0]_3
+    SLICE_X4Y41          LUT5 (Prop_lut5_I4_O)        0.105     4.390 r  mesh/routers[2].tile/outputs[4].live.arb/held[0]_i_2__1/O
+                         net (fo=1, routed)           0.797     5.187    mesh/routers[2].tile/outputs[4].live.arb/held[0]_i_2__1_n_0
+    SLICE_X5Y41          LUT5 (Prop_lut5_I0_O)        0.119     5.306 r  mesh/routers[2].tile/outputs[4].live.arb/held[0]_i_1__1/O
+                         net (fo=1, routed)           0.415     5.721    mesh/routers[2].tile/outputs[4].live.arb/held[0]_i_1__1_n_0
+    SLICE_X5Y41          FDRE                                         r  mesh/routers[2].tile/outputs[4].live.arb/held_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock noc_clk rise edge)   10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=687, unset)          0.748    10.748    mesh/routers[2].tile/outputs[4].live.arb/clk
+    SLICE_X5Y41          FDRE                                         r  mesh/routers[2].tile/outputs[4].live.arb/held_reg[0]/C
+                         clock pessimism              0.000    10.748    <hidden>
+                         clock uncertainty           -0.035    10.712    <hidden>
+    SLICE_X5Y41          FDRE (Setup_fdre_C_D)       -0.217    10.495    mesh/routers[2].tile/outputs[4].live.arb/held_reg[0]
+  -------------------------------------------------------------------
+                         required time                         10.495    <hidden>
+                         arrival time                          -5.721    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  4.775    <hidden>
+
+Slack (MET) :             4.884ns  (required time - arrival time)
+  Source:                 mesh/routers[2].tile/inputs[0].live.fifo/rd_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            mesh/routers[2].tile/outputs[2].live.arb/held_reg[4]/D
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             noc_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (noc_clk rise@10.000ns - noc_clk rise@0.000ns)
+  Data Path Delay:        5.071ns  (logic 1.159ns (22.854%)  route 3.912ns (77.146%))
+  Logic Levels:           4  (LUT4=1 LUT5=1 LUT6=1 RAMD32=1)
+  Clock Path Skew:        -0.039ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.748ns = ( 10.748 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.787ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock noc_clk rise edge)    0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=687, unset)          0.787     0.787    mesh/routers[2].tile/inputs[0].live.fifo/clk
+    SLICE_X5Y35          FDRE                                         r  mesh/routers[2].tile/inputs[0].live.fifo/rd_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X5Y35          FDRE (Prop_fdre_C_Q)         0.379     1.166 r  mesh/routers[2].tile/inputs[0].live.fifo/rd_reg[0]/Q
+                         net (fo=34, routed)          1.430     2.596    mesh/routers[2].tile/inputs[0].live.fifo/mem_reg_0_3_24_29/ADDRB0
+    SLICE_X2Y36          RAMD32 (Prop_ramd32_RADR0_O)
+                                                      0.118     2.714 f  mesh/routers[2].tile/inputs[0].live.fifo/mem_reg_0_3_24_29/RAMB/O
+                         net (fo=5, routed)           1.038     3.752    mesh/routers[2].tile/inputs[0].live.fifo/clk_0[24]
+    SLICE_X3Y41          LUT4 (Prop_lut4_I0_O)        0.283     4.035 f  mesh/routers[2].tile/inputs[0].live.fifo/held[4]_i_4__7/O
+                         net (fo=3, routed)           0.930     4.966    mesh/routers[2].tile/outputs[2].live.arb/held_reg[0]_13
+    SLICE_X10Y41         LUT5 (Prop_lut5_I2_O)        0.115     5.081 r  mesh/routers[2].tile/outputs[2].live.arb/held[4]_i_2__6/O
+                         net (fo=1, routed)           0.513     5.594    mesh/routers[2].tile/outputs[2].live.arb/held[4]_i_2__6_n_0
+    SLICE_X11Y41         LUT6 (Prop_lut6_I0_O)        0.264     5.858 r  mesh/routers[2].tile/outputs[2].live.arb/held[4]_i_1__6/O
+                         net (fo=1, routed)           0.000     5.858    mesh/routers[2].tile/outputs[2].live.arb/held[4]_i_1__6_n_0
+    SLICE_X11Y41         FDRE                                         r  mesh/routers[2].tile/outputs[2].live.arb/held_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock noc_clk rise edge)   10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=687, unset)          0.748    10.748    mesh/routers[2].tile/outputs[2].live.arb/clk
+    SLICE_X11Y41         FDRE                                         r  mesh/routers[2].tile/outputs[2].live.arb/held_reg[4]/C
+                         clock pessimism              0.000    10.748    <hidden>
+                         clock uncertainty           -0.035    10.712    <hidden>
+    SLICE_X11Y41         FDRE (Setup_fdre_C_D)        0.030    10.742    mesh/routers[2].tile/outputs[2].live.arb/held_reg[4]
+  -------------------------------------------------------------------
+                         required time                         10.742    <hidden>
+                         arrival time                          -5.858    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  4.884    <hidden>
+
+Slack (MET) :             4.886ns  (required time - arrival time)
+  Source:                 mesh/routers[3].tile/inputs[3].live.fifo/used_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            nodes[3].endpoint/receiver/failed_reg/D
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             noc_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (noc_clk rise@10.000ns - noc_clk rise@0.000ns)
+  Data Path Delay:        5.070ns  (logic 0.904ns (17.831%)  route 4.166ns (82.169%))
+  Logic Levels:           5  (LUT3=1 LUT5=1 LUT6=3)
+  Clock Path Skew:        -0.039ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.748ns = ( 10.748 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.787ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock noc_clk rise edge)    0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=687, unset)          0.787     0.787    mesh/routers[3].tile/inputs[3].live.fifo/clk
+    SLICE_X15Y38         FDRE                                         r  mesh/routers[3].tile/inputs[3].live.fifo/used_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X15Y38         FDRE (Prop_fdre_C_Q)         0.379     1.166 r  mesh/routers[3].tile/inputs[3].live.fifo/used_reg[1]/Q
+                         net (fo=29, routed)          0.985     2.151    mesh/routers[3].tile/inputs[3].live.fifo/used_reg_n_0_[1]
+    SLICE_X23Y38         LUT3 (Prop_lut3_I0_O)        0.105     2.256 r  mesh/routers[3].tile/inputs[3].live.fifo/mem_reg_0_3_6_11_i_7__3/O
+                         net (fo=51, routed)          1.356     3.612    mesh/routers[3].tile/inputs[3].live.fifo/p_0_in_3
+    SLICE_X17Y35         LUT6 (Prop_lut6_I0_O)        0.105     3.717 r  mesh/routers[3].tile/inputs[3].live.fifo/failed_i_22__1/O
+                         net (fo=1, routed)           0.721     4.438    mesh/routers[3].tile/inputs[4].live.fifo/failed_i_2__2_3
+    SLICE_X22Y35         LUT5 (Prop_lut5_I4_O)        0.105     4.543 r  mesh/routers[3].tile/inputs[4].live.fifo/failed_i_6__2/O
+                         net (fo=1, routed)           0.783     5.326    mesh/routers[3].tile/inputs[4].live.fifo/failed_i_6__2_n_0
+    SLICE_X20Y36         LUT6 (Prop_lut6_I0_O)        0.105     5.431 r  mesh/routers[3].tile/inputs[4].live.fifo/failed_i_2__2/O
+                         net (fo=1, routed)           0.321     5.752    mesh/routers[3].tile/inputs[4].live.fifo/failed_i_2__2_n_0
+    SLICE_X20Y35         LUT6 (Prop_lut6_I0_O)        0.105     5.857 r  mesh/routers[3].tile/inputs[4].live.fifo/failed_i_1__2/O
+                         net (fo=1, routed)           0.000     5.857    nodes[3].endpoint/receiver/failed_reg_1
+    SLICE_X20Y35         FDRE                                         r  nodes[3].endpoint/receiver/failed_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock noc_clk rise edge)   10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=687, unset)          0.748    10.748    nodes[3].endpoint/receiver/clk
+    SLICE_X20Y35         FDRE                                         r  nodes[3].endpoint/receiver/failed_reg/C
+                         clock pessimism              0.000    10.748    <hidden>
+                         clock uncertainty           -0.035    10.712    <hidden>
+    SLICE_X20Y35         FDRE (Setup_fdre_C_D)        0.030    10.742    nodes[3].endpoint/receiver/failed_reg
+  -------------------------------------------------------------------
+                         required time                         10.742    <hidden>
+                         arrival time                          -5.857    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  4.886    <hidden>
+
+Slack (MET) :             4.925ns  (required time - arrival time)
+  Source:                 mesh/routers[0].tile/inputs[1].live.fifo/rd_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            nodes[0].endpoint/receiver/failed_reg/D
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             noc_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (noc_clk rise@10.000ns - noc_clk rise@0.000ns)
+  Data Path Delay:        5.030ns  (logic 1.379ns (27.414%)  route 3.651ns (72.587%))
+  Logic Levels:           6  (LUT4=1 LUT6=4 RAMD32=1)
+  Clock Path Skew:        -0.039ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.748ns = ( 10.748 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.787ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock noc_clk rise edge)    0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=687, unset)          0.787     0.787    mesh/routers[0].tile/inputs[1].live.fifo/clk
+    SLICE_X3Y33          FDRE                                         r  mesh/routers[0].tile/inputs[1].live.fifo/rd_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y33          FDRE (Prop_fdre_C_Q)         0.379     1.166 r  mesh/routers[0].tile/inputs[1].live.fifo/rd_reg[0]/Q
+                         net (fo=34, routed)          0.996     2.162    mesh/routers[0].tile/inputs[1].live.fifo/mem_reg_0_3_24_29/ADDRB0
+    SLICE_X2Y35          RAMD32 (Prop_ramd32_RADR0_O)
+                                                      0.118     2.280 r  mesh/routers[0].tile/inputs[1].live.fifo/mem_reg_0_3_24_29/RAMB/O
+                         net (fo=4, routed)           0.785     3.065    mesh/routers[0].tile/inputs[1].live.fifo/out_data0[26]
+    SLICE_X2Y31          LUT4 (Prop_lut4_I3_O)        0.284     3.349 r  mesh/routers[0].tile/inputs[1].live.fifo/mem_reg_0_3_24_29_i_16/O
+                         net (fo=3, routed)           0.675     4.023    mesh/routers[0].tile/outputs[4].live.arb/failed_i_11_0
+    SLICE_X4Y28          LUT6 (Prop_lut6_I2_O)        0.283     4.306 r  mesh/routers[0].tile/outputs[4].live.arb/failed_i_32/O
+                         net (fo=1, routed)           0.527     4.834    mesh/routers[0].tile/outputs[4].live.arb/rx[0][26]
+    SLICE_X6Y29          LUT6 (Prop_lut6_I1_O)        0.105     4.939 r  mesh/routers[0].tile/outputs[4].live.arb/failed_i_11/O
+                         net (fo=1, routed)           0.326     5.265    mesh/routers[0].tile/inputs[4].live.fifo/failed_reg_1
+    SLICE_X5Y30          LUT6 (Prop_lut6_I5_O)        0.105     5.370 r  mesh/routers[0].tile/inputs[4].live.fifo/failed_i_2/O
+                         net (fo=1, routed)           0.343     5.712    mesh/routers[0].tile/inputs[4].live.fifo/failed_i_2_n_0
+    SLICE_X5Y30          LUT6 (Prop_lut6_I0_O)        0.105     5.817 r  mesh/routers[0].tile/inputs[4].live.fifo/failed_i_1/O
+                         net (fo=1, routed)           0.000     5.817    nodes[0].endpoint/receiver/failed_reg_0
+    SLICE_X5Y30          FDRE                                         r  nodes[0].endpoint/receiver/failed_reg/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock noc_clk rise edge)   10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=687, unset)          0.748    10.748    nodes[0].endpoint/receiver/clk
+    SLICE_X5Y30          FDRE                                         r  nodes[0].endpoint/receiver/failed_reg/C
+                         clock pessimism              0.000    10.748    <hidden>
+                         clock uncertainty           -0.035    10.712    <hidden>
+    SLICE_X5Y30          FDRE (Setup_fdre_C_D)        0.030    10.742    nodes[0].endpoint/receiver/failed_reg
+  -------------------------------------------------------------------
+                         required time                         10.742    <hidden>
+                         arrival time                          -5.817    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  4.925    <hidden>
+
+Slack (MET) :             4.947ns  (required time - arrival time)
+  Source:                 mesh/routers[3].tile/inputs[3].live.fifo/rd_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            mesh/routers[2].tile/inputs[2].live.fifo/mem_reg_0_3_24_29/RAMB/I
+                            (rising edge-triggered cell RAMD32 clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             noc_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (noc_clk rise@10.000ns - noc_clk rise@0.000ns)
+  Data Path Delay:        4.824ns  (logic 1.061ns (21.996%)  route 3.763ns (78.004%))
+  Logic Levels:           3  (LUT4=1 LUT6=1 RAMD32=1)
+  Clock Path Skew:        -0.039ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.748ns = ( 10.748 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.787ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock noc_clk rise edge)    0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=687, unset)          0.787     0.787    mesh/routers[3].tile/inputs[3].live.fifo/clk
+    SLICE_X11Y38         FDRE                                         r  mesh/routers[3].tile/inputs[3].live.fifo/rd_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X11Y38         FDRE (Prop_fdre_C_Q)         0.379     1.166 r  mesh/routers[3].tile/inputs[3].live.fifo/rd_reg[0]/Q
+                         net (fo=34, routed)          1.009     2.175    mesh/routers[3].tile/inputs[3].live.fifo/mem_reg_0_3_24_29/ADDRB0
+    SLICE_X14Y38         RAMD32 (Prop_ramd32_RADR0_O)
+                                                      0.118     2.293 r  mesh/routers[3].tile/inputs[3].live.fifo/mem_reg_0_3_24_29/RAMB/O
+                         net (fo=5, routed)           1.509     3.802    mesh/routers[3].tile/inputs[3].live.fifo/out_data0_0[26]
+    SLICE_X23Y35         LUT4 (Prop_lut4_I3_O)        0.297     4.099 r  mesh/routers[3].tile/inputs[3].live.fifo/mem_reg_0_3_24_29_i_17__2/O
+                         net (fo=2, routed)           0.485     4.584    mesh/routers[3].tile/outputs[3].live.arb/mem_reg_0_3_24_29_9
+    SLICE_X24Y35         LUT6 (Prop_lut6_I3_O)        0.267     4.851 r  mesh/routers[3].tile/outputs[3].live.arb/mem_reg_0_3_24_29_i_4__5/O
+                         net (fo=1, routed)           0.759     5.611    mesh/routers[2].tile/inputs[2].live.fifo/mem_reg_0_3_24_29/DIB0
+    SLICE_X14Y37         RAMD32                                       r  mesh/routers[2].tile/inputs[2].live.fifo/mem_reg_0_3_24_29/RAMB/I
+  -------------------------------------------------------------------    -------------------
+
+                         (clock noc_clk rise edge)   10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=687, unset)          0.748    10.748    mesh/routers[2].tile/inputs[2].live.fifo/mem_reg_0_3_24_29/WCLK
+    SLICE_X14Y37         RAMD32                                       r  mesh/routers[2].tile/inputs[2].live.fifo/mem_reg_0_3_24_29/RAMB/CLK
+                         clock pessimism              0.000    10.748    <hidden>
+                         clock uncertainty           -0.035    10.712    <hidden>
+    SLICE_X14Y37         RAMD32 (Setup_ramd32_CLK_I)
+                                                     -0.155    10.557    mesh/routers[2].tile/inputs[2].live.fifo/mem_reg_0_3_24_29/RAMB
+  -------------------------------------------------------------------
+                         required time                         10.557    <hidden>
+                         arrival time                          -5.611    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  4.947    <hidden>
+
+Slack (MET) :             5.007ns  (required time - arrival time)
+  Source:                 mesh/routers[3].tile/inputs[3].live.fifo/rd_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            mesh/routers[1].tile/inputs[1].live.fifo/mem_reg_0_3_24_29/RAMB/I
+                            (rising edge-triggered cell RAMD32 clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             noc_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (noc_clk rise@10.000ns - noc_clk rise@0.000ns)
+  Data Path Delay:        4.763ns  (logic 1.061ns (22.274%)  route 3.702ns (77.726%))
+  Logic Levels:           3  (LUT4=1 LUT6=1 RAMD32=1)
+  Clock Path Skew:        -0.039ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.748ns = ( 10.748 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.787ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock noc_clk rise edge)    0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=687, unset)          0.787     0.787    mesh/routers[3].tile/inputs[3].live.fifo/clk
+    SLICE_X11Y38         FDRE                                         r  mesh/routers[3].tile/inputs[3].live.fifo/rd_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X11Y38         FDRE (Prop_fdre_C_Q)         0.379     1.166 r  mesh/routers[3].tile/inputs[3].live.fifo/rd_reg[0]/Q
+                         net (fo=34, routed)          1.009     2.175    mesh/routers[3].tile/inputs[3].live.fifo/mem_reg_0_3_24_29/ADDRB0
+    SLICE_X14Y38         RAMD32 (Prop_ramd32_RADR0_O)
+                                                      0.118     2.293 r  mesh/routers[3].tile/inputs[3].live.fifo/mem_reg_0_3_24_29/RAMB/O
+                         net (fo=5, routed)           1.509     3.802    mesh/routers[3].tile/inputs[3].live.fifo/out_data0_0[26]
+    SLICE_X23Y35         LUT4 (Prop_lut4_I3_O)        0.297     4.099 r  mesh/routers[3].tile/inputs[3].live.fifo/mem_reg_0_3_24_29_i_17__2/O
+                         net (fo=2, routed)           0.505     4.604    mesh/routers[3].tile/outputs[0].live.arb/mem_reg_0_3_24_29_9
+    SLICE_X24Y35         LUT6 (Prop_lut6_I3_O)        0.267     4.871 r  mesh/routers[3].tile/outputs[0].live.arb/mem_reg_0_3_24_29_i_4__6/O
+                         net (fo=1, routed)           0.679     5.550    mesh/routers[1].tile/inputs[1].live.fifo/mem_reg_0_3_24_29/DIB0
+    SLICE_X18Y29         RAMD32                                       r  mesh/routers[1].tile/inputs[1].live.fifo/mem_reg_0_3_24_29/RAMB/I
+  -------------------------------------------------------------------    -------------------
+
+                         (clock noc_clk rise edge)   10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=687, unset)          0.748    10.748    mesh/routers[1].tile/inputs[1].live.fifo/mem_reg_0_3_24_29/WCLK
+    SLICE_X18Y29         RAMD32                                       r  mesh/routers[1].tile/inputs[1].live.fifo/mem_reg_0_3_24_29/RAMB/CLK
+                         clock pessimism              0.000    10.748    <hidden>
+                         clock uncertainty           -0.035    10.712    <hidden>
+    SLICE_X18Y29         RAMD32 (Setup_ramd32_CLK_I)
+                                                     -0.155    10.557    mesh/routers[1].tile/inputs[1].live.fifo/mem_reg_0_3_24_29/RAMB
+  -------------------------------------------------------------------
+                         required time                         10.557    <hidden>
+                         arrival time                          -5.550    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  5.007    <hidden>
+
+Slack (MET) :             5.052ns  (required time - arrival time)
+  Source:                 mesh/routers[2].tile/inputs[0].live.fifo/rd_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            mesh/routers[2].tile/outputs[4].live.arb/held_reg[4]/D
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             noc_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (noc_clk rise@10.000ns - noc_clk rise@0.000ns)
+  Data Path Delay:        4.652ns  (logic 1.184ns (25.449%)  route 3.468ns (74.551%))
+  Logic Levels:           4  (LUT5=3 RAMD32=1)
+  Clock Path Skew:        -0.039ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.748ns = ( 10.748 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.787ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock noc_clk rise edge)    0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=687, unset)          0.787     0.787    mesh/routers[2].tile/inputs[0].live.fifo/clk
+    SLICE_X5Y35          FDRE                                         r  mesh/routers[2].tile/inputs[0].live.fifo/rd_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X5Y35          FDRE (Prop_fdre_C_Q)         0.379     1.166 r  mesh/routers[2].tile/inputs[0].live.fifo/rd_reg[0]/Q
+                         net (fo=34, routed)          1.430     2.596    mesh/routers[2].tile/inputs[0].live.fifo/mem_reg_0_3_24_29/ADDRB0
+    SLICE_X2Y36          RAMD32 (Prop_ramd32_RADR0_O)
+                                                      0.118     2.714 r  mesh/routers[2].tile/inputs[0].live.fifo/mem_reg_0_3_24_29/RAMB/O
+                         net (fo=5, routed)           0.807     3.521    mesh/routers[2].tile/inputs[0].live.fifo/clk_0[24]
+    SLICE_X2Y39          LUT5 (Prop_lut5_I3_O)        0.283     3.804 f  mesh/routers[2].tile/inputs[0].live.fifo/held[4]_i_4__5/O
+                         net (fo=3, routed)           0.480     4.285    mesh/routers[2].tile/outputs[4].live.arb/held_reg[0]_3
+    SLICE_X4Y41          LUT5 (Prop_lut5_I2_O)        0.108     4.393 r  mesh/routers[2].tile/outputs[4].live.arb/held[4]_i_2__7/O
+                         net (fo=1, routed)           0.462     4.855    mesh/routers[2].tile/outputs[4].live.arb/held[4]_i_2__7_n_0
+    SLICE_X5Y41          LUT5 (Prop_lut5_I0_O)        0.296     5.151 r  mesh/routers[2].tile/outputs[4].live.arb/held[4]_i_1__7/O
+                         net (fo=1, routed)           0.289     5.439    mesh/routers[2].tile/outputs[4].live.arb/held[4]_i_1__7_n_0
+    SLICE_X5Y41          FDRE                                         r  mesh/routers[2].tile/outputs[4].live.arb/held_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock noc_clk rise edge)   10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=687, unset)          0.748    10.748    mesh/routers[2].tile/outputs[4].live.arb/clk
+    SLICE_X5Y41          FDRE                                         r  mesh/routers[2].tile/outputs[4].live.arb/held_reg[4]/C
+                         clock pessimism              0.000    10.748    <hidden>
+                         clock uncertainty           -0.035    10.712    <hidden>
+    SLICE_X5Y41          FDRE (Setup_fdre_C_D)       -0.221    10.491    mesh/routers[2].tile/outputs[4].live.arb/held_reg[4]
+  -------------------------------------------------------------------
+                         required time                         10.491    <hidden>
+                         arrival time                          -5.439    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  5.052    <hidden>
+
+Slack (MET) :             5.068ns  (required time - arrival time)
+  Source:                 mesh/routers[0].tile/outputs[1].live.arb/held_reg[4]/C
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            mesh/routers[2].tile/inputs[0].live.fifo/mem_reg_0_3_18_23/RAMB/I
+                            (rising edge-triggered cell RAMD32 clocked by noc_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             noc_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (noc_clk rise@10.000ns - noc_clk rise@0.000ns)
+  Data Path Delay:        4.702ns  (logic 0.885ns (18.822%)  route 3.817ns (81.178%))
+  Logic Levels:           3  (LUT2=1 LUT6=2)
+  Clock Path Skew:        -0.039ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.748ns = ( 10.748 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.787ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock noc_clk rise edge)    0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=687, unset)          0.787     0.787    mesh/routers[0].tile/outputs[1].live.arb/clk
+    SLICE_X0Y26          FDRE                                         r  mesh/routers[0].tile/outputs[1].live.arb/held_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y26          FDRE (Prop_fdre_C_Q)         0.379     1.166 f  mesh/routers[0].tile/outputs[1].live.arb/held_reg[4]/Q
+                         net (fo=29, routed)          1.607     2.773    mesh/routers[0].tile/outputs[1].live.arb/held_reg[4]_0
+    SLICE_X4Y33          LUT2 (Prop_lut2_I1_O)        0.126     2.899 r  mesh/routers[0].tile/outputs[1].live.arb/mem_reg_0_3_6_11_i_7__5/O
+                         net (fo=17, routed)          1.123     4.022    mesh/routers[0].tile/inputs[2].live.fifo/mem_reg_0_3_6_11_2
+    SLICE_X7Y30          LUT6 (Prop_lut6_I2_O)        0.275     4.297 r  mesh/routers[0].tile/inputs[2].live.fifo/mem_reg_0_3_18_23_i_7/O
+                         net (fo=1, routed)           0.413     4.710    mesh/routers[0].tile/inputs[4].live.fifo/mem_reg_0_3_18_23_1
+    SLICE_X6Y30          LUT6 (Prop_lut6_I0_O)        0.105     4.815 r  mesh/routers[0].tile/inputs[4].live.fifo/mem_reg_0_3_18_23_i_4__0/O
+                         net (fo=1, routed)           0.674     5.489    mesh/routers[2].tile/inputs[0].live.fifo/mem_reg_0_3_18_23/DIB0
+    SLICE_X6Y36          RAMD32                                       r  mesh/routers[2].tile/inputs[0].live.fifo/mem_reg_0_3_18_23/RAMB/I
+  -------------------------------------------------------------------    -------------------
+
+                         (clock noc_clk rise edge)   10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=687, unset)          0.748    10.748    mesh/routers[2].tile/inputs[0].live.fifo/mem_reg_0_3_18_23/WCLK
+    SLICE_X6Y36          RAMD32                                       r  mesh/routers[2].tile/inputs[0].live.fifo/mem_reg_0_3_18_23/RAMB/CLK
+                         clock pessimism              0.000    10.748    <hidden>
+                         clock uncertainty           -0.035    10.712    <hidden>
+    SLICE_X6Y36          RAMD32 (Setup_ramd32_CLK_I)
+                                                     -0.155    10.557    mesh/routers[2].tile/inputs[0].live.fifo/mem_reg_0_3_18_23/RAMB
+  -------------------------------------------------------------------
+                         required time                         10.557    <hidden>
+                         arrival time                          -5.489    <hidden>
+  -------------------------------------------------------------------
+                         slack                                  5.068    <hidden>
+
+
+
+

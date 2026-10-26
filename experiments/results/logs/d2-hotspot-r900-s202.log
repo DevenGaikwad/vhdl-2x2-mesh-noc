@@ -1,0 +1,3 @@
+-r --std=08 tb_noc_2x2 -gDEPTH=2 -gSCENARIO=4 -gRATE=900 -gSEED=202 -gWARMUP=100 -gMEASURE=1000 -gTRACE_LEVEL=2 -gRUN_ID=d2-hotspot-r900-s202 -gTRACE_FILE=/workspace/scratch/3a2e521c2479/vhdl-2x2-mesh-noc/experiments/results/traces/d2-hotspot-r900-s202.csv --assert-level=error
+/workspace/scratch/3a2e521c2479/vhdl-2x2-mesh-noc/tb/tb_noc_2x2.vhd:177:3:@11330ns:(report note): PASS tb_noc_2x2 accepted=565 delivered=565 reset_discarded=0 attempted_cycles=4341 concurrent_edges=97 max_outstanding=14
+simulation finished @11330ns

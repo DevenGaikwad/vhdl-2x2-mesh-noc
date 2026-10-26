@@ -1,0 +1,1 @@
+/workspace/scratch/3a2e521c2479/work_noc_github_2026-10-26/tools/ghdl/usr/bin/ghdl -e --std=08 tb_fifo_buffer

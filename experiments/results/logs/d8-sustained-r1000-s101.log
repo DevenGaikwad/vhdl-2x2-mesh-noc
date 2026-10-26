@@ -1,0 +1,3 @@
+-r --std=08 tb_noc_2x2 -gDEPTH=8 -gSCENARIO=6 -gRATE=1000 -gSEED=101 -gWARMUP=100 -gMEASURE=1000 -gTRACE_LEVEL=2 -gRUN_ID=d8-sustained-r1000-s101 -gTRACE_FILE=/workspace/scratch/3a2e521c2479/vhdl-2x2-mesh-noc/experiments/results/traces/d8-sustained-r1000-s101.csv --assert-level=error
+/workspace/scratch/3a2e521c2479/vhdl-2x2-mesh-noc/tb/tb_noc_2x2.vhd:177:3:@12190ns:(report note): PASS tb_noc_2x2 accepted=608 delivered=608 reset_discarded=0 attempted_cycles=4420 concurrent_edges=112 max_outstanding=56
+simulation finished @12190ns

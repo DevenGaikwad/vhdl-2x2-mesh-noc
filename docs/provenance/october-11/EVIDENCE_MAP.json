@@ -1,0 +1,1205 @@
+{
+  "project": "VHDL 2x2 Mesh NoC",
+  "prepared_on": "2026-10-09",
+  "scope": "Documentation handoff; no source edits or fresh hardware/tool executions",
+  "routing": "XY",
+  "part": "xc7s15cpga196-2",
+  "tool": "Vivado 2026.1",
+  "original_pdf_pages": 34,
+  "numbered_steps": 31,
+  "numbered_figures": 32,
+  "steps": [
+    {
+      "n": "01",
+      "title": "Open the correct Vivado project",
+      "slug": "Vivado_Project_Opened",
+      "page": 1,
+      "see": "Vivado 2026.1, NoC_2x2 project and Spartan-7 xc7s15cpga196-2.",
+      "meaning": "The VHDL files and exact target device are loaded. This is a setup checkpoint; it does not show a packet transfer.",
+      "say": "We opened the correct HDL project and FPGA target before testing.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/01_Vivado_Project_Opened.png",
+          "source_pdf_page": 1,
+          "sha256": "7102a5a2b0328de69620873340da50ad550d5a724addb5c62e182249b37b6c24"
+        }
+      ]
+    },
+    {
+      "n": "02",
+      "title": "Select the simulation testbench",
+      "slug": "Simulation_Sources",
+      "page": 2,
+      "see": "sim_1 contains tb_noc_2x2 and separate module testbenches.",
+      "meaning": "A testbench is a virtual tester: it creates clock, reset and packets, then checks the circuit. tb_noc_2x2 tests all four routers together.",
+      "say": "The mesh testbench supplies test packets and checks their delivery.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/02_Simulation_Sources.png",
+          "source_pdf_page": 2,
+          "sha256": "3925bfc0884b60ff1d519c7daba1e5f707ebe6b095e9703001f1b14ef4e6eac8"
+        }
+      ]
+    },
+    {
+      "n": "03",
+      "title": "Load behavioral simulation",
+      "slug": "Behavioral_Simulation_Opened",
+      "page": 3,
+      "see": "XSim loads tb_noc_2x2 at simulation time 0.",
+      "meaning": "Elaboration connects the design instances into a runnable model. Behavioral simulation executes the VHDL logic. A loaded window alone is not a successful test.",
+      "say": "The HDL circuit is ready to run; we have not tested it merely by opening this window.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/03_Behavioral_Simulation_Opened.png",
+          "source_pdf_page": 3,
+          "sha256": "f894f656c324eb294d5c3e34b80ba16a7e7c46f6fe489e1e310e6b1b5e89f01a"
+        }
+      ]
+    },
+    {
+      "n": "04",
+      "title": "Observe clock and reset up to 60 ns",
+      "slug": "Reset_and_Clock_60ns",
+      "page": 4,
+      "see": "The clock repeats every 10 ns; initial reset is released at about 20 ns. TV and RV activity appears afterward.",
+      "meaning": "One clock cycle is 10 ns, equivalent to a 100 MHz simulation clock. Reset clears queue and arbiter state at rising edges. The 60 ns interval is a short inspection window, not the whole test.",
+      "say": "After reset, the circuit begins accepting packets on clock edges.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/04_Reset_and_Clock_60ns.png",
+          "source_pdf_page": 4,
+          "sha256": "ea9e6c2c6c4154d6a7ad193b6df55bdc94a6be0f70f2b9ad2f8ff19000ff2a10"
+        }
+      ]
+    },
+    {
+      "n": "05",
+      "title": "Accept the first packet at 25 ns",
+      "slug": "First_Packet_Injection_25ns",
+      "page": 5,
+      "see": "tx(0)=0x80200001, tv(0)=1 and tr(0)=1 at the 25 ns injection edge.",
+      "meaning": "The sender has a packet and the router has room, so the rising-edge handshake accepts it. Decoding the word gives source 0, destination 0, ID 1 and payload 1: this first example uses the Local route.",
+      "say": "Router 0 accepts packet 1 into its local input queue.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/05_First_Packet_Injection_25ns.png",
+          "source_pdf_page": 5,
+          "sha256": "a4bbadf0e5bc4caeb01dc7ee5884bc660dfc1cd8748197fb7d51df08ab163042"
+        }
+      ]
+    },
+    {
+      "n": "06",
+      "title": "See the packet presented to the receiver",
+      "slug": "First_Packet_at_Receiver_40ns",
+      "page": 6,
+      "see": "At the 40 ns cursor, RX shows the same packet word and receiver-valid is active.",
+      "meaning": "The selected receiver is being offered the complete packet. Since acceptance occurs on a rising edge, the visible word at 40 ns is not yet the delivery event. This packet is local, so this screenshot does not prove an inter-router hop.",
+      "say": "The output now presents the same data; the next handshake edge completes delivery.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/06_First_Packet_at_Receiver_40ns.png",
+          "source_pdf_page": 6,
+          "sha256": "45e0b849880229ed3890dda1c3315f38dc48c98f645b86937fec085d7d5f5523"
+        }
+      ]
+    },
+    {
+      "n": "07",
+      "title": "Check FIFO occupancy at 25 ns",
+      "slug": "FIFO_Occupancy_25ns",
+      "page": 7,
+      "see": "count[4] changes from 0 to 1.",
+      "meaning": "The debug index is 5×router+port. Index 4 means Router 0's Local input FIFO. Its count of 1 means one 32-bit packet is waiting; DEPTH=4 allows four packets in this queue.",
+      "say": "The accepted packet is stored in the router's FIFO.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/07_FIFO_Occupancy_25ns.png",
+          "source_pdf_page": 7,
+          "sha256": "fba709c1ee27a28f2450276aa0110c90dea6f33f547962d65d794ad08930e77d"
+        }
+      ]
+    },
+    {
+      "n": "08",
+      "title": "Read routing requests at the cursor time",
+      "slug": "XY_Routing_Request_25ns",
+      "page": 8,
+      "see": "A request mask 0x10 appears in the 25 ns waveform; the grant masks are still zero. The left Objects panel separately shows req[2]=0x10 at the current 60 ns.",
+      "meaning": "0x10 is binary 10000: input bit 4, Local, is requesting an output. Each req entry belongs to an output; its bits identify competing inputs. The first local packet requests output 4. Do not assign the left panel's req[2] to 25 ns: it describes a later East-output request.",
+      "say": "The buffered packet requests its required output before the arbiter registers a grant.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/08_XY_Routing_Request_25ns.png",
+          "source_pdf_page": 8,
+          "sha256": "20ab54db814e799195eb7d7d4a4d0dc6dde8697a64080a49ec67791f18437d77"
+        }
+      ]
+    },
+    {
+      "n": "09",
+      "title": "Match internal output data and valid",
+      "slug": "Internal_Output_Data_and_Valid_40ns",
+      "pages": [
+        9,
+        10
+      ],
+      "see": "09A: od[4]=0x80200001. 09B: ov[4]=1 at the yellow 40 ns cursor.",
+      "meaning": "OD is output data; OV says that data is being offered. Index 4 is Router 0's Local output. Reading both together avoids treating an inactive data bus as a transfer. Objects may already be zero at the current 60 ns.",
+      "say": "The selected output carries the original full word and marks it valid.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/09A_Internal_Output_Data_40ns.png",
+          "source_pdf_page": 9,
+          "sha256": "dafb6b20c6916ca28b9619e961bfff542cb825eace53c287d587878a5cfe79c7"
+        },
+        {
+          "file": "Vivado_Screenshots/09B_Internal_Output_Valid_40ns.png",
+          "source_pdf_page": 10,
+          "sha256": "1d91f529aa14b3454bde126c9ef6376f39dbc9400af21e1b44a0f2a32994aaf2"
+        }
+      ]
+    },
+    {
+      "n": "10",
+      "title": "Confirm the delivery handshake",
+      "slug": "Receiver_Delivery_Handshake_44p999ns",
+      "page": 11,
+      "see": "At 44.999 ns, rx(0)=0x80200001, rv(0)=1 and rr(0)=1.",
+      "meaning": "This cursor is 1 ps before the 45 ns rising edge. Valid and ready are already high, so the testbench accepts the packet at 45 ns. Receiver index 0 agrees with the decoded destination.",
+      "say": "Endpoint 0 accepts the packet on the next rising clock edge.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/10_Receiver_Delivery_Handshake_44p999ns.png",
+          "source_pdf_page": 11,
+          "sha256": "106ee6c2503262b20d648b4652b6246ecb0f45c94a3348cc65abeefc0ad8bfda"
+        }
+      ]
+    },
+    {
+      "n": "11",
+      "title": "Measure this packet's latency",
+      "slug": "Local_Packet_Latency_20ns_2Cycles",
+      "page": 12,
+      "see": "Injection is at 25 ns and delivery at 45 ns; the cursors sit just before those edges.",
+      "meaning": "Latency is delivery acceptance minus injection acceptance: 45−25=20 ns, or 20/10=2 cycles. It is the Local packet's result, not a universal latency for every route. Empty one-hop and two-hop paths take 4 and 6 cycles under this controller.",
+      "say": "This local packet needed two clock cycles after acceptance.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/11_Local_Packet_Latency_20ns_2Cycles.png",
+          "source_pdf_page": 12,
+          "sha256": "48995df455823df5917fa0677f25a79072136584cdeed10b16cf24880c5e16dd"
+        }
+      ]
+    },
+    {
+      "n": "12",
+      "title": "Read the self-checking PASS result",
+      "slug": "XSim_Self_Checking_PASS_2400ns",
+      "page": 13,
+      "see": "PASS at 2400 ns: accepted=106, delivered=74, reset_discarded=32; attempted_cycles=404, concurrent_edges=18, max_outstanding=32.",
+      "meaning": "74+32=106: every accepted packet was delivered or deliberately flushed by reset. The 404 counts source-offer observations, including retries; 18 edges have multiple accepted movements; 32 is the largest pending count. This directed reset test is distinct from the 93 loss-free benchmark runs.",
+      "say": "The complete directed test passed with all accepted packets accounted for.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/12_XSim_Self_Checking_PASS_2400ns.png",
+          "source_pdf_page": 13,
+          "sha256": "0fcbab285e2f609481d731b7d77805ac9650691b76292e86da0067d5215b1254"
+        }
+      ]
+    },
+    {
+      "n": "13",
+      "title": "Inspect the complete RTL hierarchy",
+      "slug": "Elaborated_2x2_NoC_Router_Hierarchy",
+      "page": 14,
+      "see": "The demo wrapper contains one mesh and four traffic-node endpoints; the mesh contains routers[0] through routers[3].",
+      "meaning": "Hierarchy is the list of smaller machines inside a larger machine. Four traffic nodes create and receive packets; they are test endpoints, not implemented CPUs or an AI accelerator.",
+      "say": "Our complete design contains four connected router instances and four traffic endpoints.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/13_Elaborated_2x2_NoC_Router_Hierarchy.png",
+          "source_pdf_page": 14,
+          "sha256": "1c774552cc9bd362ceee152ad7b4a0d82cd2febef0d2b1c822e08fe196175660"
+        }
+      ]
+    },
+    {
+      "n": "14",
+      "title": "Inspect one corner router",
+      "slug": "Router0_Internal_RTL_Hierarchy",
+      "page": 15,
+      "see": "Router 0 contains a crossbar_5x5, three active FIFO/route units and three active round-robin arbiters.",
+      "meaning": "Five logical directions are N, S, E, W and Local. At Router 0 only South, East and Local lead somewhere. Every corner has its own two unavailable directions; the same boundary rule applies to all four routers.",
+      "say": "Each corner router implements its local port and its two real neighbor ports.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/14_Router0_Internal_RTL_Hierarchy.png",
+          "source_pdf_page": 15,
+          "sha256": "ee6d877836ac8579079e48ac6eb3e164e44490f5e9501826f80305fc8695e32f"
+        }
+      ]
+    },
+    {
+      "n": "15",
+      "title": "Inspect a synthesized FIFO",
+      "slug": "Router0_FIFO_Synthesized_Primitive_Statistics",
+      "page": 16,
+      "see": "Router 0 inputs[1].live.fifo: FLIP_LATCH=7, LUT=43 and DMEM=44 in Cell Properties.",
+      "meaning": "Synthesis turns VHDL into FPGA primitive cells. LUTs implement small logic tables; flip-flops store state; distributed memory stores queue data. These primitive-class statistics are not additive Slice-LUT utilization totals. FLIP_LATCH is a category name, not proof of an unwanted latch.",
+      "say": "Vivado has converted this FIFO into FPGA storage and control resources.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/15_Router0_FIFO_Synthesized_Primitive_Statistics.png",
+          "source_pdf_page": 16,
+          "sha256": "2e6b7fded89655a47b61857b6edc015ef7b4cbb647e9b3305578b53da1999644"
+        }
+      ]
+    },
+    {
+      "n": "16",
+      "title": "Read core resource totals by hierarchy",
+      "slug": "NoC_Core_Synthesis_Utilization_Hierarchy",
+      "page": 17,
+      "see": "This GUI synthesis run reports 1,085 Slice LUTs and 147 Slice Registers, with four router rows.",
+      "meaning": "The hierarchy connects resource cost to each router. This is the mesh core, not the demo wrapper. The archived core OOC run reports 1,086 LUTs and 147 FFs; keep that separate rather than averaging or overwriting the screenshot result.",
+      "say": "The table shows how much FPGA logic the four-router core uses in this run.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/16_NoC_Core_Synthesis_Utilization_Hierarchy.png",
+          "source_pdf_page": 17,
+          "sha256": "dbbda04e4f3f95111f1023700e6d4738e5101b5c8b96fc2ddf9ced81b80be5af"
+        }
+      ]
+    },
+    {
+      "n": "17",
+      "title": "Recognize the exposed core's I/O limit",
+      "slug": "NoC_Core_Utilization_Summary_and_IO_Limit",
+      "page": 18,
+      "see": "LUT: 1,085/8,000=13.56%; FF: 147/16,000=0.92%; I/O: 1,774/100=1774%.",
+      "meaning": "The logic fits, but the debug-rich core exposes far too many physical pins. This does not invalidate its simulation. It needs a suitable wrapper before board use. OOC reports with logical I/O=0 also do not mean a real board needs no pins.",
+      "say": "The core's internal logic fits; its exposed interface is not board-ready.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/17_NoC_Core_Utilization_Summary_and_IO_Limit.png",
+          "source_pdf_page": 18,
+          "sha256": "bdfc2c6144d0fbfc018d739d78693ca8a3604cc73bdf89ccd1db0ce584e446f4"
+        }
+      ]
+    },
+    {
+      "n": "18",
+      "title": "Find memory LUT use in all routers",
+      "slug": "NoC_Core_LUT_Memory_By_Router",
+      "page": 19,
+      "see": "LUT as Memory totals 288: each of the four router rows contributes 72.",
+      "meaning": "Some FPGA LUTs are configured as distributed RAM. The count measures hardware resources, not packets or stored bits. This coarse table shows the router-level split; the next screenshot identifies Router 0's individual FIFOs.",
+      "say": "All four routers use the same amount of LUT-based memory in this synthesis run.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/18_NoC_Core_LUT_Memory_By_Router.png",
+          "source_pdf_page": 19,
+          "sha256": "b94ba2a07939019c1080ab868f3d0fb2e50cab53ad59f234e9fae5e095dad4b1"
+        }
+      ]
+    },
+    {
+      "n": "19",
+      "title": "Account for all three Router 0 FIFOs",
+      "slug": "Router0_Three_FIFO_Memory_Breakdown",
+      "page": 20,
+      "see": "inputs[1], inputs[2] and inputs[4] each use 24 memory LUTs; 24+24+24=72.",
+      "meaning": "The three FIFOs belong to South, East and Local. The earlier two-row view hid a third row; no memory disappeared. A resource count of 24 is not a FIFO depth of 24.",
+      "say": "The full hierarchy accounts for Router 0's 72 memory LUTs.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/19_Router0_Three_FIFO_Memory_Breakdown.png",
+          "source_pdf_page": 20,
+          "sha256": "8a751c4a9dfdf75f1effe542cedb8bf0ab53b380c03c1e69bbe4edeb2e8098ba"
+        }
+      ]
+    },
+    {
+      "n": "20",
+      "title": "Read pre-route static timing",
+      "slug": "NoC_Core_PreRoute_Timing_Summary",
+      "page": 21,
+      "see": "WNS=+6.129 ns, TNS=0, WHS=+0.111 ns and WPWS=+3.870 ns; reported failing endpoints are zero.",
+      "meaning": "Static timing analysis checks circuit paths against the clock target. Positive slack means the analyzed path has margin. This is synthesis-stage timing, with estimated routing. Check Timing (785) lists constraint findings, not 785 failed packets.",
+      "say": "The constrained internal paths pass this preliminary timing analysis.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/20_NoC_Core_PreRoute_Timing_Summary.png",
+          "source_pdf_page": 21,
+          "sha256": "4366fc8ea04a4bbab37962629c65ac9224d3d9dc78c682f56bdb4ea8475f4e35"
+        }
+      ]
+    },
+    {
+      "n": "21",
+      "title": "Identify incomplete timing constraints",
+      "slug": "NoC_Core_Check_Timing_Missing_IO_Delays",
+      "page": 22,
+      "see": "Check Timing lists no_input_delay=137 and no_output_delay=648.",
+      "meaning": "Vivado knows the clock, but not the external timing of these interfaces. The two counts add to 785 findings. They are missing constraint coverage, not setup failures. Internal timing success cannot certify the entire future board interface.",
+      "say": "We also checked which external timing assumptions are still missing.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/21_NoC_Core_Check_Timing_Missing_IO_Delays.png",
+          "source_pdf_page": 22,
+          "sha256": "2cd322a34e0c79813316b4417ca3a730e6570b17fbc1fe25c12ea43dec0ed47c"
+        }
+      ]
+    },
+    {
+      "n": "22",
+      "title": "Confirm the 10 ns clock target",
+      "slug": "NoC_Core_Clock_Summary_10ns",
+      "page": 23,
+      "see": "noc_clk has period 10.000 ns, frequency 100.000 MHz and waveform {0.000 5.000}.",
+      "meaning": "The constraint describes a rise at 0 ns and fall at 5 ns in a repeating 10 ns period. Behavioral testbench rising edges occur at 5, 15, 25 ns and so on. Clock Summary specifies the timing target; it is not a measured oscillator or maximum achievable frequency.",
+      "say": "All timing reports are being checked against the same 10 ns target.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/22_NoC_Core_Clock_Summary_10ns.png",
+          "source_pdf_page": 23,
+          "sha256": "63de77ecb782213c19577d0d90495ec27f171346198a141d531b86e4a887e99c"
+        }
+      ]
+    },
+    {
+      "n": "23",
+      "title": "Inspect ports lacking input delays",
+      "slug": "NoC_Core_Missing_Input_Delays",
+      "page": 24,
+      "see": "137 unconstrained input ports include eject_ready and individual inject_data bits.",
+      "meaning": "An input-delay constraint says when data from outside arrives relative to the clock. These logical ports have no external source timing model yet. The number counts interface ports, not packet failures.",
+      "say": "External arrival timing still needs the actual board/interface specification.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/23_NoC_Core_Missing_Input_Delays.png",
+          "source_pdf_page": 24,
+          "sha256": "d0c7b405b21ad5d7c35bde9423d9ef5d2d238bb300e1fcc75c4f73808b559006"
+        }
+      ]
+    },
+    {
+      "n": "24",
+      "title": "Inspect the worst synthesized setup path",
+      "slug": "NoC_Core_Worst_Setup_Path_Router3_FIFO_to_Arbiter",
+      "page": 25,
+      "see": "Router 3 FIFO read-pointer register to Local-output arbiter register: requirement 10 ns, total path delay 3.720 ns, slack +6.129 ns.",
+      "meaning": "This is delay through one register-to-register circuit path, not packet travel time. Slack also includes clock relationships and setup requirements, so do not calculate it simply as 10−3.720. Net delay is estimated before routing.",
+      "say": "The slowest reported core path still meets the preliminary clock requirement.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/24_NoC_Core_Worst_Setup_Path_Router3_FIFO_to_Arbiter.png",
+          "source_pdf_page": 25,
+          "sha256": "add6e6518ba26e95e884a11cad3c70d421756028d8c0eab0d589fca598cfc055"
+        }
+      ]
+    },
+    {
+      "n": "25",
+      "title": "View placed routers in the routed demo",
+      "slug": "Routed_Demo_Four_Router_Placement",
+      "page": 26,
+      "see": "Four colored router cell groups appear in the opened demo_ooc_routed.dcp checkpoint.",
+      "meaning": "Placement assigns logic cells to locations in the FPGA fabric. Colored cells are hardware structures, not animated packets. Their physical locations need not form a neat 2×2 square. The logical topology describes connections.",
+      "say": "The implementation tool has placed our router logic into this FPGA model.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/25_Routed_Demo_Four_Router_Placement.png",
+          "source_pdf_page": 26,
+          "sha256": "a627f29cd608e4700c948a328b58e6daf45143904283163ef4237c0e7fd65511"
+        }
+      ]
+    },
+    {
+      "n": "26",
+      "title": "Verify routing completion",
+      "slug": "Routed_Demo_Route_Status",
+      "page": 27,
+      "see": "1,845 logical nets: 1,468 routable and fully routed, 377 not needing routing; routing errors=0.",
+      "meaning": "Of the 377, 247 are internally routed, 124 have no loads and 6 are implicitly routed ports. Routing connects placed cells through FPGA wiring resources. Route completion is separate from timing closure and physical board operation.",
+      "say": "Every net that needed fabric routing was successfully connected.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/26_Routed_Demo_Route_Status.png",
+          "source_pdf_page": 27,
+          "sha256": "c2905261ab8cda0f6c8e7eaf5deef38c7bf65e03454b96a6fe322ad96b87ae2f"
+        }
+      ]
+    },
+    {
+      "n": "27",
+      "title": "Read final routed timing",
+      "slug": "Routed_Demo_Timing_Summary",
+      "page": 28,
+      "see": "At 10 ns: WNS +4.571 ns, TNS 0, WHS +0.066 ns, THS 0; WPWS +3.870 ns. Failing endpoints are zero.",
+      "meaning": "The routed demo meets the analyzed setup, hold and pulse-width checks. Hold margin is only 0.066 ns, so report the exact figure. This is OOC internal static timing, not a successful SDF waveform simulation or measured board timing.",
+      "say": "The implemented demo meets the stated internal clock constraints.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/27_Routed_Demo_Timing_Summary.png",
+          "source_pdf_page": 28,
+          "sha256": "0fda5222237ffa97ab5abf4e3b833f034936c1396e5499cec83ab7e6f4cace68"
+        }
+      ]
+    },
+    {
+      "n": "28",
+      "title": "Read routed demo resource cost",
+      "slug": "Routed_Demo_Slice_Logic_Utilization",
+      "page": 29,
+      "see": "1,067/8,000 LUTs=13.34%; 236/16,000 registers=1.48%. LUTs split into 841 logic and 226 memory.",
+      "meaning": "The top is noc_fpga_demo_top: mesh plus finite traffic generators and receivers. This differs from the core-only synthesis run, and synthesis optimization can also change resource mapping. Do not claim the lower LUT count proves a new algorithmic improvement.",
+      "say": "This table gives the cost of the implemented demonstration design.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/28_Routed_Demo_Slice_Logic_Utilization.png",
+          "source_pdf_page": 29,
+          "sha256": "474051b301f42cec5abcedd1d53e875b4c6fb6777d16783690f60f55ae479dda"
+        }
+      ]
+    },
+    {
+      "n": "29",
+      "title": "Explain the two DRC warnings",
+      "slug": "Routed_Demo_DRC_Warnings",
+      "page": 30,
+      "see": "CFGBVS-1: missing configuration voltage properties. RTSTAT-10: nets with no routable loads. No DRC errors are listed.",
+      "meaning": "DRC checks design rules. Configuration settings require real board voltage information, which we have not supplied. Unused loads do not contradict all routable nets being connected. Keep both warnings visible instead of inventing board values to remove them.",
+      "say": "Implementation completed with two documented warnings and no listed DRC errors.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/29_Routed_Demo_DRC_Warnings.png",
+          "source_pdf_page": 30,
+          "sha256": "11cb71ae097458f63bf1d6dda5c9f2ab9de75e164b23654c63df3ad6e0de217b"
+        }
+      ]
+    },
+    {
+      "n": "30",
+      "title": "Inspect the implemented local arbiter",
+      "slug": "Routed_Demo_Local_Arbiter_Primitive_Schematic",
+      "page": 31,
+      "see": "The selected Local-output arbiter schematic shows 32 cells and 89 nets, including LUTs and FDRE cells.",
+      "meaning": "FDRE is a clocked one-bit register with enable and synchronous reset. LUTs implement arbitration decisions and registers retain the grant/state. The green schematic lines are logical connections; they are not moving packets. Functional fairness comes from the tests.",
+      "say": "We can trace our round-robin controller into FPGA logic and state cells.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/30_Routed_Demo_Local_Arbiter_Primitive_Schematic.png",
+          "source_pdf_page": 31,
+          "sha256": "3864a89d2f33d23743411873859cfb8a2704aa8187a58133aceef83a53b848aa"
+        }
+      ]
+    },
+    {
+      "n": "31",
+      "title": "Identify the routed critical path",
+      "slug": "Routed_Demo_Worst_Timing_Path_Summary",
+      "page": 32,
+      "see": "Router 1 FIFO read-pointer register to endpoint 1 receiver failed_reg: routed slack +4.571 ns.",
+      "meaning": "This is the worst reported setup path of the demo wrapper. failed_reg is the name of its error-status storage bit, not evidence of a failed test. The path includes an endpoint and is not end-to-end packet latency.",
+      "say": "The final critical path still has positive timing margin.",
+      "files": [
+        {
+          "file": "Vivado_Screenshots/31_Routed_Demo_Worst_Timing_Path_Summary.png",
+          "source_pdf_page": 32,
+          "sha256": "f36b54ba5d2ae83bd4de4486ee4a1c53c1b3b7d5f125985a3d6f7d8d86e205df"
+        }
+      ]
+    }
+  ],
+  "extra_figures": [
+    {
+      "file": "Vivado_Screenshots/EXTRA_A_RTL_Schematic.png",
+      "source_pdf_page": 33,
+      "sha256": "0566a4999124dc90ba5947f2e12241c14c0d9605f4617a2ce40b8b366ca9cf7f",
+      "scope": "Supplemental context; not a new numbered verification step."
+    },
+    {
+      "file": "Vivado_Screenshots/EXTRA_B_Synthesis_Status.png",
+      "source_pdf_page": 34,
+      "sha256": "f9fc336f4996782d0b5c4f811b454fe837665019a5dff7507faaf2463e1e8687",
+      "scope": "Supplemental context; not a new numbered verification step."
+    }
+  ],
+  "dashboard_atlas": [
+    {
+      "id": "D01",
+      "title": "Architecture overview",
+      "caption": "Latest uppercase dashboard: whole-trace totals show 106 accepted, 74 delivered, 32 reset discards and 0 outstanding. These belong to the directed reset test, not the 93 benchmark runs.",
+      "file": "Dashboard_Originals/image(20261004-180741).png",
+      "sha256": "ea0ef8153b02274d1388c24d32e258cc387533df6721e935ac35984061c79ffe"
+    },
+    {
+      "id": "D02",
+      "title": "Four-router mesh",
+      "caption": "The dashboard presents the 2×2 layout and separate directed channels. Endpoint processor labels are traffic-model labels. This screen replays RTL records; it is not a physical FPGA feed.",
+      "file": "Dashboard_Originals/image(20261004-180755).png",
+      "sha256": "a212dd6b64ac41a504d3c360122e928bc975268a7e8ed0abe8850480882cf5bd"
+    },
+    {
+      "id": "D03",
+      "title": "Exact-edge event stream",
+      "caption": "The edge selector and event stream show recorded offers and accepted injections. An offer is a presentation attempt; injection means the ready/valid handshake was accepted.",
+      "file": "Dashboard_Originals/image(20261004-180822).png",
+      "sha256": "886f4b8309aade7b223c2281a8a5c3bb6aeb0a3ed9e4ca2e218d70fb0202ee91"
+    },
+    {
+      "id": "D04",
+      "title": "Trace replay",
+      "caption": "Replay advances recorded edges and highlights selected routers/channels. A highlighted green path identifies trace activity; the browser is not generating a new Vivado simulation.",
+      "file": "Dashboard_Originals/image(20261004-172458).png",
+      "sha256": "a76961be943819dd3a3f4217d9e8b08fe6c8f336029909b5b774096afa4bc1e6"
+    },
+    {
+      "id": "D05",
+      "title": "Transaction selection",
+      "caption": "At edge 70, the table shows offer and inject events for transaction #14, source R11 to destination R01. Clicking a transaction opens its packet history.",
+      "file": "Dashboard_Originals/image(20261004-172846).png",
+      "sha256": "438f23ac9afadae9e2fb5f9d2690d6d0deb928379883e29e7fdf38cbaa997a1e"
+    },
+    {
+      "id": "D06",
+      "title": "Packet decoding and history",
+      "caption": "Transaction #14 is 0x9DC0000E: source 3, destination 1, ID 14, payload 14. Accepted at cycle 70 and delivered at cycle 74: four cycles for this one-hop route. Full-word matching is reported for this trace.",
+      "file": "Dashboard_Originals/image(20261004-173003).png",
+      "sha256": "32811b9dee94108117e2b52920c86911a76d1503e29f9ecbfa15b563ca29af39"
+    },
+    {
+      "id": "D07",
+      "title": "Router inspector",
+      "caption": "The inspector lists active boundary ports, input FIFO occupancy, output request masks, held grants and ready. Request-mask bits name competing inputs; the table is recorded state at the selected edge.",
+      "file": "Dashboard_Originals/image(20261004-173245).png",
+      "sha256": "464d4440cb21be5e7b45e35a592c393fef1a3fcaa8eb6193adbea6d0650b06eb"
+    },
+    {
+      "id": "D08",
+      "title": "A later router state",
+      "caption": "A later recorded edge shows updated occupancy/grant state. Compare matching router, output and time before interpreting a change. This is a pre-edge state snapshot, not continuous live hardware telemetry.",
+      "file": "Dashboard_Originals/image(20261004-173555).png",
+      "sha256": "7381931566675e9d7c28c48fc4c4123ea94a5771942dd05a902ae25714bc5701"
+    },
+    {
+      "id": "D09",
+      "title": "Completed tool checks and pending hardware",
+      "caption": "The screenshot distinguishes directed-trace accounting, completed XSim/OOC checks and pending physical hardware. Its Oct-4 text predates the later unresolved SDF timing attempt; use the handoff status for that update.",
+      "file": "Dashboard_Originals/image(20261004-172136).png",
+      "sha256": "dcaa8c3fec12b78172d09fb4e11abfd593e8766d305b9c8abc987263cfd0c682"
+    },
+    {
+      "id": "D10",
+      "title": "Trace latency summary",
+      "caption": "Latest uppercase view: mean 42.00 cycles and P95 106 cycles for the 74 delivered directed-trace packets. Aggregate throughput says Not recorded because this sample does not provide a valid measurement-window denominator.",
+      "file": "Dashboard_Originals/image(20261004-180954).png",
+      "sha256": "ecaa60ac2cf680b0eba144fb2166aefd5857065662a9452a1d6d68bdb93fd371"
+    },
+    {
+      "id": "D11",
+      "title": "Controlled experiment throughput",
+      "caption": "The selected all-to-all depth-4 chart is derived from controlled RTL experiment metrics. The generation gate applies only when a source is free. These are flits/cycle, not measured FPGA bits/second.",
+      "file": "Dashboard_Originals/image(20261004-173919).png",
+      "sha256": "b8a6199b50c03d3f2fcb6579372010e2ebad917c798cbc7b1adeb494106326ec"
+    },
+    {
+      "id": "D12",
+      "title": "Imported Vivado resource summaries",
+      "caption": "Two imported rows show archived core OOC synthesis (1086 LUT, 147 FF, WNS 6.233 ns) and routed demo OOC (1067 LUT, 236 FF, WNS 4.571 ns). They describe different tops/stages.",
+      "file": "Dashboard_Originals/image(20261004-164045).png",
+      "sha256": "ca47550810c2cf9f5a66e626950c28d9d10cf0c5b8493f23fd0f2512c0311272"
+    },
+    {
+      "id": "D13",
+      "title": "Research configuration",
+      "caption": "Controlled conditions document depths, workload types, seeds, warm-up, measurement and drain. Read the validity limits: a generation gate is not independent arrival traffic, and matched seeds do not force identical accepted packets.",
+      "file": "Dashboard_Originals/image(20261004-174321).png",
+      "sha256": "05825d6eab5fae5e7f57a88df79fe685ff4ccb8d0c14ce23ce99a25a73b54c8c"
+    },
+    {
+      "id": "D14",
+      "title": "Execution and data guide",
+      "caption": "The latest uppercase help view documents running and loading trace data. The browser workflow is a presentation aid. HDL correctness and implementation results are supported independently by logs and reports.",
+      "file": "Dashboard_Originals/image(20261004-181010).png",
+      "sha256": "a3f4a25fa83c832eaf0439306950a3f49f3d538f8cccfcb8ec0d6e37bbbc22ec"
+    },
+    {
+      "id": "D15",
+      "title": "Fourteen supplemental test configurations",
+      "caption": "The actual bundled GHDL index lists FIFO, routing, arbitration, all four routers, finite demo and mesh depths. This table is the portable test index; independent XSim logs establish the separate Vivado pass.",
+      "file": "Dashboard_Originals/image(20261004-172105).png",
+      "sha256": "85cff4a425d906249b32c528cead0e29487798738271327809a266021bd8ce9a"
+    }
+  ],
+  "recovered_dashboard_originals": [
+    {
+      "file": "Dashboard_Originals/Screenshot 2026-10-04 232340.png",
+      "sha256": "2ce7002f99106bea0064c908c899c90d6e5d12c7bff4b9df155746181031fd1a",
+      "size_bytes": 10239,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/Screenshot 2026-10-04 232350.png",
+      "sha256": "e7128c368088f5518d6b4af47e884d5b658c6d3b84dd85daaec13ab418742ee5",
+      "size_bytes": 6642,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/Screenshot 2026-10-04 232454.png",
+      "sha256": "3d3641ba80e98c465df2447f2cb49236399679bf64491d878708b76d311cfbb9",
+      "size_bytes": 16243,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/Screenshot 2026-10-04 232504.png",
+      "sha256": "3e974afe65be4a5960bb1581e9b3a8163fcd727c27c05498509d9e2b9ae0e5ea",
+      "size_bytes": 5161,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/Screenshot 2026-10-04 232511.png",
+      "sha256": "d6c2ae43e210c85eb0ecb92dbb4ab4ebdaf3e1a2d32683841e9cccf40a7979e5",
+      "size_bytes": 5205,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/Screenshot 2026-10-04 232517.png",
+      "sha256": "f15ecf208f017c17ad56d13c350664223ed5528a0568c3386e93042f506c56e8",
+      "size_bytes": 5902,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/Screenshot 2026-10-04 232527.png",
+      "sha256": "2447b8fdcd47b977a4ff6f62a3b5d979d30c6e5c58ca4a0f3f59726e2c7b24d2",
+      "size_bytes": 7032,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/Screenshot 2026-10-04 232540.png",
+      "sha256": "ba6d6bf8163e7906a70d72dc1a61c56dc546fb7db360398330e6e99341879ced",
+      "size_bytes": 6934,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/Screenshot 2026-10-04 232545.png",
+      "sha256": "2a1534f3fa0f4913be1dd95a170aee504c6a72718f65da07defb0c1094699044",
+      "size_bytes": 5615,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-143916).png",
+      "sha256": "254abf95f129b3654c34c1ad186f3f49b57bdd5ff8303485d7f804c462536fe4",
+      "size_bytes": 115121,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-143941).png",
+      "sha256": "f1ee32f16fc3a6cc7cb9a6618778367437a693095b3f18d2021670432521e2e1",
+      "size_bytes": 67622,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-143953).png",
+      "sha256": "595cf9f921f21ecd38fbdf67209e92a3343f7fd6e29fc4f5eb4b6313ce2e3c39",
+      "size_bytes": 37189,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-144006).png",
+      "sha256": "8b5042cef373f553121a81ef3c4ff73f8e9baa8b8a0226fab6c31f1dbfa9e650",
+      "size_bytes": 30570,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-162215).png",
+      "sha256": "64618c85f0c4574c90f2559a9987b1eafdd81aee14929286c53789b7ad1257c2",
+      "size_bytes": 42299,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-162227).png",
+      "sha256": "b7cef13aca84caaf22cc2c219a7370ae602cb021fbf5f5154e0c1dcc29f30750",
+      "size_bytes": 21153,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-162302).png",
+      "sha256": "170521d128fddf0b1be657f6ef03b0be2e41bb6e22236010e8599ef54732b945",
+      "size_bytes": 47968,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-162316).png",
+      "sha256": "bde6cce2a99c4771f87a3a6406f2b4f3179e9a08869e6cffaec8cdcaba7d0578",
+      "size_bytes": 34582,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-164045).png",
+      "sha256": "ca47550810c2cf9f5a66e626950c28d9d10cf0c5b8493f23fd0f2512c0311272",
+      "size_bytes": 51781,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-164127).png",
+      "sha256": "d10ee1c7fcf58eb430a88843026bf3abc02ce7abbe60f61a2ae6d9bd7c761c50",
+      "size_bytes": 41837,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-171150).png",
+      "sha256": "32f021ae1a2c421fb5de1acc931ec03bb6a5e2d2526cf70b9adcc0cb4e7d2254",
+      "size_bytes": 114499,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-171252).png",
+      "sha256": "a33ba71ff3342fc627d36603c57246e208df42fac0ba5d54de159fd2057eb176",
+      "size_bytes": 132326,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-171309).png",
+      "sha256": "826054f62d0a8be4f2f7e8a719125a01ae7b306248d9d4302e7883d8db65334d",
+      "size_bytes": 146886,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-171336).png",
+      "sha256": "b0031170f5d73fdd210af6ef6f3947e7b437e7a2c673cc77d7adb05f753b99de",
+      "size_bytes": 39678,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-171508).png",
+      "sha256": "0d63aea263d37b6aece1a400cf75bf504fddeb4882bff69a0414c415a55cce80",
+      "size_bytes": 107538,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-171524).png",
+      "sha256": "6cdb0f36c16861e32e3a8a96dcbec3ba4756ffc3efa265fe3c048e39cd1b5f57",
+      "size_bytes": 40768,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-171906).png",
+      "sha256": "2b54f765da4556bb99ff53fb1c875f3812bbeaa5c8d19bb5a1a64e777f10836a",
+      "size_bytes": 110818,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-171924).png",
+      "sha256": "8f41f14cc77c8292bd498c76f532c286ed55e3e4b97277b7f278839d303369b4",
+      "size_bytes": 110319,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-172105).png",
+      "sha256": "85cff4a425d906249b32c528cead0e29487798738271327809a266021bd8ce9a",
+      "size_bytes": 36508,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-172116).png",
+      "sha256": "551285eb514e71f3fb29088c3cf307b3571bf0c71e011a394880d4c1a93d4734",
+      "size_bytes": 24103,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-172136).png",
+      "sha256": "dcaa8c3fec12b78172d09fb4e11abfd593e8766d305b9c8abc987263cfd0c682",
+      "size_bytes": 50523,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-172328).png",
+      "sha256": "5b2c126da40c8463abf86d5c70a11cf50bc0d4fcf2da5837b29b8ee8d172d802",
+      "size_bytes": 82641,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-172340).png",
+      "sha256": "f3eb407328e537e03082aef4d60682b41a89c1a89f9f64bcf3a2de7f380741ba",
+      "size_bytes": 92076,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-172458).png",
+      "sha256": "a76961be943819dd3a3f4217d9e8b08fe6c8f336029909b5b774096afa4bc1e6",
+      "size_bytes": 79547,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-172511).png",
+      "sha256": "51cdb572089d3ea093d246f1474e3218c7af3c212810580551380d3e66a42c33",
+      "size_bytes": 76200,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-172846).png",
+      "sha256": "438f23ac9afadae9e2fb5f9d2690d6d0deb928379883e29e7fdf38cbaa997a1e",
+      "size_bytes": 14596,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-173003).png",
+      "sha256": "32811b9dee94108117e2b52920c86911a76d1503e29f9ecbfa15b563ca29af39",
+      "size_bytes": 39788,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-173024).png",
+      "sha256": "374878647ec7982769d9ce0439a1ec2e7d4b313cc28860c747385aa6ece25e74",
+      "size_bytes": 40145,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-173218).png",
+      "sha256": "4d347e82de26410b02953b373c278f47b674ed140efd86853f7c9ab583f6bef5",
+      "size_bytes": 105531,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-173245).png",
+      "sha256": "464d4440cb21be5e7b45e35a592c393fef1a3fcaa8eb6193adbea6d0650b06eb",
+      "size_bytes": 103343,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-173448).png",
+      "sha256": "70447635e78a78423f002b7af180b2453b5860d485075cbcbe32906e8fba0b1d",
+      "size_bytes": 104810,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-173555).png",
+      "sha256": "7381931566675e9d7c28c48fc4c4123ea94a5771942dd05a902ae25714bc5701",
+      "size_bytes": 86293,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-173721).png",
+      "sha256": "34ac1b7450d717ceb34f0c8f7d9f7554cccf440f5025c791ac4de18491083c75",
+      "size_bytes": 87408,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-173835).png",
+      "sha256": "6ff8eb387a2cdef17939c65809126a8d969a177e6a7bd42514d94c7597d8d65b",
+      "size_bytes": 111160,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-173850).png",
+      "sha256": "723d49c5666d1e8155316c2cae18ff847f7357a5bbece6c4c03a709ca9bc1ff8",
+      "size_bytes": 91497,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-173904).png",
+      "sha256": "c13e84112faec96af785b3c288069d5e82ec7e3ca5c1e7efd35ecea645497410",
+      "size_bytes": 96331,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-173919).png",
+      "sha256": "b8a6199b50c03d3f2fcb6579372010e2ebad917c798cbc7b1adeb494106326ec",
+      "size_bytes": 79945,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-173934).png",
+      "sha256": "9de06274b7dc7a8b0fb80dfc15f5a7a1185fbacfa4a72d3c206169901ffe27d1",
+      "size_bytes": 75360,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-173947).png",
+      "sha256": "882b1b012df578cbca390008ef664e0dfbc40587db6605933433692e0f5d7ce0",
+      "size_bytes": 95397,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-174002).png",
+      "sha256": "3b7cb88aeb7177e39a23a62e8f8987fe772edfb9ccaddf632fc36652a68d7d93",
+      "size_bytes": 103576,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-174128).png",
+      "sha256": "4b3efe549d187d12f9fe9aa73a76230065c08735d51dfac9f0e9795d5a7eabdf",
+      "size_bytes": 105604,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-174321).png",
+      "sha256": "05825d6eab5fae5e7f57a88df79fe685ff4ccb8d0c14ce23ce99a25a73b54c8c",
+      "size_bytes": 91712,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-174342).png",
+      "sha256": "2c4b06969567052ed0278a577660c717a2a9930f73d7fd6052cd836470cf7a43",
+      "size_bytes": 102532,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-174502).png",
+      "sha256": "4c886b0494c08fb7783f960ccd9b411c3fc5a56a604c59b9ef31cf380195c0ae",
+      "size_bytes": 103693,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-174524).png",
+      "sha256": "7e01a9c81b60812f0fcc770670bbb066490a121fced3e4283bcd1a781e304399",
+      "size_bytes": 115808,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-180741).png",
+      "sha256": "ea0ef8153b02274d1388c24d32e258cc387533df6721e935ac35984061c79ffe",
+      "size_bytes": 117919,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-180755).png",
+      "sha256": "a212dd6b64ac41a504d3c360122e928bc975268a7e8ed0abe8850480882cf5bd",
+      "size_bytes": 142230,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-180809).png",
+      "sha256": "fb20cab2d2319a3766600f0c1d0b8342b73d332a9290dba260141d8d3e06996e",
+      "size_bytes": 110726,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-180822).png",
+      "sha256": "886f4b8309aade7b223c2281a8a5c3bb6aeb0a3ed9e4ca2e218d70fb0202ee91",
+      "size_bytes": 107218,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-180954).png",
+      "sha256": "ecaa60ac2cf680b0eba144fb2166aefd5857065662a9452a1d6d68bdb93fd371",
+      "size_bytes": 95097,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    },
+    {
+      "file": "Dashboard_Originals/image(20261004-181010).png",
+      "sha256": "a3f4a25fa83c832eaf0439306950a3f49f3d538f8cccfcb8ec0d6e37bbbc22ec",
+      "size_bytes": 90274,
+      "origin": "Original uploaded dashboard screenshot recovered from the project folder",
+      "historical": true
+    }
+  ],
+  "reviewed_inputs": [
+    {
+      "file": "Existing_Documents/NoC_Project_Proposal(1).docx",
+      "sha256": "620bae71e57ee22a59965f9e423c8e2aea4509ca8721dd595f48b0a6c45eccb6",
+      "status": "Original preserved; may contain pre-Vivado status language"
+    },
+    {
+      "file": "Existing_Documents/NoC_Project_Report(1).docx",
+      "sha256": "2a5cc49b9a22f9bdd9428e9ffcb3a1e050af5f2003edea383bf67643b9186bc5",
+      "status": "Original preserved; may contain pre-Vivado status language"
+    },
+    {
+      "file": "Existing_Documents/noc_paper(1).pdf",
+      "sha256": "49f522549c23064167290db72f8983e99ce63b72db62f9fc908af44e598dcace",
+      "status": "Original preserved; may contain pre-Vivado status language"
+    },
+    {
+      "file": "Existing_Documents/NoC_Project_Presentation(1).pptx",
+      "sha256": "cb5c9c01066b38311b6ca00e8562964d1740e0ec59995c8287e6b42e6146de81",
+      "status": "Original preserved; may contain pre-Vivado status language"
+    },
+    {
+      "file": "Existing_Documents/COMPLETION_STATUS(1).md",
+      "sha256": "ddebf87bc4a2c6bb78ed7d7baa0eb46afe04cf96969e5c9966ed94fb33e04597",
+      "status": "Original preserved; may contain pre-Vivado status language"
+    },
+    {
+      "file": "Existing_Documents/2x2_Mesh_NoC_Complete_Beginner_Handbook_2026-10-08(1).docx",
+      "sha256": "a6be9bef7ff46900ea51df1df566850f3321187b51b3bf4cea4935a0efc4be86",
+      "status": "Original preserved; may contain pre-Vivado status language"
+    },
+    {
+      "file": "Existing_Documents/vivado documented log.txt",
+      "sha256": "3fb9276dba9045d94cf42138f68f46c27cfc4ec0bab15be6b7372435fe266359",
+      "status": "Original preserved; may contain pre-Vivado status language"
+    },
+    {
+      "file": "Existing_Documents/documented screenshots.pdf",
+      "sha256": "8fd69e755d44d548e743146bba1194476d03e7f06877cb588fe97d4fc70b5026",
+      "status": "Original preserved; may contain pre-Vivado status language"
+    },
+    {
+      "file": "Existing_Documents/RTL Schematic.png",
+      "sha256": "d3797b047e89be523588394a987f68a405a0389b87702bbcb7e92b7416f5dbe4",
+      "status": "Original preserved; may contain pre-Vivado status language"
+    },
+    {
+      "file": "Existing_Documents/Synthesis Complete.png",
+      "sha256": "392cb538942cfea913bdb25bc7e29ed7852612f60525750edbba63e66a7ad834",
+      "status": "Original preserved; may contain pre-Vivado status language"
+    },
+    {
+      "source_filename": "NoC_2x2_Project.zip",
+      "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85",
+      "included_in_handoff": false,
+      "note": "Empty archive, zero entries"
+    },
+    {
+      "source_filename": "vhdl-2x2-mesh-noc_FINAL_VERIFIED_UI_2026-10-04.zip",
+      "sha256": "d6c6f0ca1512ad82debef444a75adcd3ac3cf7e8e994a34897a7f1c754724198",
+      "included_in_handoff": false,
+      "note": "Full project reference archive; all 470 manifest entries verified. Supply separately when the 93 raw traces are needed."
+    }
+  ],
+  "source_corrections": [
+    "XY, not XOR",
+    "First 0x80200001 packet is Local 0 to 0",
+    "req entries identify outputs; mask bits identify competing inputs",
+    "Objects panel is current time, Waveform Value is cursor time",
+    "Physical FPGA board operation is not demonstrated",
+    "SDF timing simulation unresolved despite successful annotation"
+  ],
+  "verification_populations": {
+    "portable_configurations": {
+      "count": 14,
+      "rerun_tool": "GHDL 6.0.0"
+    },
+    "xsim_configurations": {
+      "count": 14,
+      "tool": "Vivado 2026.1/XSim"
+    },
+    "controlled_benchmarks": {
+      "count": 93,
+      "original_tool": "GHDL 4.1.0",
+      "accepted": 82523,
+      "delivered": 82523,
+      "reset_discarded": 0,
+      "outstanding": 0
+    },
+    "directed_depth4": {
+      "accepted": 106,
+      "delivered": 74,
+      "reset_discarded": 32,
+      "end_time_ns": 2400
+    },
+    "postroute_functional": {
+      "status": "PASS in supplied console extract",
+      "delivered": 64,
+      "end_time_ns": 530
+    },
+    "postroute_sdf_timing": {
+      "status": "UNRESOLVED / DEFERRED",
+      "failure": "Demo status/count failure",
+      "end_time_ns": 20150
+    },
+    "physical_board": {
+      "status": "NOT EXECUTED"
+    }
+  },
+  "runs": {
+    "archived_core_ooc": {
+      "lut": 1086,
+      "ff": 147,
+      "wns_ns": 6.233
+    },
+    "gui_core_synthesis": {
+      "lut": 1085,
+      "ff": 147,
+      "wns_ns": 6.129,
+      "whs_ns": 0.111,
+      "io_demands": 1774
+    },
+    "routed_demo_ooc": {
+      "lut": 1067,
+      "logic_lut": 841,
+      "memory_lut": 226,
+      "ff": 236,
+      "wns_ns": 4.571,
+      "tns_ns": 0,
+      "whs_ns": 0.066,
+      "ths_ns": 0,
+      "wpws_ns": 3.87,
+      "routable_nets": 1468,
+      "fully_routed_nets": 1468,
+      "routing_errors": 0
+    }
+  },
+  "local_windows_paths": {
+    "source_junction": "D:\\NoC_2x2_Project",
+    "original_source": "D:\\HDL & PLD\\HDL & PLD Mini Project\\Final Project Version\\vhdl-2x2-mesh-noc",
+    "vivado_launcher": "E:\\Vivado-ML\\2026.1\\Vivado\\bin\\vivado.bat",
+    "project_xpr": "E:\\Vivado_Projects\\NoC_2x2\\NoC_2x2.xpr",
+    "routed_checkpoint": "D:\\NoC_2x2_Project\\build\\checkpoints\\demo_ooc_routed.dcp",
+    "diagnostics": "D:\\NoC_2x2_Project\\build\\post_route_sim"
+  }
+}

@@ -1,0 +1,3 @@
+ghdl -r --std=08 tb_noc_2x2 -gDEPTH=8 -gRUN_ID=directed-d8 -gTRACE_FILE=D:\HDL & PLD\HDL & PLD Mini Project\Final Project Version\vhdl-2x2-mesh-noc\evidence\ghdl\directed-d8.csv -gTRACE_LEVEL=2 --assert-level=error
+D:\HDL & PLD\HDL & PLD Mini Project\Final Project Version\vhdl-2x2-mesh-noc\tb\tb_noc_2x2.vhd:177:3:@3us:(report note): PASS tb_noc_2x2 accepted=158 delivered=102 reset_discarded=56 attempted_cycles=420 concurrent_edges=28 max_outstanding=56
+simulation finished @3us

@@ -1,0 +1,4 @@
+Time resolution is 1 ps
+Note: PASS tb_rr_arbiter held grant, rotation, 5-successful-grant fairness
+Time: 910 ns  Iteration: 0  Process: /tb_rr_arbiter/line__12  File: D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_rr_arbiter.vhd
+$finish called at time : 910 ns : File "D:/HDL & PLD/HDL & PLD Mini Project/Final Project Version/vhdl-2x2-mesh-noc/tb/tb_rr_arbiter.vhd" Line 42

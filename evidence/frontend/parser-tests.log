@@ -1,0 +1,35 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> noc-trace-lab@1.0.0 test
+> node --test src/data.test.ts
+
+✔ all 16 shortest XY paths (1.428489ms)
+✔ 32-bit decoding (0.196826ms)
+✔ quoted CSV and CRLF (0.187352ms)
+✔ unclosed quotes rejected (0.274803ms)
+✔ latency and accepted accounting (0.730349ms)
+✔ mixed run rejected (0.207071ms)
+✔ invalid header rejected (0.1066ms)
+✔ bad field width rejected (0.174132ms)
+✔ hex mismatch rejected (0.19948ms)
+✔ wrong destination rejected (1.128177ms)
+✔ out-of-order cycles rejected (0.262004ms)
+✔ duplicate delivery rejected (0.204818ms)
+✔ partial trace preserved (0.172379ms)
+✔ reset discards accounted (0.212079ms)
+✔ invalid state range rejected (0.142034ms)
+✔ safe CSV formula export (0.15932ms)
+✔ metrics provenance required (0.229365ms)
+✔ event-only rate denominator is unavailable (0.155795ms)
+✔ complete contiguous state coverage defines rate denominator (0.451119ms)
+✔ missing state edge cannot inflate rate (0.098639ms)
+✔ invalid resource part rejected (0.277597ms)
+✔ linked packet follows XY only (0.349206ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 123.121603

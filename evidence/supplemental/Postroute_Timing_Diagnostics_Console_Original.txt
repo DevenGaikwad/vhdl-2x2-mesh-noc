@@ -1,0 +1,378 @@
+LOG: xsim_postroute.log
+Failure: Demo status/count failure
+PS C:\Users\User> $ErrorActionPreference = 'Stop'
+PS C:\Users\User>
+PS C:\Users\User> $work = 'D:\NoC_2x2_Project\build\post_route_sim'
+PS C:\Users\User> $probe = Join-Path $work 'timing_probe_single_glbl'
+PS C:\Users\User> $bin = 'E:\Vivado-ML\2026.1\Vivado\bin'
+PS C:\Users\User> $xelab = Join-Path $bin 'xelab.bat'
+PS C:\Users\User> $xsim = Join-Path $bin 'xsim.bat'
+PS C:\Users\User>
+PS C:\Users\User> foreach ($file in @(
+>>     $xelab,
+>>     $xsim,
+>>     (Join-Path $work 'demo_postroute.v'),
+>>     (Join-Path $work 'demo_postroute.sdf'),
+>>     (Join-Path $work 'tb_demo_postroute.vhd')
+>> )) {
+>>     if (-not (Test-Path -LiteralPath $file -PathType Leaf)) {
+>>         throw "Required file missing: $file"
+>>     }
+>> }
+PS C:\Users\User> if (Test-Path -LiteralPath $probe) {
+>>     throw "Diagnostic folder already exists; nothing was overwritten: $probe"
+>> }
+PS C:\Users\User>
+PS C:\Users\User> New-Item -ItemType Directory -Path $probe | Out-Null
+PS C:\Users\User> $projectFile = Join-Path $probe 'timing_single_glbl.prj'
+PS C:\Users\User>
+PS C:\Users\User> [System.IO.File]::WriteAllLines(
+>>     $projectFile,
+>>     @(
+>>         'verilog xil_defaultlib D:/NoC_2x2_Project/build/post_route_sim/demo_postroute.v'
+>>         'vhdl2008 xil_defaultlib D:/NoC_2x2_Project/build/post_route_sim/tb_demo_postroute.vhd'
+>>     ),
+>>     [System.Text.UTF8Encoding]::new($false)
+>> )
+PS C:\Users\User>
+PS C:\Users\User> Push-Location $probe
+PS D:\NoC_2x2_Project\build\post_route_sim\timing_probe_single_glbl> try {
+>>     & $xelab -prj $projectFile -L simprims_ver -L secureip `
+>>         -maxdelay -transport_int_delays -pulse_r 0 -pulse_int_r 0 `
+>>         -debug typical `
+>>         -s postroute_timing_single_glbl `
+>>         xil_defaultlib.tb_demo_postroute xil_defaultlib.glbl `
+>>         -log timing_single_glbl_elab.log
+>>
+>>     if ($LASTEXITCODE -ne 0) {
+>>         throw "Elaboration failed. See $probe\timing_single_glbl_elab.log"
+>>     }
+>>
+>>     Write-Host "`n=== SDF ANNOTATION ==="
+>>     Select-String -LiteralPath (Join-Path $probe 'timing_single_glbl_elab.log') `
+>>         -Pattern 'SDF backannotation', 'WARNING:', 'ERROR:' |
+>>         ForEach-Object { Write-Host $_.Line.Trim() }
+>>
+>>     & $xsim postroute_timing_single_glbl -R `
+>>         -log timing_single_glbl_run.log
+>>     $runExitCode = $LASTEXITCODE
+>>
+>>     Write-Host "`n=== SIMULATION RESULT ==="
+>>     Get-Content -LiteralPath (Join-Path $probe 'timing_single_glbl_run.log') -Tail 20
+>>     Write-Host "XSim exit code: $runExitCode"
+>> }
+>> finally {
+>>     Pop-Location
+>> }
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/Vivado-ML/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe -prj D:\NoC_2x2_Project\build\post_route_sim\timing_probe_single_glbl\timing_single_glbl.prj -L simprims_ver -L secureip -maxdelay -transport_int_delays -pulse_r 0 -pulse_int_r 0 -debug typical -s postroute_timing_single_glbl xil_defaultlib.tb_demo_postroute xil_defaultlib.glbl -log timing_single_glbl_elab.log
+Multi-threading is on. Using 2 slave threads.
+Determining compilation order of HDL files.
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/NoC_2x2_Project/build/post_route_sim/demo_postroute.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module RAM32M_UNIQ_BASE_
+INFO: [VRFC 10-311] analyzing module RAM32M_HD1
+INFO: [VRFC 10-311] analyzing module RAM32M_HD12
+INFO: [VRFC 10-311] analyzing module RAM32M_HD13
+INFO: [VRFC 10-311] analyzing module RAM32M_HD14
+INFO: [VRFC 10-311] analyzing module RAM32M_HD15
+INFO: [VRFC 10-311] analyzing module RAM32M_HD16
+INFO: [VRFC 10-311] analyzing module RAM32M_HD17
+INFO: [VRFC 10-311] analyzing module RAM32M_HD18
+INFO: [VRFC 10-311] analyzing module RAM32M_HD19
+INFO: [VRFC 10-311] analyzing module RAM32M_HD2
+INFO: [VRFC 10-311] analyzing module RAM32M_HD22
+INFO: [VRFC 10-311] analyzing module RAM32M_HD23
+INFO: [VRFC 10-311] analyzing module RAM32M_HD24
+INFO: [VRFC 10-311] analyzing module RAM32M_HD25
+INFO: [VRFC 10-311] analyzing module RAM32M_HD26
+INFO: [VRFC 10-311] analyzing module RAM32M_HD29
+INFO: [VRFC 10-311] analyzing module RAM32M_HD3
+INFO: [VRFC 10-311] analyzing module RAM32M_HD30
+INFO: [VRFC 10-311] analyzing module RAM32M_HD31
+INFO: [VRFC 10-311] analyzing module RAM32M_HD32
+INFO: [VRFC 10-311] analyzing module RAM32M_HD35
+INFO: [VRFC 10-311] analyzing module RAM32M_HD36
+INFO: [VRFC 10-311] analyzing module RAM32M_HD37
+INFO: [VRFC 10-311] analyzing module RAM32M_HD38
+INFO: [VRFC 10-311] analyzing module RAM32M_HD41
+INFO: [VRFC 10-311] analyzing module RAM32M_HD42
+INFO: [VRFC 10-311] analyzing module RAM32M_HD43
+INFO: [VRFC 10-311] analyzing module RAM32M_HD44
+INFO: [VRFC 10-311] analyzing module RAM32M_HD45
+INFO: [VRFC 10-311] analyzing module RAM32M_HD48
+INFO: [VRFC 10-311] analyzing module RAM32M_HD49
+INFO: [VRFC 10-311] analyzing module RAM32M_HD5
+INFO: [VRFC 10-311] analyzing module RAM32M_HD50
+INFO: [VRFC 10-311] analyzing module RAM32M_HD51
+INFO: [VRFC 10-311] analyzing module RAM32M_HD52
+INFO: [VRFC 10-311] analyzing module RAM32M_HD53
+INFO: [VRFC 10-311] analyzing module RAM32M_HD54
+INFO: [VRFC 10-311] analyzing module RAM32M_HD55
+INFO: [VRFC 10-311] analyzing module RAM32M_HD58
+INFO: [VRFC 10-311] analyzing module RAM32M_HD59
+INFO: [VRFC 10-311] analyzing module RAM32M_HD6
+INFO: [VRFC 10-311] analyzing module RAM32M_HD60
+INFO: [VRFC 10-311] analyzing module RAM32M_HD61
+INFO: [VRFC 10-311] analyzing module RAM32M_HD62
+INFO: [VRFC 10-311] analyzing module RAM32M_HD65
+INFO: [VRFC 10-311] analyzing module RAM32M_HD66
+INFO: [VRFC 10-311] analyzing module RAM32M_HD67
+INFO: [VRFC 10-311] analyzing module RAM32M_HD68
+INFO: [VRFC 10-311] analyzing module RAM32M_HD7
+INFO: [VRFC 10-311] analyzing module RAM32M_HD8
+INFO: [VRFC 10-311] analyzing module RAM32M_HD9
+INFO: [VRFC 10-311] analyzing module RAM32X1D_UNIQ_BASE_
+INFO: [VRFC 10-311] analyzing module RAM32X1D_HD10
+INFO: [VRFC 10-311] analyzing module RAM32X1D_HD11
+INFO: [VRFC 10-311] analyzing module RAM32X1D_HD20
+INFO: [VRFC 10-311] analyzing module RAM32X1D_HD21
+INFO: [VRFC 10-311] analyzing module RAM32X1D_HD27
+INFO: [VRFC 10-311] analyzing module RAM32X1D_HD28
+INFO: [VRFC 10-311] analyzing module RAM32X1D_HD33
+INFO: [VRFC 10-311] analyzing module RAM32X1D_HD34
+INFO: [VRFC 10-311] analyzing module RAM32X1D_HD39
+INFO: [VRFC 10-311] analyzing module RAM32X1D_HD4
+INFO: [VRFC 10-311] analyzing module RAM32X1D_HD40
+INFO: [VRFC 10-311] analyzing module RAM32X1D_HD46
+INFO: [VRFC 10-311] analyzing module RAM32X1D_HD47
+INFO: [VRFC 10-311] analyzing module RAM32X1D_HD56
+INFO: [VRFC 10-311] analyzing module RAM32X1D_HD57
+INFO: [VRFC 10-311] analyzing module RAM32X1D_HD63
+INFO: [VRFC 10-311] analyzing module RAM32X1D_HD64
+INFO: [VRFC 10-311] analyzing module fifo_buffer
+INFO: [VRFC 10-311] analyzing module fifo_buffer_0
+INFO: [VRFC 10-311] analyzing module fifo_buffer_1
+INFO: [VRFC 10-311] analyzing module fifo_buffer_10
+INFO: [VRFC 10-311] analyzing module fifo_buffer_11
+INFO: [VRFC 10-311] analyzing module fifo_buffer_12
+INFO: [VRFC 10-311] analyzing module fifo_buffer_16
+INFO: [VRFC 10-311] analyzing module fifo_buffer_17
+INFO: [VRFC 10-311] analyzing module fifo_buffer_18
+INFO: [VRFC 10-311] analyzing module fifo_buffer_4
+INFO: [VRFC 10-311] analyzing module fifo_buffer_5
+INFO: [VRFC 10-311] analyzing module fifo_buffer_6
+INFO: [VRFC 10-311] analyzing module noc_2x2_core
+INFO: [VRFC 10-311] analyzing module noc_fpga_demo_top
+INFO: [VRFC 10-311] analyzing module packet_generator
+INFO: [VRFC 10-311] analyzing module packet_generator__parameterized0
+INFO: [VRFC 10-311] analyzing module packet_generator__parameterized1
+INFO: [VRFC 10-311] analyzing module packet_generator__parameterized2
+INFO: [VRFC 10-311] analyzing module packet_receiver
+INFO: [VRFC 10-311] analyzing module packet_receiver__parameterized0
+INFO: [VRFC 10-311] analyzing module packet_receiver__parameterized1
+INFO: [VRFC 10-311] analyzing module packet_receiver__parameterized2
+INFO: [VRFC 10-311] analyzing module router
+INFO: [VRFC 10-311] analyzing module router__parameterized0
+INFO: [VRFC 10-311] analyzing module router__parameterized1
+INFO: [VRFC 10-311] analyzing module router__parameterized2
+INFO: [VRFC 10-311] analyzing module rr_arbiter
+INFO: [VRFC 10-311] analyzing module rr_arbiter_13
+INFO: [VRFC 10-311] analyzing module rr_arbiter_14
+INFO: [VRFC 10-311] analyzing module rr_arbiter_15
+INFO: [VRFC 10-311] analyzing module rr_arbiter_19
+INFO: [VRFC 10-311] analyzing module rr_arbiter_2
+INFO: [VRFC 10-311] analyzing module rr_arbiter_20
+INFO: [VRFC 10-311] analyzing module rr_arbiter_21
+INFO: [VRFC 10-311] analyzing module rr_arbiter_3
+INFO: [VRFC 10-311] analyzing module rr_arbiter_7
+INFO: [VRFC 10-311] analyzing module rr_arbiter_8
+INFO: [VRFC 10-311] analyzing module rr_arbiter_9
+INFO: [VRFC 10-311] analyzing module traffic_node
+INFO: [VRFC 10-311] analyzing module traffic_node__parameterized0
+INFO: [VRFC 10-311] analyzing module traffic_node__parameterized1
+INFO: [VRFC 10-311] analyzing module traffic_node__parameterized2
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/NoC_2x2_Project/build/post_route_sim/tb_demo_postroute.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_demo_postroute'
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+INFO: [XSIM 43-3451] SDF backannotation process started with SDF file "D:/NoC_2x2_Project/build/post_route_sim/demo_postroute.sdf", for root module "tb_demo_postroute/dut".
+INFO: [XSIM 43-3452] SDF backannotation was successful for SDF file "D:/NoC_2x2_Project/build/post_route_sim/demo_postroute.sdf", for root module "tb_demo_postroute/dut".
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package std.env
+Compiling package vl.vl_types
+Compiling module xil_defaultlib.glbl
+Compiling module simprims_ver.x_lut3_mux8
+Compiling module simprims_ver.LUT3
+Compiling module simprims_ver.LUT4
+Compiling module simprims_ver.LUT6
+Compiling module simprims_ver.LUT5
+Compiling module simprims_ver.RAMD32
+Compiling module simprims_ver.RAMS32
+Compiling module xil_defaultlib.RAM32M_UNIQ_BASE_
+Compiling module xil_defaultlib.RAM32M_HD1
+Compiling module xil_defaultlib.RAM32M_HD2
+Compiling module xil_defaultlib.RAM32M_HD3
+Compiling module xil_defaultlib.RAM32X1D_UNIQ_BASE_
+Compiling module xil_defaultlib.RAM32X1D_HD4
+Compiling module xil_defaultlib.RAM32M_HD5
+Compiling module simprims_ver.FDRE_default
+Compiling module xil_defaultlib.fifo_buffer_16
+Compiling module xil_defaultlib.RAM32M_HD6
+Compiling module xil_defaultlib.RAM32M_HD7
+Compiling module xil_defaultlib.RAM32M_HD8
+Compiling module xil_defaultlib.RAM32M_HD9
+Compiling module xil_defaultlib.RAM32X1D_HD10
+Compiling module xil_defaultlib.RAM32X1D_HD11
+Compiling module xil_defaultlib.RAM32M_HD12
+Compiling module xil_defaultlib.fifo_buffer_17
+Compiling module xil_defaultlib.RAM32M_HD13
+Compiling module xil_defaultlib.RAM32M_HD14
+Compiling module xil_defaultlib.RAM32M_HD15
+Compiling module xil_defaultlib.fifo_buffer_18
+Compiling module simprims_ver.x_lut2_mux4
+Compiling module simprims_ver.LUT2
+Compiling module xil_defaultlib.rr_arbiter_19
+Compiling module xil_defaultlib.rr_arbiter_20
+Compiling module xil_defaultlib.rr_arbiter_21
+Compiling module xil_defaultlib.router
+Compiling module xil_defaultlib.RAM32M_HD16
+Compiling module xil_defaultlib.RAM32M_HD17
+Compiling module xil_defaultlib.RAM32M_HD18
+Compiling module xil_defaultlib.RAM32M_HD19
+Compiling module xil_defaultlib.RAM32X1D_HD20
+Compiling module xil_defaultlib.RAM32X1D_HD21
+Compiling module xil_defaultlib.RAM32M_HD22
+Compiling module xil_defaultlib.fifo_buffer_10
+Compiling module xil_defaultlib.RAM32M_HD23
+Compiling module xil_defaultlib.RAM32M_HD24
+Compiling module xil_defaultlib.RAM32M_HD25
+Compiling module xil_defaultlib.RAM32M_HD26
+Compiling module xil_defaultlib.RAM32X1D_HD27
+Compiling module xil_defaultlib.RAM32X1D_HD28
+Compiling module xil_defaultlib.RAM32M_HD29
+Compiling module xil_defaultlib.fifo_buffer_11
+Compiling module xil_defaultlib.RAM32M_HD30
+Compiling module xil_defaultlib.RAM32M_HD31
+Compiling module xil_defaultlib.RAM32M_HD32
+Compiling module xil_defaultlib.RAM32X1D_HD33
+Compiling module xil_defaultlib.RAM32X1D_HD34
+Compiling module xil_defaultlib.fifo_buffer_12
+Compiling module xil_defaultlib.rr_arbiter_13
+Compiling module xil_defaultlib.rr_arbiter_14
+Compiling module xil_defaultlib.rr_arbiter_15
+Compiling module xil_defaultlib.router__parameterized0
+Compiling module xil_defaultlib.RAM32M_HD35
+Compiling module xil_defaultlib.RAM32M_HD36
+Compiling module xil_defaultlib.RAM32M_HD37
+Compiling module xil_defaultlib.RAM32M_HD38
+Compiling module xil_defaultlib.RAM32X1D_HD39
+Compiling module xil_defaultlib.RAM32X1D_HD40
+Compiling module xil_defaultlib.RAM32M_HD41
+Compiling module xil_defaultlib.fifo_buffer_4
+Compiling module xil_defaultlib.RAM32M_HD42
+Compiling module xil_defaultlib.RAM32M_HD43
+Compiling module xil_defaultlib.RAM32M_HD44
+Compiling module xil_defaultlib.RAM32M_HD45
+Compiling module xil_defaultlib.RAM32X1D_HD46
+Compiling module xil_defaultlib.RAM32X1D_HD47
+Compiling module xil_defaultlib.RAM32M_HD48
+Compiling module xil_defaultlib.fifo_buffer_5
+Compiling module xil_defaultlib.RAM32M_HD49
+Compiling module xil_defaultlib.RAM32M_HD50
+Compiling module xil_defaultlib.RAM32M_HD51
+Compiling module xil_defaultlib.fifo_buffer_6
+Compiling module xil_defaultlib.rr_arbiter_7
+Compiling module xil_defaultlib.rr_arbiter_8
+Compiling module xil_defaultlib.rr_arbiter_9
+Compiling module xil_defaultlib.router__parameterized1
+Compiling module xil_defaultlib.RAM32M_HD52
+Compiling module xil_defaultlib.RAM32M_HD53
+Compiling module xil_defaultlib.RAM32M_HD54
+Compiling module xil_defaultlib.RAM32M_HD55
+Compiling module xil_defaultlib.RAM32X1D_HD56
+Compiling module xil_defaultlib.RAM32X1D_HD57
+Compiling module xil_defaultlib.RAM32M_HD58
+Compiling module xil_defaultlib.fifo_buffer
+Compiling module xil_defaultlib.RAM32M_HD59
+Compiling module xil_defaultlib.RAM32M_HD60
+Compiling module xil_defaultlib.RAM32M_HD61
+Compiling module xil_defaultlib.RAM32M_HD62
+Compiling module xil_defaultlib.RAM32X1D_HD63
+Compiling module xil_defaultlib.RAM32X1D_HD64
+Compiling module xil_defaultlib.RAM32M_HD65
+Compiling module xil_defaultlib.fifo_buffer_0
+Compiling module xil_defaultlib.RAM32M_HD66
+Compiling module xil_defaultlib.RAM32M_HD67
+Compiling module xil_defaultlib.RAM32M_HD68
+Compiling module xil_defaultlib.fifo_buffer_1
+Compiling module xil_defaultlib.rr_arbiter
+Compiling module xil_defaultlib.rr_arbiter_2
+Compiling module xil_defaultlib.rr_arbiter_3
+Compiling module xil_defaultlib.router__parameterized2
+Compiling module xil_defaultlib.noc_2x2_core
+Compiling module simprims_ver.x_lut1_mux2
+Compiling module simprims_ver.LUT1
+Compiling module xil_defaultlib.packet_generator
+Compiling module simprims_ver.CARRY4
+Compiling module xil_defaultlib.packet_receiver
+Compiling module xil_defaultlib.traffic_node
+Compiling module xil_defaultlib.packet_generator__parameterized0
+Compiling module xil_defaultlib.packet_receiver__parameterized0
+Compiling module xil_defaultlib.traffic_node__parameterized0
+Compiling module xil_defaultlib.packet_generator__parameterized1
+Compiling module xil_defaultlib.packet_receiver__parameterized1
+Compiling module xil_defaultlib.traffic_node__parameterized1
+Compiling module xil_defaultlib.packet_generator__parameterized2
+Compiling module xil_defaultlib.packet_receiver__parameterized2
+Compiling module xil_defaultlib.traffic_node__parameterized2
+Compiling module xil_defaultlib.noc_fpga_demo_top
+Compiling architecture test of entity xil_defaultlib.tb_demo_postroute
+Built simulation snapshot postroute_timing_single_glbl
+
+=== SDF ANNOTATION ===
+INFO: [XSIM 43-3451] SDF backannotation process started with SDF file "D:/NoC_2x2_Project/build/post_route_sim/demo_postroute.sdf", for root module "tb_demo_postroute/dut".
+INFO: [XSIM 43-3452] SDF backannotation was successful for SDF file "D:/NoC_2x2_Project/build/post_route_sim/demo_postroute.sdf", for root module "tb_demo_postroute/dut".
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Fri Oct  9 08:46:33 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/postroute_timing_single_glbl/xsim_script.tcl
+# xsim {postroute_timing_single_glbl} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+Failure: Demo status/count failure
+Time: 20150 ns  Iteration: 0  Process: /tb_demo_postroute/line__17  File: D:/NoC_2x2_Project/build/post_route_sim/tb_demo_postroute.vhd
+$finish called at time : 20150 ns : File "D:/NoC_2x2_Project/build/post_route_sim/tb_demo_postroute.vhd" Line 24
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:13 . Memory (MB): peak = 220.090 ; gain = 0.000
+exit
+INFO: xsimkernel Simulation Memory Usage: 58108 KB (Peak: 58108 KB), Simulation CPU Usage: 12186 ms
+INFO: [Common 17-206] Exiting xsim at Fri Oct  9 08:46:47 2026...
+
+=== SIMULATION RESULT ===
+# Processor Detail   : 11th Gen Intel(R) Core(TM) i3-1115G4 @ 3.00GHz
+# CPU Frequency      : 2995 MHz
+# CPU Physical cores : 2
+# CPU Logical cores  : 4
+# Host memory        : 16805 MB
+# Swap memory        : 1073 MB
+# Total Virtual      : 17878 MB
+# Available Virtual  : 5120 MB
+#-----------------------------------------------------------
+source xsim.dir/postroute_timing_single_glbl/xsim_script.tcl
+# xsim {postroute_timing_single_glbl} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+Failure: Demo status/count failure
+Time: 20150 ns  Iteration: 0  Process: /tb_demo_postroute/line__17  File: D:/NoC_2x2_Project/build/post_route_sim/tb_demo_postroute.vhd
+$finish called at time : 20150 ns : File "D:/NoC_2x2_Project/build/post_route_sim/tb_demo_postroute.vhd" Line 24
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:13 . Memory (MB): peak = 220.090 ; gain = 0.000
+exit
+INFO: xsimkernel Simulation Memory Usage: 58108 KB (Peak: 58108 KB), Simulation CPU Usage: 12186 ms
+INFO: [Common 17-206] Exiting xsim at Fri Oct  9 08:46:47 2026...
+XSim exit code: 0
+PS C:\Users\User>

@@ -1,0 +1,7 @@
+COMMAND: git bundle verify /workspace/scratch/3a2e521c2479/vhdl-2x2-mesh-noc/repository.bundle
+The bundle contains these 2 refs:
+6f089ed040de15cd3e2a2fce63b8bea8d05015e1 refs/heads/main
+6f089ed040de15cd3e2a2fce63b8bea8d05015e1 HEAD
+The bundle records a complete history.
+The bundle uses this hash algorithm: sha1
+/workspace/scratch/3a2e521c2479/vhdl-2x2-mesh-noc/repository.bundle is okay

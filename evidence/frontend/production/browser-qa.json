@@ -1,0 +1,33 @@
+{
+  "build": "Vite production dist",
+  "browser": "151.0.7922.34",
+  "viewports": [
+    1440,
+    390
+  ],
+  "views": [
+    "Architecture",
+    "Replay",
+    "Router inspector",
+    "Packet inspector",
+    "Verification",
+    "Performance",
+    "Resource and timing",
+    "Research",
+    "Help"
+  ],
+  "checks": [
+    "actual sample load",
+    "all nine views",
+    "bundled verification and metrics",
+    "two keyboard slider increments",
+    "all nine mobile views without page overflow",
+    "active mobile navigation stays visible",
+    "eight channels with six recorded link highlights",
+    "router keyboard focus",
+    "malformed import error",
+    "scenario/depth plot controls"
+  ],
+  "page_errors": [],
+  "status": "PASS"
+}

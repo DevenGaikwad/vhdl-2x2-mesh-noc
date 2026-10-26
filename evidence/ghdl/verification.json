@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "provenance": "GHDL RTL simulation",
+  "tool": "GHDL 6.0.0 (6.0.0.r0.ge589c698c.dirty) [Dunoon edition]\r\n Compiled with GNAT Version: 15.2.0\r\n static elaboration, mcode JIT code generator\r\nWritten by Tristan Gingold.\r\n\r\nCopyright (C) 2003 - 2026 Tristan Gingold.\r\nGHDL is free software, covered by the GNU General Public License.  There is NO\r\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+  "part_target": "xc7s15cpga196-2",
+  "xsim_status": "not run",
+  "source_sha256": {
+    "rtl/noc_pkg.vhd": "29ae144359a1c9c1b13eb1173d632801b272a338aec0f6db9cd48e2f529918fb",
+    "rtl/fifo_buffer.vhd": "35241730f1183fcf75a47a82cc3baae8f4ce79ff0e30d5efea95db32ae85a4a1",
+    "rtl/xy_route_unit.vhd": "f89a8a4cd881a2fc4cd941197d03fef0a21bce7d8d16ee795d130466776f667d",
+    "rtl/rr_arbiter.vhd": "a45595bd37fc4f4c3265fbd3f5dab462edd34308ad020c44500960ac4bc25323",
+    "rtl/crossbar_5x5.vhd": "cb42556820a591e64bda1d116c8dc3e1b25c522f147fcce2c4299f4387591200",
+    "rtl/router.vhd": "2516a2cbd5d1ec3b1227edf26213a711720a81e31235fc36dde4de546637e0aa",
+    "rtl/noc_2x2_core.vhd": "0df057742df964df16eb870f42bbca89ccde5bf49811b8872344c8db557b9338",
+    "rtl/packet_generator.vhd": "eeb72f7ad993b8f5bfac1c9e8fa29c9d9b341350922762e13be7979377dc750b",
+    "rtl/packet_receiver.vhd": "c3b47dec3d2658a3d41c6fadbb26259930c7de66446778955708635e2cb9e707",
+    "rtl/traffic_node.vhd": "826ae0df63b46cd797bc8fbaf1ca50cf9cf7d9a2a9896dddf551703b71a75348",
+    "rtl/noc_fpga_demo_top.vhd": "a29c6176198517ef46abc4c3244e2b32b493e19e2f11ff52f8f738f57035c54b",
+    "tb/tb_fifo_buffer.vhd": "52c05057b1d4e3a7c621dcf256f06fafc8247632383e0858baf67402f1c93967",
+    "tb/tb_xy_route_unit.vhd": "a202ce21460101e374e0672ae5e6f67d3788433ab051975b77067ef0975e8699",
+    "tb/tb_rr_arbiter.vhd": "85283640c09149c78cca20fdc3dfe99b76f5e8aab28af870e732c15351676eb0",
+    "tb/tb_router.vhd": "7ddcfff44a1cbd908ecf126a59a77fbc2abee4ddb3b8ba67d463b986a9395956",
+    "tb/tb_demo.vhd": "ca19d789748458e33326076cf04340fdcb9bf483f71eaa4e9d4a2a0cb9aac0c7",
+    "tb/tb_noc_2x2.vhd": "a109c8def959b9dd256247ccc5889fc6f4e6038df5bf02e6e62d062db2d76b23"
+  },
+  "tests": [
+    {
+      "name": "fifo-1",
+      "top": "tb_fifo_buffer",
+      "status": "PASS",
+      "generics": [
+        "-gDEPTH=1"
+      ],
+      "log": "evidence/ghdl/fifo-1.log"
+    },
+    {
+      "name": "fifo-3",
+      "top": "tb_fifo_buffer",
+      "status": "PASS",
+      "generics": [
+        "-gDEPTH=3"
+      ],
+      "log": "evidence/ghdl/fifo-3.log"
+    },
+    {
+      "name": "fifo-4",
+      "top": "tb_fifo_buffer",
+      "status": "PASS",
+      "generics": [
+        "-gDEPTH=4"
+      ],
+      "log": "evidence/ghdl/fifo-4.log"
+    },
+    {
+      "name": "fifo-8",
+      "top": "tb_fifo_buffer",
+      "status": "PASS",
+      "generics": [
+        "-gDEPTH=8"
+      ],
+      "log": "evidence/ghdl/fifo-8.log"
+    },
+    {
+      "name": "routing",
+      "top": "tb_xy_route_unit",
+      "status": "PASS",
+      "generics": [],
+      "log": "evidence/ghdl/routing.log"
+    },
+    {
+      "name": "arbitration",
+      "top": "tb_rr_arbiter",
+      "status": "PASS",
+      "generics": [],
+      "log": "evidence/ghdl/arbitration.log"
+    },
+    {
+      "name": "router-0",
+      "top": "tb_router",
+      "status": "PASS",
+      "generics": [
+        "-gCURRENT=0"
+      ],
+      "log": "evidence/ghdl/router-0.log"
+    },
+    {
+      "name": "router-1",
+      "top": "tb_router",
+      "status": "PASS",
+      "generics": [
+        "-gCURRENT=1"
+      ],
+      "log": "evidence/ghdl/router-1.log"
+    },
+    {
+      "name": "router-2",
+      "top": "tb_router",
+      "status": "PASS",
+      "generics": [
+        "-gCURRENT=2"
+      ],
+      "log": "evidence/ghdl/router-2.log"
+    },
+    {
+      "name": "router-3",
+      "top": "tb_router",
+      "status": "PASS",
+      "generics": [
+        "-gCURRENT=3"
+      ],
+      "log": "evidence/ghdl/router-3.log"
+    },
+    {
+      "name": "demo",
+      "top": "tb_demo",
+      "status": "PASS",
+      "generics": [],
+      "log": "evidence/ghdl/demo.log"
+    },
+    {
+      "name": "mesh-4",
+      "top": "tb_noc_2x2",
+      "status": "PASS",
+      "generics": [
+        "-gDEPTH=4",
+        "-gRUN_ID=directed-d4",
+        "-gTRACE_FILE=D:\\HDL & PLD\\HDL & PLD Mini Project\\Final Project Version\\vhdl-2x2-mesh-noc\\evidence\\ghdl\\directed-d4.csv",
+        "-gTRACE_LEVEL=2"
+      ],
+      "log": "evidence/ghdl/mesh-4.log"
+    },
+    {
+      "name": "mesh-2",
+      "top": "tb_noc_2x2",
+      "status": "PASS",
+      "generics": [
+        "-gDEPTH=2",
+        "-gRUN_ID=directed-d2",
+        "-gTRACE_FILE=D:\\HDL & PLD\\HDL & PLD Mini Project\\Final Project Version\\vhdl-2x2-mesh-noc\\evidence\\ghdl\\directed-d2.csv",
+        "-gTRACE_LEVEL=2"
+      ],
+      "log": "evidence/ghdl/mesh-2.log"
+    },
+    {
+      "name": "mesh-8",
+      "top": "tb_noc_2x2",
+      "status": "PASS",
+      "generics": [
+        "-gDEPTH=8",
+        "-gRUN_ID=directed-d8",
+        "-gTRACE_FILE=D:\\HDL & PLD\\HDL & PLD Mini Project\\Final Project Version\\vhdl-2x2-mesh-noc\\evidence\\ghdl\\directed-d8.csv",
+        "-gTRACE_LEVEL=2"
+      ],
+      "log": "evidence/ghdl/mesh-8.log"
+    }
+  ]
+}

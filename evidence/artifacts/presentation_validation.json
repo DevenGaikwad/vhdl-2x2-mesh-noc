@@ -1,0 +1,20 @@
+{
+  "schema_version": 2,
+  "status": "PASS",
+  "file": "presentation/NoC_Project_Presentation.pptx",
+  "sha256": "cb5c9c01066b38311b6ca00e8562964d1740e0ec59995c8287e6b42e6146de81",
+  "slide_count": 16,
+  "speaker_notes_count": 16,
+  "native_tables": 6,
+  "native_charts": 3,
+  "embedded_chart_workbooks": 3,
+  "structural_findings": 0,
+  "geometry_findings": 0,
+  "geometry_warnings": 0,
+  "portable_import": "PASS",
+  "font_policy": "Carlito; all encoded text checks passed, including the six chart-label overrides.",
+  "chart_values_against_recorded_metrics": "PASS; arithmetic means rounded to six decimals, depth comparison to three.",
+  "rendered_visual_review": "All 16 slides reviewed; chart labels use decimal 0.500 and team/dashboard are updated.",
+  "native_powerpoint_execution_observed": false,
+  "claim_boundary": "OOXML/workbook, source-value and rendered-layout checks; native PowerPoint and FPGA acceptance remain separate."
+}

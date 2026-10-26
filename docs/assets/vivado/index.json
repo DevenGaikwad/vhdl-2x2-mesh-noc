@@ -1,0 +1,548 @@
+[
+  {
+    "number": 1,
+    "step": "01",
+    "title": "Project and exact FPGA target",
+    "path": "docs/assets/vivado/01-project-and-exact-fpga-target.png",
+    "caption": "Fig. 1: Step 01 \u2014 Project and exact FPGA target.",
+    "notes": [
+      "Vivado opens NoC_2x2 for Spartan-7 xc7s15cpga196-2.",
+      "This establishes project setup; opening the project alone does not verify packet transfer."
+    ],
+    "sha256": "02142a5703a200d4685bbb784f29b39177dbc1ea2561e88aa7ac9012466bf2ee",
+    "bytes": 145389
+  },
+  {
+    "number": 2,
+    "step": "02",
+    "title": "Simulation sources",
+    "path": "docs/assets/vivado/02-simulation-sources.png",
+    "caption": "Fig. 2: Step 02 \u2014 Simulation sources.",
+    "notes": [
+      "tb_noc_2x2 is the system testbench; module testbenches are also listed.",
+      "A testbench generates clock, reset and traffic, then checks the VHDL circuit."
+    ],
+    "sha256": "adeab4a936bf79bdf2ddf471d31125766c60b75385896c38168a08a9369795e9",
+    "bytes": 150064
+  },
+  {
+    "number": 3,
+    "step": "03",
+    "title": "Behavioral simulation loaded",
+    "path": "docs/assets/vivado/03-behavioral-simulation-loaded.png",
+    "caption": "Fig. 3: Step 03 \u2014 Behavioral simulation loaded.",
+    "notes": [
+      "XSim elaborates the mesh and exposes its data, handshake and debug signals.",
+      "Simulation is at time zero; the loaded window is not yet a successful test result."
+    ],
+    "sha256": "171b3570bfacc03fc44dc6c34a2e82552f34ba453d2761b1855c472d04dabe9b",
+    "bytes": 147540
+  },
+  {
+    "number": 4,
+    "step": "04",
+    "title": "Clock and reset through 60 ns",
+    "path": "docs/assets/vivado/04-clock-and-reset-through-60-ns.png",
+    "caption": "Fig. 4: Step 04 \u2014 Clock and reset through 60 ns.",
+    "notes": [
+      "The testbench clock period is 10 ns; reset is released at about 20 ns.",
+      "TV and RV activity begins afterward. The 60 ns view is only an early observation window."
+    ],
+    "sha256": "5e35e5fae5031bb1a16286f112ef2be39949d70d2664f2b18a2b3b02d41493f3",
+    "bytes": 151529
+  },
+  {
+    "number": 5,
+    "step": "05",
+    "title": "First injection at 25 ns",
+    "path": "docs/assets/vivado/05-first-injection-at-25-ns.png",
+    "caption": "Fig. 5: Step 05 \u2014 First injection at 25 ns.",
+    "notes": [
+      "TX(0)=0x80200001 is accepted when TV(0)=TR(0)=1 on the rising edge.",
+      "The decoded source and destination are both 0: this first example takes the Local route."
+    ],
+    "sha256": "7d9c3383b049223ce9d11b0f97ebca698f863b31d79841eae5f9655537046e3c",
+    "bytes": 151931
+  },
+  {
+    "number": 6,
+    "step": "06",
+    "title": "Packet offered at the receiver",
+    "path": "docs/assets/vivado/06-packet-offered-at-the-receiver.png",
+    "caption": "Fig. 6: Step 06 \u2014 Packet offered at the receiver.",
+    "notes": [
+      "At the 40 ns cursor, RX shows 0x80200001 and receive-valid is asserted.",
+      "The packet is being offered; acceptance occurs at the following 45 ns rising edge."
+    ],
+    "sha256": "3a87e97dbe42618034e79af26196d53ea81347d62d75ffec9fd52a6bfb397956",
+    "bytes": 152641
+  },
+  {
+    "number": 7,
+    "step": "07",
+    "title": "FIFO occupancy at 25 ns",
+    "path": "docs/assets/vivado/07-fifo-occupancy-at-25-ns.png",
+    "caption": "Fig. 7: Step 07 \u2014 FIFO occupancy at 25 ns.",
+    "notes": [
+      "count[4] rises from 0 to 1 after injection. Index 4 is Router 0 Local input.",
+      "The FIFO stores one 32-bit packet; DEPTH=4 permits four queued packets at that active input."
+    ],
+    "sha256": "7326ab325942c9f95971c10fb6f41be7934214f0dce89bf048135d797f474397",
+    "bytes": 145488
+  },
+  {
+    "number": 8,
+    "step": "08",
+    "title": "Routing request and cursor time",
+    "path": "docs/assets/vivado/08-routing-request-and-cursor-time.png",
+    "caption": "Fig. 8: Step 08 \u2014 Routing request and cursor time.",
+    "notes": [
+      "At 25 ns the request mask is 0x10: input bit 4 requests an output; grants remain zero.",
+      "The left Objects req[2]=0x10 is at current time 60 ns, not the selected 25 ns Wave cursor."
+    ],
+    "sha256": "b1d62bdcc8f1acf669f155f28536f3a61932d7685a26d8a8a66dca8dd11c0e94",
+    "bytes": 155092
+  },
+  {
+    "number": 9,
+    "step": "09A",
+    "title": "Selected internal output data",
+    "path": "docs/assets/vivado/09a-selected-internal-output-data.png",
+    "caption": "Fig. 9: Step 09A \u2014 Selected internal output data.",
+    "notes": [
+      "At 40 ns, OD[4]=0x80200001 carries the original complete packet word.",
+      "Debug index 4 denotes Router 0 Local output. Read the Wave value, not current-time Objects."
+    ],
+    "sha256": "647e7eb865a70c36eaff6187c9d475abb19be081f784d72081edac31db4bae39",
+    "bytes": 142422
+  },
+  {
+    "number": 10,
+    "step": "09B",
+    "title": "Selected internal output valid",
+    "path": "docs/assets/vivado/09b-selected-internal-output-valid.png",
+    "caption": "Fig. 10: Step 09B \u2014 Selected internal output valid.",
+    "notes": [
+      "At 40 ns, OV[4]=1 indicates that OD[4] is actively offering its packet.",
+      "Together, 09A and 09B show data plus validity; the delivery handshake still needs READY."
+    ],
+    "sha256": "9e4721a679929ad9826b8452c996b30d7cb925ee7e27a33f7cd23b500887ad71",
+    "bytes": 137350
+  },
+  {
+    "number": 11,
+    "step": "10",
+    "title": "Receiver handshake before 45 ns",
+    "path": "docs/assets/vivado/10-receiver-handshake-before-45-ns.png",
+    "caption": "Fig. 11: Step 10 \u2014 Receiver handshake before 45 ns.",
+    "notes": [
+      "At 44.999 ns, receiver 0 has the packet with RV(0)=RR(0)=1.",
+      "These signals satisfy delivery acceptance at the 45 ns rising edge; this packet is Local."
+    ],
+    "sha256": "0fce31410028a5b14c30bd741f4251af05501135cf27870080aa0884e5c2905b",
+    "bytes": 120738
+  },
+  {
+    "number": 12,
+    "step": "11",
+    "title": "Local packet latency",
+    "path": "docs/assets/vivado/11-local-packet-latency.png",
+    "caption": "Fig. 12: Step 11 \u2014 Local packet latency.",
+    "notes": [
+      "Injection at 25 ns and delivery at 45 ns give 20 ns, or two 10 ns clock cycles.",
+      "This is the Local example. Empty one-hop and two-hop paths use four and six cycles."
+    ],
+    "sha256": "d150668016e76770e39e5065b9f1384cd21e45158282dfd71c2770a2517f3736",
+    "bytes": 135189
+  },
+  {
+    "number": 13,
+    "step": "12",
+    "title": "Self checking XSim PASS",
+    "path": "docs/assets/vivado/12-self-checking-xsim-pass.png",
+    "caption": "Fig. 13: Step 12 \u2014 Self checking XSim PASS.",
+    "notes": [
+      "At 2400 ns: 106 accepted = 74 delivered + 32 intentional reset discards.",
+      "All accepted traffic is accounted for. The 93 benchmark runs are a separate population."
+    ],
+    "sha256": "b813d90a14f2e10810253d52eb576735ad77396c434626f6e797ed13cd4fe60d",
+    "bytes": 169960
+  },
+  {
+    "number": 14,
+    "step": "13",
+    "title": "Four router RTL hierarchy",
+    "path": "docs/assets/vivado/13-four-router-rtl-hierarchy.png",
+    "caption": "Fig. 14: Step 13 \u2014 Four router RTL hierarchy.",
+    "notes": [
+      "The wrapper contains a mesh and four traffic endpoints; the mesh has four routers.",
+      "Endpoint CPU or AI names are traffic-model labels, not implemented processors."
+    ],
+    "sha256": "ae1db62347794d15c3c1575d58c20f9232ae30c72192d626c361aaeec9bef2f7",
+    "bytes": 197937
+  },
+  {
+    "number": 15,
+    "step": "14",
+    "title": "One corner router hierarchy",
+    "path": "docs/assets/vivado/14-one-corner-router-hierarchy.png",
+    "caption": "Fig. 15: Step 14 \u2014 One corner router hierarchy.",
+    "notes": [
+      "Router 0 has a crossbar, three active FIFOs, routing units and output arbiters.",
+      "Only Local, South and East connect there. Every corner has its own two inactive directions."
+    ],
+    "sha256": "5a97a39b94684525f12f707bf33f8aa51a41abca123a1c72d61f1763e3586524",
+    "bytes": 219652
+  },
+  {
+    "number": 16,
+    "step": "15",
+    "title": "Synthesized FIFO primitive classes",
+    "path": "docs/assets/vivado/15-synthesized-fifo-primitive-classes.png",
+    "caption": "Fig. 16: Step 15 \u2014 Synthesized FIFO primitive classes.",
+    "notes": [
+      "The selected FIFO shows FLIP_LATCH=7, LUT=43 and DMEM=44 primitive-class entries.",
+      "Synthesis maps storage and control into FPGA cells; these are not additive Slice-LUT totals."
+    ],
+    "sha256": "dd9850b4ef8ddac27b0e78c1de3d517ee8095c4bf3da71ecd62e802b126cee45",
+    "bytes": 141419
+  },
+  {
+    "number": 17,
+    "step": "16",
+    "title": "Core synthesis hierarchy",
+    "path": "docs/assets/vivado/16-core-synthesis-hierarchy.png",
+    "caption": "Fig. 17: Step 16 \u2014 Core synthesis hierarchy.",
+    "notes": [
+      "The later GUI run reports 1085 LUTs and 147 registers, with four router rows.",
+      "The archived core OOC result is separately 1086/147; the runs must not be merged."
+    ],
+    "sha256": "159989feadd08ed0212fa82ebd80f14520e09a9c96f84f592b255cd21a51072a",
+    "bytes": 154057
+  },
+  {
+    "number": 18,
+    "step": "17",
+    "title": "Core utilization and I O limit",
+    "path": "docs/assets/vivado/17-core-utilization-and-i-o-limit.png",
+    "caption": "Fig. 18: Step 17 \u2014 Core utilization and I O limit.",
+    "notes": [
+      "Core logic fits: 1085/8000 LUTs and 147/16000 registers.",
+      "Its 1774 logical I/O demands exceed 100 package pins; this exposed core is not a board top."
+    ],
+    "sha256": "a3d784653db90ff2faccd9690e6d8055ec31e49a5992d96ec943dbb090167da4",
+    "bytes": 147971
+  },
+  {
+    "number": 19,
+    "step": "18",
+    "title": "Memory LUTs by router",
+    "path": "docs/assets/vivado/18-memory-luts-by-router.png",
+    "caption": "Fig. 19: Step 18 \u2014 Memory LUTs by router.",
+    "notes": [
+      "The core uses 288 LUTs as memory; each of the four routers contributes 72.",
+      "These are FPGA resources, not packets or bits. The next view resolves Router 0 FIFO detail."
+    ],
+    "sha256": "6f948e85bcd7f703e894be654e63c9e30ec73d85642938ae9f2087c7c23e4636",
+    "bytes": 147758
+  },
+  {
+    "number": 20,
+    "step": "19",
+    "title": "Three FIFO memory breakdown",
+    "path": "docs/assets/vivado/19-three-fifo-memory-breakdown.png",
+    "caption": "Fig. 20: Step 19 \u2014 Three FIFO memory breakdown.",
+    "notes": [
+      "Router 0 inputs[1], inputs[2] and inputs[4] use 24 memory LUTs each: 24+24+24=72.",
+      "The third row accounts for the earlier apparent gap; a count of 24 is not FIFO depth 24."
+    ],
+    "sha256": "e715f87c4a8092a1b8f72b510e4f040dff079ad165dc3db46685d65978f7bbff",
+    "bytes": 158966
+  },
+  {
+    "number": 21,
+    "step": "20",
+    "title": "Pre route timing summary",
+    "path": "docs/assets/vivado/20-pre-route-timing-summary.png",
+    "caption": "Fig. 21: Step 20 \u2014 Pre route timing summary.",
+    "notes": [
+      "The GUI core reports WNS +6.129 ns, TNS 0 and WHS +0.111 ns.",
+      "Internal reported paths meet the target; 785 Check Timing findings still need interpretation."
+    ],
+    "sha256": "4fa737c5cda2b384ae30da5bc12bd27a951926c55174a80dbd8fc4c312fcaae0",
+    "bytes": 151643
+  },
+  {
+    "number": 22,
+    "step": "21",
+    "title": "Missing external delay constraints",
+    "path": "docs/assets/vivado/21-missing-external-delay-constraints.png",
+    "caption": "Fig. 22: Step 21 \u2014 Missing external delay constraints.",
+    "notes": [
+      "Check Timing lists 137 missing input delays and 648 missing output delays.",
+      "Their sum is 785 constraint findings, not failed packets. Board-interface timing is incomplete."
+    ],
+    "sha256": "7c3a91ad14d8d975ca65df4cc041e9ee955f324878b8528ccaf28cfef861bdc6",
+    "bytes": 144324
+  },
+  {
+    "number": 23,
+    "step": "22",
+    "title": "Clock target",
+    "path": "docs/assets/vivado/22-clock-target.png",
+    "caption": "Fig. 23: Step 22 \u2014 Clock target.",
+    "notes": [
+      "Clock Summary defines noc_clk at 10.000 ns, equivalent to 100 MHz.",
+      "This is a design constraint, not measured oscillator frequency, packet latency or fMAX."
+    ],
+    "sha256": "02a6b91524d01a14f2bf903d3771ddb526342de78ec03bd718fc9c51317e2427",
+    "bytes": 134917
+  },
+  {
+    "number": 24,
+    "step": "23",
+    "title": "Ports without input delays",
+    "path": "docs/assets/vivado/23-ports-without-input-delays.png",
+    "caption": "Fig. 24: Step 23 \u2014 Ports without input delays.",
+    "notes": [
+      "The list includes eject_ready and inject_data bits among 137 unconstrained inputs.",
+      "Vivado needs external arrival-time constraints before a board-interface timing claim is possible."
+    ],
+    "sha256": "5e400e40e56a398e0bf5a4008828bfc092d94611c4b1c80dad616cf221b9550b",
+    "bytes": 151338
+  },
+  {
+    "number": 25,
+    "step": "24",
+    "title": "Worst synthesized setup path",
+    "path": "docs/assets/vivado/24-worst-synthesized-setup-path.png",
+    "caption": "Fig. 25: Step 24 \u2014 Worst synthesized setup path.",
+    "notes": [
+      "Router 3 FIFO read-pointer to Local arbiter: 3.720 ns path delay, +6.129 ns slack.",
+      "This is a pre-route circuit delay, not packet latency; slack includes clock and setup terms."
+    ],
+    "sha256": "ba9d752c541077eb7843c8a7f39749a36d0da729a41d24afc80618d041bf3693",
+    "bytes": 188698
+  },
+  {
+    "number": 26,
+    "step": "25",
+    "title": "Routed demo placement",
+    "path": "docs/assets/vivado/25-routed-demo-placement.png",
+    "caption": "Fig. 26: Step 25 \u2014 Routed demo placement.",
+    "notes": [
+      "Four colored router cell groups appear in the saved demonstration checkpoint.",
+      "Colors identify placed logic, not packets. Logical mesh connections need not form a physical square."
+    ],
+    "sha256": "85fbeb9e6d1217d777f1e6a3a862395d61474468616335a36e0a8a92ad5d14a5",
+    "bytes": 110706
+  },
+  {
+    "number": 27,
+    "step": "26",
+    "title": "Routing completion",
+    "path": "docs/assets/vivado/26-routing-completion.png",
+    "caption": "Fig. 27: Step 26 \u2014 Routing completion.",
+    "notes": [
+      "All 1468 routable nets are fully routed, with zero routing errors.",
+      "The remaining 377 of 1845 logical nets need no fabric routing; this does not prove board operation."
+    ],
+    "sha256": "1d2476d53ba28c65dd3d4109c5830132fcdb3b77089a63f7eefbc62367f60231",
+    "bytes": 98069
+  },
+  {
+    "number": 28,
+    "step": "27",
+    "title": "Routed internal static timing",
+    "path": "docs/assets/vivado/27-routed-internal-static-timing.png",
+    "caption": "Fig. 28: Step 27 \u2014 Routed internal static timing.",
+    "notes": [
+      "At 10 ns: WNS +4.571 ns, TNS 0, WHS +0.066 ns and THS 0.",
+      "These OOC internal checks pass. External board timing and SDF waveform simulation remain separate."
+    ],
+    "sha256": "d3867d1ddc152883d8d0cf95f5d6cf6cd27fe0324c7c227d9992c40107f0d8cb",
+    "bytes": 89797
+  },
+  {
+    "number": 29,
+    "step": "28",
+    "title": "Routed demonstration resources",
+    "path": "docs/assets/vivado/28-routed-demonstration-resources.png",
+    "caption": "Fig. 29: Step 28 \u2014 Routed demonstration resources.",
+    "notes": [
+      "The demo uses 1067 LUTs (841 logic + 226 memory) and 236 registers.",
+      "This top includes four finite endpoints, so its cost differs from the exposed core-only run."
+    ],
+    "sha256": "633ba3e03d41b916eb6efa89a78e47fc2a0421f1a504c2944896c840bfe25013",
+    "bytes": 73384
+  },
+  {
+    "number": 30,
+    "step": "29",
+    "title": "Design rule warnings",
+    "path": "docs/assets/vivado/29-design-rule-warnings.png",
+    "caption": "Fig. 30: Step 29 \u2014 Design rule warnings.",
+    "notes": [
+      "CFGBVS-1 requests configuration-voltage properties; RTSTAT-10 flags unloaded nets.",
+      "Two warnings and no DRC errors are shown. Board-specific values must be verified, not invented."
+    ],
+    "sha256": "f06631cd3819a411e81f068ffd92d7daaddc063e76a25d87207df575d3be04e6",
+    "bytes": 77542
+  },
+  {
+    "number": 31,
+    "step": "30",
+    "title": "Implemented Local arbiter schematic",
+    "path": "docs/assets/vivado/30-implemented-local-arbiter-schematic.png",
+    "caption": "Fig. 31: Step 30 \u2014 Implemented Local arbiter schematic.",
+    "notes": [
+      "The selected routed arbiter view contains 32 cells and 89 nets, including LUTs and FDREs.",
+      "The wires are logical connections. The functional tests, rather than this picture, check fairness."
+    ],
+    "sha256": "c0302d1d23803bff4990ac49d05f2ee1f1d27c63701a58dbce6b1ae7b4ed01d6",
+    "bytes": 84746
+  },
+  {
+    "number": 32,
+    "step": "31",
+    "title": "Worst routed setup path",
+    "path": "docs/assets/vivado/31-worst-routed-setup-path.png",
+    "caption": "Fig. 32: Step 31 \u2014 Worst routed setup path.",
+    "notes": [
+      "Router 1 FIFO read-pointer to endpoint 1 receiver failed_reg has +4.571 ns slack.",
+      "failed_reg names an error-status register; its name is not a simulation failure result."
+    ],
+    "sha256": "eb9a9b41661776af85148e9cd9229841d9700d1a749f1eefab6d027bfb3a1c16",
+    "bytes": 83353
+  },
+  {
+    "number": 33,
+    "step": "EXTRA A",
+    "title": "Additional elaborated RTL schematic",
+    "path": "docs/assets/vivado/extra-a-additional-elaborated-rtl-schematic.png",
+    "caption": "Fig. 33: Step EXTRA A \u2014 Additional elaborated RTL schematic.",
+    "notes": [
+      "This context image shows the connected four-router core and its many logical ports.",
+      "It supplements the numbered sequence and provides an additional view of the connected RTL hierarchy."
+    ],
+    "sha256": "d3797b047e89be523588394a987f68a405a0389b87702bbcb7e92b7416f5dbe4",
+    "bytes": 153154
+  },
+  {
+    "number": 34,
+    "step": "EXTRA B",
+    "title": "Additional synthesis status",
+    "path": "docs/assets/vivado/extra-b-additional-synthesis-status.png",
+    "caption": "Fig. 34: Step EXTRA B \u2014 Additional synthesis status.",
+    "notes": [
+      "Vivado displays synthesis completion and the synthesized core hierarchy.",
+      "This status view supplements the detailed utilization and timing results in the numbered sequence."
+    ],
+    "sha256": "392cb538942cfea913bdb25bc7e29ed7852612f60525750edbba63e66a7ad834",
+    "bytes": 141894
+  },
+  {
+    "number": 35,
+    "step": "EXTRA C",
+    "title": "Router 0 synthesized FIFO interface",
+    "path": "docs/assets/vivado/extra-c-router-0-synthesized-fifo-interface.png",
+    "caption": "Fig. 35: Step EXTRA C \u2014 Router 0 synthesized FIFO interface.",
+    "notes": [
+      "The selected inputs[1].live.fifo is the Router 0 South-input FIFO in the synthesized core.",
+      "Its 83 cell pins and 83 associated nets describe connectivity, not queue depth or packet count."
+    ],
+    "sha256": "8d4df4cceb3563eb0369b627b3f14b938423baf18a8022a29281c526681ee25f",
+    "bytes": 187280
+  },
+  {
+    "number": 36,
+    "step": "EXTRA D",
+    "title": "Synthesized FIFO interface close view",
+    "path": "docs/assets/vivado/extra-d-synthesized-fifo-interface-close-view.png",
+    "caption": "Fig. 36: Step EXTRA D \u2014 Synthesized FIFO interface close view.",
+    "notes": [
+      "Clock, reset, read/write-pointer and debug-data connections are visible around the selected FIFO.",
+      "This zoomed view shows interface wiring; some pins are outside the displayed area."
+    ],
+    "sha256": "cd76f8d5ac6c5093fd73fe0a4cf7c9e9e3da0ec7f087cf45a81db553f4d7e1c1",
+    "bytes": 190781
+  },
+  {
+    "number": 37,
+    "step": "EXTRA E",
+    "title": "Partial view after FIFO expansion",
+    "path": "docs/assets/vivado/extra-e-partial-view-after-fifo-expansion.png",
+    "caption": "Fig. 37: Step EXTRA E \u2014 Partial view after FIFO expansion.",
+    "notes": [
+      "After expansion, the schematic reports 59 cells and 177 nets, but only part of the circuit is visible.",
+      "This is a partial navigation view; the next image shows the expanded FIFO fitted into the window."
+    ],
+    "sha256": "2e2ad4c4095d14a066762c36f646a7c97d5cfb6bf662794d2a8dbb3e597a6ca9",
+    "bytes": 145046
+  },
+  {
+    "number": 38,
+    "step": "EXTRA F",
+    "title": "Expanded synthesized FIFO circuit",
+    "path": "docs/assets/vivado/extra-f-expanded-synthesized-fifo-circuit.png",
+    "caption": "Fig. 38: Step EXTRA F \u2014 Expanded synthesized FIFO circuit.",
+    "notes": [
+      "The fitted view exposes the mapped storage and control cells inside the selected FIFO.",
+      "The 59 cells and 177 nets belong to this schematic view, not the entire mesh utilization."
+    ],
+    "sha256": "89aafab88f166c5c7845d214cac9b1a5812a4ecb6fcf166b853fd2d761b28537",
+    "bytes": 154878
+  },
+  {
+    "number": 39,
+    "step": "EXTRA G",
+    "title": "Router 0 in the routed checkpoint",
+    "path": "docs/assets/vivado/extra-g-router-0-in-the-routed-checkpoint.png",
+    "caption": "Fig. 39: Step EXTRA G \u2014 Router 0 in the routed checkpoint.",
+    "notes": [
+      "The saved demo_ooc_routed checkpoint shows Router 0 inside the mesh and all four traffic endpoints.",
+      "The green lines are logical net connections; this view records the implemented hierarchy."
+    ],
+    "sha256": "8552574c21cf5095e116aad4c5430a2afe0dbc3c541676b52480516f301c0921",
+    "bytes": 157612
+  },
+  {
+    "number": 40,
+    "step": "EXTRA H",
+    "title": "Expanded router in the routed checkpoint",
+    "path": "docs/assets/vivado/extra-h-expanded-router-in-the-routed-checkpoint.png",
+    "caption": "Fig. 40: Step EXTRA H \u2014 Expanded router in the routed checkpoint.",
+    "notes": [
+      "Router 0 expands into three active input FIFOs and three output arbiters: South, East and Local.",
+      "The view shows 8 cells and 335 nets, revealing how buffering and output-selection logic connect."
+    ],
+    "sha256": "aaeee05206a6aacbb7dab8827941a8f24171f853a09eaf0a41bd197a5ed23ae8",
+    "bytes": 162122
+  },
+  {
+    "number": 41,
+    "step": "EXTRA I",
+    "title": "Local output arbiter interface",
+    "path": "docs/assets/vivado/extra-i-local-output-arbiter-interface.png",
+    "caption": "Fig. 41: Step EXTRA I \u2014 Local output arbiter interface.",
+    "notes": [
+      "outputs[4].live.arb selects Router 0 Local-output round-robin arbiter, reference rr_arbiter_21.",
+      "Clock, reset and control connections locate the logic that selects packets for local delivery."
+    ],
+    "sha256": "3c812d92e0d5258168a82f0b8429eb4a7e3021ce1fc618d00a4261eeec7a9fd0",
+    "bytes": 140681
+  },
+  {
+    "number": 42,
+    "step": "EXTRA J",
+    "title": "Expanded Local output arbiter circuit",
+    "path": "docs/assets/vivado/extra-j-expanded-local-output-arbiter-circuit.png",
+    "caption": "Fig. 42: Step EXTRA J \u2014 Expanded Local output arbiter circuit.",
+    "notes": [
+      "The expanded Local-output arbiter view contains 32 cells and 89 nets in the routed checkpoint.",
+      "It exposes the mapped selection and state circuitry; functional tests check its behavior."
+    ],
+    "sha256": "b4da9b8cf9196aa21204164c50cfb126b991a7f53a120e485e4919c554a0c12e",
+    "bytes": 123975
+  }
+]

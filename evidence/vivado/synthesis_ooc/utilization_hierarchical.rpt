@@ -1,0 +1,35 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sun Oct  4 19:39:58 2026
+| Host         : DESKTOP-SBIR7OL running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file D:/NoC_2x2_Project/evidence/vivado/synthesis_ooc/utilization_hierarchical.rpt
+| Design       : noc_2x2_core
+| Device       : xc7s15cpga196-2
+| Speed File   : -2
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++-------------------------+------------------------+------------+------------+---------+------+-----+--------+--------+------------+
+|         Instance        |         Module         | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | DSP Blocks |
++-------------------------+------------------------+------------+------------+---------+------+-----+--------+--------+------------+
+| noc_2x2_core            |                  (top) |       1086 |        798 |     288 |    0 | 147 |      0 |      0 |          0 |
+|   (noc_2x2_core)        |                  (top) |          0 |          0 |       0 |    0 |   0 |      0 |      0 |          0 |
+|   routers[0].tile       |                 router |        273 |        201 |      72 |    0 |  36 |      0 |      0 |          0 |
+|     inputs[2].live.fifo |         fifo_buffer_17 |         50 |         26 |      24 |    0 |   7 |      0 |      0 |          0 |
+|     inputs[4].live.fifo |         fifo_buffer_18 |         52 |         28 |      24 |    0 |   7 |      0 |      0 |          0 |
+|   routers[1].tile       | router__parameterized0 |        275 |        203 |      72 |    0 |  39 |      0 |      0 |          0 |
+|   routers[2].tile       | router__parameterized1 |        269 |        197 |      72 |    0 |  36 |      0 |      0 |          0 |
+|   routers[3].tile       | router__parameterized2 |        269 |        197 |      72 |    0 |  36 |      0 |      0 |          0 |
++-------------------------+------------------------+------------+------------+---------+------+-----+--------+--------+------------+
+
+

@@ -1,0 +1,9 @@
+/workspace/scratch/3a2e521c2479/work_noc_github_2026-10-26/tools/ghdl/usr/bin/ghdl --version
+GHDL 4.1.0 (Ubuntu 4.1.0+dfsg-0ubuntu2.1) [Dunoon edition]
+ Compiled with GNAT Version: 13.3.0
+ static elaboration, mcode JIT code generator
+Written by Tristan Gingold.
+
+Copyright (C) 2003 - 2024 Tristan Gingold.
+GHDL is free software, covered by the GNU General Public License.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

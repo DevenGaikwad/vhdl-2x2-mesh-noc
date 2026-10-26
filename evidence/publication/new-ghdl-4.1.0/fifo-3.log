@@ -1,0 +1,3 @@
+/workspace/scratch/3a2e521c2479/work_noc_github_2026-10-26/tools/ghdl/usr/bin/ghdl -r --std=08 tb_fifo_buffer -gDEPTH=3 --assert-level=error
+/workspace/scratch/3a2e521c2479/work_noc_github_2026-10-26/validation/project/tb/tb_fifo_buffer.vhd:49:3:@12090ns:(report note): PASS tb_fifo_buffer depth=3 writes=762
+simulation finished @12090ns
