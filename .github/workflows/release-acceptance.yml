@@ -1,0 +1,103 @@
+name: Release download acceptance
+on:
+  push:
+    branches: [publication-asset-ingest]
+    paths: [.github/workflows/release-acceptance.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-release:
+    name: Independently verify v1.0.0 downloads
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: v1.0.0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24.22.1'
+      - name: Verify exact tagged source and archived evidence
+        run: |
+          test "$(git rev-parse HEAD)" = "8dad7d50c051b09a76b488d1853d0f1fc116827e"
+          node scripts/verify_publication.mjs
+          node scripts/verify_evidence.mjs
+      - name: Independently download all release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/noc-release-downloads"
+          gh release download v1.0.0 --repo "$GITHUB_REPOSITORY" --dir "$RUNNER_TEMP/noc-release-downloads"
+      - name: Check downloads, protected documents and complete distribution
+        shell: python
+        run: |
+          from pathlib import Path
+          import hashlib, json, os, zipfile
+          root = Path(os.environ["RUNNER_TEMP"]) / "noc-release-downloads"
+          expected = {
+            "HDL_PLD_Mini_Project_Report_2x2_Mesh_NoC_2026-27_Final_Edited.docx": "abda0dcbddaf52a88e324fb038905652e9dd90c6c4bc9fbdebc5ac35b354e865",
+            "NoC_31_Screenshot_Explanation_Guide_Reviewed.docx": "fcd680879735aa03c23a6700cb9f4d0e5c41ee8bf1ceb843b8845ca10aa23da0",
+            "NoC_Complete_Publication_v1.0.0.zip": "e5f92a4538c41571f0b2da65e47bae1801ef66cdec529306fcd412da27c028d3",
+            "NoC_Documentation_Update_2026-10-11.zip": "418d36f53cdcfce28fdf71850a0a0fdde2fd4f5acaf129de0b7037b6abc63302",
+            "NoC_Project_Presentation.pptx": "cb5c9c01066b38311b6ca00e8562964d1740e0ec59995c8287e6b42e6146de81",
+            "NoC_Screenshots_All_Received.docx": "783c13dec3cc3b21010ed916cb41d6ee9360082915254378d4257c6055191de6",
+            "NoC_VHDL_Source_Code_Printout.docx": "f67a739f93a96cb79b3100fb26461d377d393238898bdbaf5bef1f83c12fe7db",
+            "SHA256SUMS-release.txt": "d6f949d0acc98112f77937107ca206031260767921bc058b865f6153d4f77e5a",
+            "vhdl-2x2-mesh-noc_FINAL_VERIFIED_UI_2026-10-04.zip": "d6c6f0ca1512ad82debef444a75adcd3ac3cf7e8e994a34897a7f1c754724198"
+          }
+          checked = []
+          for name, sha in expected.items():
+              p = root / name
+              actual = hashlib.sha256(p.read_bytes()).hexdigest()
+              assert actual == sha, name
+              checked.append({"name": name, "bytes": p.stat().st_size, "sha256": actual})
+          assert len(list(root.iterdir())) == 9
+          for line in (root / "SHA256SUMS-release.txt").read_text().splitlines():
+              sha, name = line.split("  ", 1)
+              assert hashlib.sha256((root / name).read_bytes()).hexdigest() == sha, name
+          with zipfile.ZipFile(root / "NoC_Complete_Publication_v1.0.0.zip") as archive:
+              assert archive.testzip() is None
+              prefix = "vhdl-2x2-mesh-noc/"
+              manifest = json.loads(archive.read(prefix + "DISTRIBUTION_MANIFEST.json"))
+              assert len(archive.namelist()) == len(manifest["files"]) + 1 == 593
+              for item in manifest["files"]:
+                  data = archive.read(prefix + item["path"])
+                  assert len(data) == item["bytes"], item["path"]
+                  assert hashlib.sha256(data).hexdigest() == item["sha256"], item["path"]
+              for name, sha in expected.items():
+                  if name.endswith((".docx", ".pptx")):
+                      data = archive.read(prefix + "docs/deliverables/" + name)
+                      assert hashlib.sha256(data).hexdigest() == sha, name
+          with zipfile.ZipFile(root / "vhdl-2x2-mesh-noc_FINAL_VERIFIED_UI_2026-10-04.zip") as archive:
+              names = {name.replace(chr(92), "/"): name for name in archive.namelist()}
+              original_index = next(name for name in names if name.endswith("/PACKAGE_MANIFEST.json"))
+              prefix = original_index.rsplit("/", 1)[0] + "/"
+              manifest = json.loads(archive.read(names[original_index]))
+              assert len(manifest["files"]) == 470
+              for item in manifest["files"]:
+                  data = archive.read(names[prefix + item["path"]])
+                  assert hashlib.sha256(data).hexdigest() == item["sha256"], item["path"]
+          result = {
+              "status": "PASS",
+              "source_commit": "8dad7d50c051b09a76b488d1853d0f1fc116827e",
+              "release": "v1.0.0",
+              "release_assets_independently_downloaded": checked,
+              "complete_distribution_files_verified": 593,
+              "original_archive_payloads_verified": 470,
+              "protected_documents_unchanged": True,
+              "simulation_rerun": False
+          }
+          output = Path(os.environ["RUNNER_TEMP"]) / "release-download-verification.json"
+          output.write_text(json.dumps(result, indent=2) + chr(10))
+          print("PASS: all 9 release downloads; 593 distribution files; 470 original payloads; protected documents unchanged.")
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
+              summary.write("# Release v1.0.0 acceptance: PASS" + chr(10))
+              summary.write("All nine assets were independently downloaded and SHA-256 checked. " + chr(10))
+              summary.write("The complete distribution has 593 verified files; all 470 original archive payloads and protected documents match. " + chr(10))
+              summary.write("The tagged source revision is 8dad7d50c051b09a76b488d1853d0f1fc116827e. Simulations were not rerun." + chr(10))
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: release-download-verification
+          path: ${{ runner.temp }}/release-download-verification.json
+          retention-days: 30
